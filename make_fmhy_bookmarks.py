@@ -1,4 +1,3 @@
-
 import requests
 
 def addPretext(lines, sectionName, baseURL, subURL):
@@ -265,6 +264,22 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
     # Print success message
     #print(f'Successfully created bookmarks in {output_file}')
 
+def generate_bookmarklet_script():
+    script = '''javascript:(function(){var script=document.createElement('script');script.src='https://raw.githubusercontent.com/fmhy/bookmarks/main/fmhy_bookmarklet.js';document.body.appendChild(script);})();'''
+    return script
+
+def include_bookmarklet_script_in_html(html_content):
+    bookmarklet_script = generate_bookmarklet_script()
+    bookmarklet_html = f'<DT><A HREF="{bookmarklet_script}" ADD_DATE="0">FMHY Bookmarklet</A>\n'
+    return html_content.replace('</DL><p>\n</DL><p>\n', f'{bookmarklet_html}</DL><p>\n</DL><p>\n')
+
 # Example usage:
-markdown_to_html_bookmarks(wiki_adapted_md, 'fmhy_in_bookmarks.html')
-markdown_to_html_bookmarks(wiki_adapted_starred_only_md, 'fmhy_in_bookmarks_starred_only.html')
+html_content = markdown_to_html_bookmarks(wiki_adapted_md, 'fmhy_in_bookmarks.html')
+html_content_with_bookmarklet = include_bookmarklet_script_in_html(html_content)
+with open('fmhy_in_bookmarks.html', 'w', encoding='utf-8') as f:
+    f.write(html_content_with_bookmarklet)
+
+html_content_starred = markdown_to_html_bookmarks(wiki_adapted_starred_only_md, 'fmhy_in_bookmarks_starred_only.html')
+html_content_starred_with_bookmarklet = include_bookmarklet_script_in_html(html_content_starred)
+with open('fmhy_in_bookmarks_starred_only.html', 'w', encoding='utf-8') as f:
+    f.write(html_content_starred_with_bookmarklet)
