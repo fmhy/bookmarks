@@ -1,4 +1,3 @@
-
 import requests
 
 def addPretext(lines, sectionName, baseURL, subURL):
@@ -161,8 +160,8 @@ def alternativeWikiIndexing():
 # Instead of saving it to a file, save it into a string variable
 wiki_adapted_md = '\n'.join(alternativeWikiIndexing())
 
-# Remove from the lines in wiki_adapted_md any line that doesnt contain the character `⭐`
-wiki_adapted_starred_only_md = '\n'.join([line for line in wiki_adapted_md.split('\n') if '⭐' in line])
+# Remove from the lines in wiki_adapted_md any line that doesnt contain the character `⭐` or '🌟'
+wiki_adapted_starred_only_md = '\n'.join([line for line in wiki_adapted_md.split('\n') if '⭐' or '🌟' in line])
 
 
 
@@ -171,25 +170,25 @@ import re
 def markdown_to_html_bookmarks(input_md_text, output_file):
     # Predefined folder name
     folder_name = "FMHY"
-    
+
     # Read the input markdown file
     #with open(input_file, 'r', encoding='utf-8') as f:
     #    markdown_content = f.read()
 
     # Instead of reading from a file, read from a string variable
     markdown_content = input_md_text
-    
+
     # Regex pattern to extract URLs and titles from markdown
     url_pattern = re.compile(r'\[([^\]]+)\]\((https?://[^\)]+)\)')
     # Regex pattern to extract hierarchy levels
     hierarchy_pattern = re.compile(r'^\{"([^"]+)", "([^"]+)", "([^"]+)"\}')
-    
+
     # Dictionary to hold bookmarks by hierarchy
     bookmarks = {}
-    
+
     # Split the content by lines
     lines = markdown_content.split('\n')
-    
+
     # Parse each line
     for line in lines:
         # Find hierarchy levels
@@ -198,7 +197,7 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
             continue
 
         level1, level2, level3 = hierarchy_match.groups()
-        
+
         # Initialize nested dictionaries for hierarchy levels
         if level1 not in bookmarks:
             bookmarks[level1] = {}
@@ -213,11 +212,11 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
         # If the input_md_text is wiki_adapted_starred_only_md, only add the first match of url_pattern in each line
         if input_md_text == wiki_adapted_starred_only_md:
             matches = matches[:1]
-        
+
         # Extract the description (text after the last match)
         last_match_end = line.rfind(')')
         description = line[last_match_end+1:].replace('**', '').strip() if last_match_end != -1 else ''
-        
+
         # When the description is empty, use as description the lowest hierachy level that is not empty
         if not description:
             description = '- ' + (level3 if level3 != '/' else level2 if level2 else level1)
@@ -226,7 +225,7 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
         for title, url in matches:
             full_title = f"{title} {description}" if description else title
             bookmarks[level1][level2][level3].append((full_title, url))
-    
+
     # Function to generate HTML from nested dictionary
     def generate_html(bookmarks_dict, indent=1):
         html = ''
@@ -240,7 +239,7 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
                     html += '    ' * (indent + 1) + f'<DT><A HREF="{url}" ADD_DATE="0">{full_title}</A>\n'
             html += '    ' * indent + '</DL><p>\n'
         return html
-    
+
     # HTML structure
     html_content = '''<!DOCTYPE NETSCAPE-Bookmark-file-1>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
@@ -251,13 +250,13 @@ def markdown_to_html_bookmarks(input_md_text, output_file):
     # Add the main folder
     html_content += f'    <DT><H3>{folder_name}</H3>\n'
     html_content += '    <DL><p>\n'
-    
+
     # Add bookmarks to HTML content
     html_content += generate_html(bookmarks)
-    
+
     html_content += '    </DL><p>\n'
     html_content += '</DL><p>\n'
-    
+
     # Write the HTML content to the output file
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
