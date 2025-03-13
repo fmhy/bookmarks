@@ -161,7 +161,7 @@ def alternativeWikiIndexing():
 wiki_adapted_md = '\n'.join(alternativeWikiIndexing())
 
 # Remove from the lines in wiki_adapted_md any line that doesnt contain the character `⭐` or '🌟'
-wiki_adapted_starred_only_md = '\n'.join([line for line in wiki_adapted_md.split('\n') if '⭐' or '🌟' in line])
+wiki_adapted_starred_only_md = '\n'.join([line for line in wiki_adapted_md.split('\n') if '⭐' in line or '🌟' in line])
 
 
 
