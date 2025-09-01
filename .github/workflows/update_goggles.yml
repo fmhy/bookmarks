@@ -1,0 +1,32 @@
+name: Update Goggles
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # This means the action will run every Monday at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  update-goggles:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Run generate.ts
+        run: deno run --allow-read --allow-write --allow-net generate.ts
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add fmhy.goggle
+          git diff --cached --quiet || git commit -m "Automated update of Goggles file"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
