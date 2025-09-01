@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import logging
 import re
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
 
-import requests
+import aiohttp
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
@@ -137,35 +138,73 @@ def process_base64_sections(base64_page: str) -> List[str]:
     return formatted_sections
 
 
-def download_wiki_content(filename: str) -> List[str]:
-    """Download and process wiki content."""
+async def download_wiki_content_async(
+    session: aiohttp.ClientSession, filename: str
+) -> Tuple[str, List[str]]:
+    """Download and process wiki content asynchronously."""
+    # First try to load locally
     try:
         with open(filename, "r", encoding="utf-8") as f:
             content = f.read()
         logger.info("Loaded %s locally", filename)
+
+        if filename != "base64.md":
+            sub_url = filename.replace(".md", "").lower()
+            return filename, add_hierarchy_prefix(
+                content.split("\n"), filename, sub_url
+            )
+        else:
+            return filename, process_base64_sections(content)
     except FileNotFoundError:
+        pass
+
+    # Download remotely if not found locally
+    try:
         if filename != "base64.md":
             url = CONFIG.github_raw_base + filename
-            try:
-                resp = requests.get(url, timeout=30)
-                resp.raise_for_status()
-                content = resp.text
-                logger.info("Downloaded %s", filename)
-            except requests.HTTPError as e:
-                logger.error("Failed to fetch %s (%s). Skipping.", filename, e)
-                return []
         else:
-            logger.info("Downloading Base64 page from rentry...")
-            resp = requests.get(CONFIG.base64_rentry_url, timeout=30)
-            resp.raise_for_status()
-            content = resp.text.replace("\r", "")
-            logger.info("Downloaded base64 page")
+            url = CONFIG.base64_rentry_url
 
-    if filename != "base64.md":
-        sub_url = filename.replace(".md", "").lower()
-        return add_hierarchy_prefix(content.split("\n"), filename, sub_url)
-    else:
-        return process_base64_sections(content)
+        async with session.get(url, timeout=30) as resp:
+            resp.raise_for_status()
+            content = await resp.text()
+
+            if filename == "base64.md":
+                content = content.replace("\r", "")
+                logger.info("Downloaded base64 page")
+                return filename, process_base64_sections(content)
+            else:
+                logger.info("Downloaded %s", filename)
+                sub_url = filename.replace(".md", "").lower()
+                return filename, add_hierarchy_prefix(
+                    content.split("\n"), filename, sub_url
+                )
+
+    except Exception as e:
+        logger.error("Failed to fetch %s (%s). Skipping.", filename, e)
+        return filename, []
+
+
+async def collect_all_wiki_content_async() -> List[str]:
+    """Collect and process all wiki sections concurrently."""
+    async with aiohttp.ClientSession() as session:
+        tasks = []
+        for section in WIKI_SECTIONS:
+            task = download_wiki_content_async(session, section.filename)
+            tasks.append(task)
+
+        logger.info("Starting concurrent fetching of %d sections...", len(tasks))
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+
+        all_lines = []
+        for result in results:
+            if isinstance(result, Exception):
+                logger.error("Download task failed: %s", result)
+                continue
+            filename, lines = result
+            all_lines.extend(lines)
+
+        return all_lines
 
 
 # Wiki sections to process
@@ -198,13 +237,21 @@ WIKI_SECTIONS = [
 ]
 
 
-def collect_all_wiki_content() -> List[str]:
-    """Collect and process all wiki sections."""
-    all_lines = []
-    for section in WIKI_SECTIONS:
-        lines = download_wiki_content(section.filename)
-        all_lines.extend(lines)
-    return all_lines
+async def main_async() -> None:
+    """Main execution function (async version)."""
+    logger.info("Collecting wiki content...")
+    all_content = await collect_all_wiki_content_async()
+    full_content = "\n".join(all_content)
+
+    # Generate both bookmark files
+    create_html_bookmarks(full_content, "fmhy_in_bookmarks.html")
+
+    starred_content = filter_starred_content(full_content)
+    create_html_bookmarks(
+        starred_content, "fmhy_in_bookmarks_starred_only.html", starred_only=True
+    )
+
+    logger.info("Bookmark generation complete!")
 
 
 def filter_starred_content(content: str) -> str:
@@ -299,19 +346,7 @@ def create_html_bookmarks(
 
 def main() -> None:
     """Main execution function."""
-    logger.info("Collecting wiki content...")
-    all_content = collect_all_wiki_content()
-    full_content = "\n".join(all_content)
-
-    # Generate both bookmark files
-    create_html_bookmarks(full_content, "fmhy_in_bookmarks.html")
-
-    starred_content = filter_starred_content(full_content)
-    create_html_bookmarks(
-        starred_content, "fmhy_in_bookmarks_starred_only.html", starred_only=True
-    )
-
-    logger.info("Bookmark generation complete!")
+    asyncio.run(main_async())
 
 
 if __name__ == "__main__":
