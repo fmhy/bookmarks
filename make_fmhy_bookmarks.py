@@ -1,269 +1,393 @@
-import requests
+"""Generate FMHY bookmark HTML files from FMHY markdown sections."""
 
-def addPretext(lines, sectionName, baseURL, subURL):
+from __future__ import annotations
+
+import asyncio
+import base64
+import logging
+import re
+from dataclasses import dataclass
+from typing import Dict, List, Tuple
+
+import aiohttp
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
+logger = logging.getLogger(__name__)
+
+
+@dataclass(frozen=True)
+class Config:
+    """Configuration constants for the FMHY bookmark generator."""
+
+    site_base_url: str = "https://fmhy.net/"
+    reddit_base_url: str = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
+    base64_rentry_url: str = "https://rentry.co/FMHYBase64/raw"
+    github_raw_base: str = (
+        "https://raw.githubusercontent.com/fmhy/edit/refs/heads/main/docs/"
+    )
+    folder_name: str = "FMHY"
+    decode_base64: bool = True
+
+
+@dataclass
+class BookmarkLine:
+    """Represents one original content line at a leaf."""
+
+    is_starred: bool  # line contains ⭐ or 🌟
+    description_raw: str  # raw trailing text after last ")", may be empty
+    links: List[Tuple[str, str]]  # list of (title, url) exactly as matched
+
+
+@dataclass
+class WikiSection:
+    """Represents a wiki section to be processed."""
+
+    filename: str
+    icon: str
+    url_key: str
+
+
+CONFIG = Config()
+
+
+def parse_heading(line: str, sub_url: str) -> Tuple[str, str]:
+    """Parse heading line and return (subcategory, subsubcategory)."""
+    if sub_url != "storage":
+        if line.startswith("# ►"):
+            return line.replace("# ►", "").strip(), "/"
+        elif line.startswith("## ▷"):
+            return "", line.replace("## ▷", "").strip()
+    else:  # storage section uses different heading levels
+        if line.startswith("## "):
+            return line.replace("## ", "").strip(), "/"
+        elif line.startswith("### "):
+            return "", line.replace("### ", "").strip()
+    return "", ""
+
+
+def clean_category_name(category: str) -> str:
+    """Remove URLs from category names."""
+    return "" if "http" in category else category
+
+
+def add_hierarchy_prefix(
+    lines: List[str], section_name: str, sub_url: str
+) -> List[str]:
+    """Add hierarchy prefix to content lines."""
     modified_lines = []
-    currMdSubheading = ""
-    currSubCat = ""
-    currSubSubCat = ""
+    curr_subcat = ""
+    curr_subsubcat = ""
 
-    #Remove from the lines any line that isnt a heading and doesnt contain the character `⭐`
-    #lines = [line for line in lines if line.startswith("#") or '⭐' in line]
-
-    #Parse headings
     for line in lines:
-        if line.startswith("#"): #Title Lines
-            if not subURL=="storage":
-                if line.startswith("# ►"):
-                    currMdSubheading = "#" + line.replace("# ►", "").strip().replace(" / ", "-").replace(" ", "-").lower()
-                    currSubCat = line.replace("# ►", "").strip()
-                    currSubSubCat = "/"
-                elif line.startswith("## ▷"):
-                    if not subURL=="non-english": #Because non-eng section has multiple subsubcats with same names
-                        currMdSubheading = "#" + line.replace("## ▷", "").strip().replace(" / ", "-").replace(" ", "-").lower()
-                    currSubSubCat = line.replace("## ▷", "").strip()
-            elif subURL=="storage":
-                if line.startswith("## "):
-                    currMdSubheading = "#" + line.replace("## ", "").strip().replace(" / ", "-").replace(" ", "-").lower()
-                    currSubCat = line.replace("## ", "").strip()
-                    currSubSubCat = "/"
-                elif line.startswith("### "):
-                    currMdSubheading = "#" + line.replace("### ", "").strip().replace(" / ", "-").replace(" ", "-").lower()
-                    currSubSubCat = line.replace("### ", "").strip()
-
-            # Remove links from subcategory titles (because the screw the format)
-            if 'http' in currSubCat: currSubCat = ''
-            if 'http' in currSubSubCat: currSubSubCat = ''
-
-        elif any(char.isalpha() for char in line): #If line has content
-            preText = f"{{\"{sectionName.replace(".md", "")}\", \"{currSubCat}\", \"{currSubSubCat}\"}}"
-            if line.startswith("* "): line = line[2:]
-            modified_lines.append(preText + line)
+        if line.startswith("#"):  # Heading line
+            subcat, subsubcat = parse_heading(line, sub_url)
+            if subcat:
+                curr_subcat = clean_category_name(subcat)
+            if subsubcat:
+                curr_subsubcat = clean_category_name(subsubcat)
+        elif any(char.isalpha() for char in line):  # Content line
+            prefix = f'{{"{section_name.replace(".md", "")}", "{curr_subcat}", "{curr_subsubcat}"}}'
+            content = line[2:] if line.startswith("* ") else line
+            modified_lines.append(prefix + content)
 
     return modified_lines
 
 
-#----------------base64 page processing------------
-import base64
-import re
-
-doBase64Decoding = True
-
-def fix_base64_string(encoded_string):
+# Base64 processing functions
+def fix_base64_padding(encoded_string: str) -> str:
+    """Fix base64 padding."""
     missing_padding = len(encoded_string) % 4
-    if missing_padding != 0:
-        encoded_string += '=' * (4 - missing_padding)
+    if missing_padding:
+        encoded_string += "=" * (4 - missing_padding)
     return encoded_string
 
-def decode_base64_in_backticks(input_string):
+
+def decode_base64_content(input_string: str) -> str:
+    """Decode base64 content within backticks."""
+    if not CONFIG.decode_base64:
+        return input_string
+
     def base64_decode(match):
-        encoded_data = match.group(0)[1:-1]  # Extract content within backticks
-        decoded_bytes = base64.b64decode( fix_base64_string(encoded_data) )
+        encoded_data = match.group(0)[1:-1]  # Remove backticks
+        decoded_bytes = base64.b64decode(fix_base64_padding(encoded_data))
         return decoded_bytes.decode()
 
-    pattern = r"`[^`]+`"  # Regex pattern to find substrings within backticks
-    decoded_string = re.sub(pattern, base64_decode, input_string)
-    return decoded_string
+    pattern = r"`[^`]+`"
+    return re.sub(pattern, base64_decode, input_string)
 
-def remove_empty_lines(text):
-    lines = text.split('\n')  # Split the text into lines
-    non_empty_lines = [line for line in lines if line.strip()]  # Filter out empty lines
-    return '\n'.join(non_empty_lines)  # Join non-empty lines back together
 
-def extract_base64_sections(base64_page):
-    sections = base64_page.split("***")  # Split the input string by "***" to get sections
+def process_base64_sections(base64_page: str) -> List[str]:
+    """Process base64 page sections."""
+    sections = base64_page.split("***")
     formatted_sections = []
+
     for section in sections:
-        formatted_section = remove_empty_lines( section.strip().replace("#### ", "").replace("\n\n", " - ").replace("\n", ", ") )
-        if doBase64Decoding: formatted_section = decode_base64_in_backticks(formatted_section)
-        formatted_section = '[🔑Base64](https://rentry.co/FMHYBase64) ► ' + formatted_section
+        # Clean up section formatting
+        clean_section = (
+            section.strip()
+            .replace("#### ", "")
+            .replace("\n\n", " - ")
+            .replace("\n", ", ")
+        )
+
+        # Remove empty lines
+        lines = [line for line in clean_section.split("\n") if line.strip()]
+        clean_section = "\n".join(lines)
+
+        # Decode base64 if enabled
+        clean_section = decode_base64_content(clean_section)
+
+        # Add base64 prefix
+        formatted_section = (
+            "[🔑Base64](https://rentry.co/FMHYBase64) ► " + clean_section
+        )
         formatted_sections.append(formatted_section)
-    lines = formatted_sections
-    return lines
-#----------------</end>base64 page processing------------
+
+    return formatted_sections
 
 
-
-def dlWikiChunk(fileName, icon, redditSubURL):
-
-    #first, try to get the chunk locally
+async def download_wiki_content_async(
+    session: aiohttp.ClientSession, filename: str
+) -> Tuple[str, List[str]]:
+    """Download and process wiki content asynchronously."""
+    # First try to load locally
     try:
-        #First, try to get it from the local file
-        print("Loading " + fileName + " from local file...")
-        with open(fileName.lower(), 'r') as f:
-            page = f.read()
-        print("Loaded.\n")
-    #if not available locally, download the chunk
-    except:
-        if not fileName=='base64.md':
-            print("Local file not found. Downloading " + fileName + " from Github...")
-            page = requests.get("https://raw.githubusercontent.com/fmhy/FMHYedit/main/docs/" + fileName.lower()).text
-        elif fileName=='base64.md':
-            print("Local file not found. Downloading rentry.co/FMHYBase64...")
-            page = requests.get("https://rentry.co/FMHYBase64/raw").text.replace("\r", "")
-        print("Downloaded")
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        logger.info("Loaded %s locally", filename)
 
-    #add a pretext
-    redditBaseURL = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
-    siteBaseURL = "https://fmhy.net/"
-    if not fileName=='base64.md':
-        pagesDevSiteSubURL = fileName.replace(".md", "").lower()
-        subURL = pagesDevSiteSubURL
-        lines = page.split('\n')
-        lines = addPretext(lines, fileName, siteBaseURL, subURL)
-    elif fileName=='base64.md':
-        lines = extract_base64_sections(page)
+        if filename != "base64.md":
+            sub_url = filename.replace(".md", "").lower()
+            return filename, add_hierarchy_prefix(
+                content.split("\n"), filename, sub_url
+            )
+        else:
+            return filename, process_base64_sections(content)
+    except FileNotFoundError:
+        pass
 
-    return lines
+    # Download remotely if not found locally
+    try:
+        if filename != "base64.md":
+            url = CONFIG.github_raw_base + filename
+        else:
+            url = CONFIG.base64_rentry_url
 
-def cleanLineForSearchMatchChecks(line):
-    siteBaseURL = "https://fmhy.net/"
-    redditBaseURL = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
-    return line.replace(redditBaseURL, '/').replace(siteBaseURL, '/')
+        async with session.get(url, timeout=30) as resp:
+            resp.raise_for_status()
+            content = await resp.text()
 
-def alternativeWikiIndexing():
-    wikiChunks = [
-        dlWikiChunk("Video.md", "📺", "video"),
-        dlWikiChunk("AI.md", "🤖", "ai"),
-        dlWikiChunk("Mobile.md", "📱", "mobile"),
-        dlWikiChunk("Audio.md", "🎵", "audio"),
-        dlWikiChunk("Downloading.md", "💾", "download"),
-        dlWikiChunk("Educational.md", "🧠", "educational"),
-        dlWikiChunk("Gaming.md", "🎮", "gaming"),
-        dlWikiChunk("privacy.md", "📛", "adblock-vpn-privacy"),
-        dlWikiChunk("System-Tools.md", "💻", "system-tools"),
-        dlWikiChunk("File-Tools.md", "🗃️", "file-tools"),
-        dlWikiChunk("Internet-Tools.md", "🔗", "internet-tools"),
-        dlWikiChunk("Social-Media-Tools.md", "💬", "social-media"),
-        dlWikiChunk("Text-Tools.md", "📝", "text-tools"),
-        dlWikiChunk("Video-Tools.md", "📼", "video-tools"),
-        dlWikiChunk("MISC.md", "📂", "misc"),
-        dlWikiChunk("Reading.md", "📗", "reading"),
-        dlWikiChunk("Torrenting.md", "🌀", "torrent"),
-        dlWikiChunk("image-tools.md", "📷", "img-tools"),
-        dlWikiChunk("gaming-tools.md", "👾", "gaming-tools"),
-        dlWikiChunk("liux-macos.md", "🐧🍏", "linux"),
-        dlWikiChunk("developer-tools.md", "🖥️", "dev-tools"),
-        dlWikiChunk("Non-English.md", "🌏", "non-eng"),
-        dlWikiChunk("STORAGE.md", "🗄️", "storage"),
-        #dlWikiChunk("base64.md", "🔑", "base64"),
-        dlWikiChunk("NSFWPiracy.md", "🌶", "https://saidit.net/s/freemediafuckyeah/wiki/index")
-    ]
-    return [item for sublist in wikiChunks for item in sublist] #Flatten a <list of lists of strings> into a <list of strings>
-#--------------------------------
+            if filename == "base64.md":
+                content = content.replace("\r", "")
+                logger.info("Downloaded base64 page")
+                return filename, process_base64_sections(content)
+            else:
+                logger.info("Downloaded %s", filename)
+                sub_url = filename.replace(".md", "").lower()
+                return filename, add_hierarchy_prefix(
+                    content.split("\n"), filename, sub_url
+                )
+
+    except Exception as e:
+        logger.error("Failed to fetch %s (%s). Skipping.", filename, e)
+        return filename, []
 
 
-# Save the result of alternativeWikiIndexing to a .md file
-# with open('wiki_adapted.md', 'w') as f:
-#     for line in alternativeWikiIndexing():
-#         f.write(line + '\n')
+async def collect_all_wiki_content_async() -> List[str]:
+    """Collect and process all wiki sections concurrently."""
+    async with aiohttp.ClientSession() as session:
+        tasks = []
+        for section in WIKI_SECTIONS:
+            task = download_wiki_content_async(session, section.filename)
+            tasks.append(task)
 
-# Instead of saving it to a file, save it into a string variable
-wiki_adapted_md = '\n'.join(alternativeWikiIndexing())
+        logger.info("Starting concurrent fetching of %d sections...", len(tasks))
+        results = await asyncio.gather(*tasks, return_exceptions=True)
 
-# Remove from the lines in wiki_adapted_md any line that doesnt contain the character `⭐` or '🌟'
-wiki_adapted_starred_only_md = '\n'.join([line for line in wiki_adapted_md.split('\n') if '⭐' in line or '🌟' in line])
+        all_lines = []
+        for result in results:
+            if isinstance(result, Exception):
+                logger.error("Download task failed: %s", result)
+                continue
+            filename, lines = result
+            all_lines.extend(lines)
+
+        return all_lines
 
 
+# Wiki sections to process
+WIKI_SECTIONS = [
+    WikiSection("video.md", "📺", "video"),
+    WikiSection("ai.md", "🤖", "ai"),
+    WikiSection("mobile.md", "📱", "mobile"),
+    WikiSection("audio.md", "🎵", "audio"),
+    WikiSection("downloading.md", "💾", "downloading"),
+    WikiSection("educational.md", "🧠", "educational"),
+    WikiSection("gaming.md", "🎮", "gaming"),
+    WikiSection("privacy.md", "📛", "privacy"),
+    WikiSection("system-tools.md", "💻", "system-tools"),
+    WikiSection("file-tools.md", "🗃️", "file-tools"),
+    WikiSection("internet-tools.md", "🔗", "internet-tools"),
+    WikiSection("social-media-tools.md", "💬", "social-media-tools"),
+    WikiSection("text-tools.md", "📝", "text-tools"),
+    WikiSection("video-tools.md", "📼", "video-tools"),
+    WikiSection("misc.md", "📂", "misc"),
+    WikiSection("reading.md", "📗", "reading"),
+    WikiSection("torrenting.md", "🌀", "torrenting"),
+    WikiSection("image-tools.md", "📷", "image-tools"),
+    WikiSection("gaming-tools.md", "👾", "gaming-tools"),
+    WikiSection("linux-macos.md", "🐧🍏", "linux-macos"),
+    WikiSection("developer-tools.md", "🖥️", "developer-tools"),
+    WikiSection("non-english.md", "🌏", "non-english"),
+    WikiSection("storage.md", "🗄️", "storage"),
+    WikiSection("base64.md", "🔑", "base64"),
+    WikiSection("unsafe.md", "🌶", "unsafe"),
+]
 
-import re
 
-def markdown_to_html_bookmarks(input_md_text, output_file):
-    # Predefined folder name
-    folder_name = "FMHY"
+async def main_async() -> None:
+    """Main execution function (async version)."""
+    logger.info("Collecting wiki content...")
+    all_content = await collect_all_wiki_content_async()
+    full_content = "\n".join(all_content)
 
-    # Read the input markdown file
-    #with open(input_file, 'r', encoding='utf-8') as f:
-    #    markdown_content = f.read()
+    # Generate both bookmark files
+    create_html_bookmarks(full_content, "fmhy_in_bookmarks.html")
+    create_html_bookmarks(
+        full_content, "fmhy_in_bookmarks_starred_only.html", starred_only=True
+    )
 
-    # Instead of reading from a file, read from a string variable
-    markdown_content = input_md_text
+    logger.info("Bookmark generation complete!")
 
-    # Regex pattern to extract URLs and titles from markdown
-    url_pattern = re.compile(r'\[([^\]]+)\]\((https?://[^\)]+)\)')
-    # Regex pattern to extract hierarchy levels
+
+def parse_bookmark_line(line: str) -> Tuple[str, str, str, BookmarkLine | None]:
+    """Parse a line to extract hierarchy and bookmark data."""
+    url_pattern = re.compile(r"\[([^\]]+)\]\((https?://[^\)]+)\)")
     hierarchy_pattern = re.compile(r'^\{"([^"]+)", "([^"]+)", "([^"]+)"\}')
 
-    # Dictionary to hold bookmarks by hierarchy
-    bookmarks = {}
+    hierarchy_match = hierarchy_pattern.match(line)
+    if not hierarchy_match:
+        return "", "", "", None
 
-    # Split the content by lines
-    lines = markdown_content.split('\n')
+    level1, level2, level3 = hierarchy_match.groups()
+    matches = url_pattern.findall(line)
 
-    # Parse each line
-    for line in lines:
-        # Find hierarchy levels
-        hierarchy_match = hierarchy_pattern.match(line)
-        if not hierarchy_match:
+    # Check if line contains starred content
+    is_starred = "⭐" in line or "🌟" in line
+
+    # Extract raw description (text after last URL)
+    last_paren = line.rfind(")")
+    description_raw = (
+        line[last_paren + 1 :].replace("**", "").strip() if last_paren != -1 else ""
+    )
+
+    bookmark_line = BookmarkLine(
+        is_starred=is_starred, description_raw=description_raw, links=matches
+    )
+
+    return level1, level2, level3, bookmark_line
+
+
+def generate_bookmark_html(
+    bookmarks_dict: Dict[str, Dict[str, Dict[str, List[BookmarkLine]]]],
+    indent: int = 1,
+    starred_only: bool = False,
+    path: Tuple[str, ...] = (),
+) -> str:
+    """Generate HTML from bookmark dictionary."""
+    html = ""
+    for key, value in bookmarks_dict.items():
+        html += "    " * indent + f"<DT><H3>{key}</H3>\n"
+        html += "    " * indent + "<DL><p>\n"
+
+        current_path = path + (key,)
+
+        if isinstance(value, dict):
+            html += generate_bookmark_html(
+                value, indent + 1, starred_only, current_path
+            )
+        else:
+            # At leaf level - render BookmarkLine items
+            # current_path should be (level1, level2, level3)
+            level1, level2, level3 = (
+                current_path if len(current_path) >= 3 else ("", "", "")
+            )
+
+            for bookmark_line in value:
+                # Skip if starred_only mode and line is not starred
+                if starred_only and not bookmark_line.is_starred:
+                    continue
+
+                # Compute effective description
+                if bookmark_line.description_raw:
+                    effective_description = bookmark_line.description_raw
+                else:
+                    # Fallback description using current hierarchy path
+                    effective_description = "- " + (
+                        level3 if level3 != "/" else level2 if level2 else level1
+                    )
+
+                # Determine which links to render
+                links_to_render = bookmark_line.links
+                if starred_only:
+                    links_to_render = links_to_render[
+                        :1
+                    ]  # Only first link for starred content
+
+                # Render each link
+                for title, url in links_to_render:
+                    anchor_text = f"{title} {effective_description}".strip()
+                    html += (
+                        "    " * (indent + 1)
+                        + f'<DT><A HREF="{url}" ADD_DATE="0">{anchor_text}</A>\n'
+                    )
+
+        html += "    " * indent + "</DL><p>\n"
+    return html
+
+
+def create_html_bookmarks(
+    content: str, output_file: str, starred_only: bool = False
+) -> None:
+    """Create HTML bookmark file from processed content."""
+    bookmarks: Dict[str, Dict[str, Dict[str, List[BookmarkLine]]]] = {}
+
+    for line in content.split("\n"):
+        level1, level2, level3, bookmark_line = parse_bookmark_line(line)
+        if (
+            not level1 or bookmark_line is None
+        ):  # Skip lines that don't match hierarchy pattern
             continue
 
-        level1, level2, level3 = hierarchy_match.groups()
+        # Initialize nested structure
+        bookmarks.setdefault(level1, {}).setdefault(level2, {}).setdefault(level3, [])
+        bookmarks[level1][level2][level3].append(bookmark_line)
 
-        # Initialize nested dictionaries for hierarchy levels
-        if level1 not in bookmarks:
-            bookmarks[level1] = {}
-        if level2 not in bookmarks[level1]:
-            bookmarks[level1][level2] = {}
-        if level3 not in bookmarks[level1][level2]:
-            bookmarks[level1][level2][level3] = []
+    # Generate HTML
+    html_content = (
+        "<!DOCTYPE NETSCAPE-Bookmark-file-1>\n"
+        '<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">\n'
+        "<TITLE>Bookmarks</TITLE>\n"
+        "<H1>Bookmarks</H1>\n"
+        "<DL><p>\n"
+        f"    <DT><H3>{CONFIG.folder_name}</H3>\n"
+        "    <DL><p>\n"
+        + generate_bookmark_html(bookmarks, indent=2, starred_only=starred_only)
+        + "    </DL><p>\n"
+        "</DL><p>\n"
+    )
 
-        # Find all matches in the line for URLs
-        matches = url_pattern.findall(line)
-
-        # If the input_md_text is wiki_adapted_starred_only_md, only add the first match of url_pattern in each line
-        if input_md_text == wiki_adapted_starred_only_md:
-            matches = matches[:1]
-
-        # Extract the description (text after the last match)
-        last_match_end = line.rfind(')')
-        description = line[last_match_end+1:].replace('**', '').strip() if last_match_end != -1 else ''
-
-        # When the description is empty, use as description the lowest hierachy level that is not empty
-        if not description:
-            description = '- ' + (level3 if level3 != '/' else level2 if level2 else level1)
-
-        # Add matches to the appropriate hierarchy
-        for title, url in matches:
-            full_title = f"{title} {description}" if description else title
-            bookmarks[level1][level2][level3].append((full_title, url))
-
-    # Function to generate HTML from nested dictionary
-    def generate_html(bookmarks_dict, indent=1):
-        html = ''
-        for key, value in bookmarks_dict.items():
-            html += '    ' * indent + f'<DT><H3>{key}</H3>\n'
-            html += '    ' * indent + '<DL><p>\n'
-            if isinstance(value, dict):
-                html += generate_html(value, indent + 1)
-            else:
-                for full_title, url in value:
-                    html += '    ' * (indent + 1) + f'<DT><A HREF="{url}" ADD_DATE="0">{full_title}</A>\n'
-            html += '    ' * indent + '</DL><p>\n'
-        return html
-
-    # HTML structure
-    html_content = '''<!DOCTYPE NETSCAPE-Bookmark-file-1>
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
-<TITLE>Bookmarks</TITLE>
-<H1>Bookmarks</H1>
-<DL><p>
-'''
-    # Add the main folder
-    html_content += f'    <DT><H3>{folder_name}</H3>\n'
-    html_content += '    <DL><p>\n'
-
-    # Add bookmarks to HTML content
-    html_content += generate_html(bookmarks)
-
-    html_content += '    </DL><p>\n'
-    html_content += '</DL><p>\n'
-
-    # Write the HTML content to the output file
-    with open(output_file, 'w', encoding='utf-8') as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    # Print success message
-    #print(f'Successfully created bookmarks in {output_file}')
+    logger.info("Created bookmark file: %s", output_file)
 
-# Example usage:
-markdown_to_html_bookmarks(wiki_adapted_md, 'fmhy_in_bookmarks.html')
-markdown_to_html_bookmarks(wiki_adapted_starred_only_md, 'fmhy_in_bookmarks_starred_only.html')
+
+def main() -> None:
+    """Main execution function."""
+    asyncio.run(main_async())
+
+
+if __name__ == "__main__":
+    main()
