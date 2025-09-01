@@ -31,6 +31,15 @@ class Config:
 
 
 @dataclass
+class BookmarkLine:
+    """Represents one original content line at a leaf."""
+
+    is_starred: bool  # line contains ⭐ or 🌟
+    description_raw: str  # raw trailing text after last ")", may be empty
+    links: List[Tuple[str, str]]  # list of (title, url) exactly as matched
+
+
+@dataclass
 class WikiSection:
     """Represents a wiki section to be processed."""
 
@@ -245,67 +254,94 @@ async def main_async() -> None:
 
     # Generate both bookmark files
     create_html_bookmarks(full_content, "fmhy_in_bookmarks.html")
-
-    starred_content = filter_starred_content(full_content)
     create_html_bookmarks(
-        starred_content, "fmhy_in_bookmarks_starred_only.html", starred_only=True
+        full_content, "fmhy_in_bookmarks_starred_only.html", starred_only=True
     )
 
     logger.info("Bookmark generation complete!")
 
 
-def filter_starred_content(content: str) -> str:
-    """Filter content to only include starred items."""
-    return "\n".join(
-        line for line in content.split("\n") if "⭐" in line or "🌟" in line
-    )
-
-
-def parse_bookmark_line(
-    line: str, starred_only: bool = False
-) -> Tuple[str, str, str, List[Tuple[str, str]]]:
-    """Parse a line to extract hierarchy and bookmarks."""
+def parse_bookmark_line(line: str) -> Tuple[str, str, str, BookmarkLine | None]:
+    """Parse a line to extract hierarchy and bookmark data."""
     url_pattern = re.compile(r"\[([^\]]+)\]\((https?://[^\)]+)\)")
     hierarchy_pattern = re.compile(r'^\{"([^"]+)", "([^"]+)", "([^"]+)"\}')
 
     hierarchy_match = hierarchy_pattern.match(line)
     if not hierarchy_match:
-        return "", "", "", []
+        return "", "", "", None
 
     level1, level2, level3 = hierarchy_match.groups()
     matches = url_pattern.findall(line)
 
-    if starred_only:
-        matches = matches[:1]  # Only first match for starred content
+    # Check if line contains starred content
+    is_starred = "⭐" in line or "🌟" in line
 
-    # Extract description (text after last URL)
+    # Extract raw description (text after last URL)
     last_paren = line.rfind(")")
-    description = (
+    description_raw = (
         line[last_paren + 1 :].replace("**", "").strip() if last_paren != -1 else ""
     )
 
-    if not description:
-        description = "- " + (level3 if level3 != "/" else level2 if level2 else level1)
+    bookmark_line = BookmarkLine(
+        is_starred=is_starred, description_raw=description_raw, links=matches
+    )
 
-    bookmarks = [(f"{title} {description}".strip(), url) for title, url in matches]
-    return level1, level2, level3, bookmarks
+    return level1, level2, level3, bookmark_line
 
 
-def generate_bookmark_html(bookmarks_dict: Dict, indent: int = 1) -> str:
+def generate_bookmark_html(
+    bookmarks_dict: Dict[str, Dict[str, Dict[str, List[BookmarkLine]]]],
+    indent: int = 1,
+    starred_only: bool = False,
+    path: Tuple[str, ...] = (),
+) -> str:
     """Generate HTML from bookmark dictionary."""
     html = ""
     for key, value in bookmarks_dict.items():
         html += "    " * indent + f"<DT><H3>{key}</H3>\n"
         html += "    " * indent + "<DL><p>\n"
 
+        current_path = path + (key,)
+
         if isinstance(value, dict):
-            html += generate_bookmark_html(value, indent + 1)
+            html += generate_bookmark_html(
+                value, indent + 1, starred_only, current_path
+            )
         else:
-            for title, url in value:
-                html += (
-                    "    " * (indent + 1)
-                    + f'<DT><A HREF="{url}" ADD_DATE="0">{title}</A>\n'
-                )
+            # At leaf level - render BookmarkLine items
+            # current_path should be (level1, level2, level3)
+            level1, level2, level3 = (
+                current_path if len(current_path) >= 3 else ("", "", "")
+            )
+
+            for bookmark_line in value:
+                # Skip if starred_only mode and line is not starred
+                if starred_only and not bookmark_line.is_starred:
+                    continue
+
+                # Compute effective description
+                if bookmark_line.description_raw:
+                    effective_description = bookmark_line.description_raw
+                else:
+                    # Fallback description using current hierarchy path
+                    effective_description = "- " + (
+                        level3 if level3 != "/" else level2 if level2 else level1
+                    )
+
+                # Determine which links to render
+                links_to_render = bookmark_line.links
+                if starred_only:
+                    links_to_render = links_to_render[
+                        :1
+                    ]  # Only first link for starred content
+
+                # Render each link
+                for title, url in links_to_render:
+                    anchor_text = f"{title} {effective_description}".strip()
+                    html += (
+                        "    " * (indent + 1)
+                        + f'<DT><A HREF="{url}" ADD_DATE="0">{anchor_text}</A>\n'
+                    )
 
         html += "    " * indent + "</DL><p>\n"
     return html
@@ -315,16 +351,18 @@ def create_html_bookmarks(
     content: str, output_file: str, starred_only: bool = False
 ) -> None:
     """Create HTML bookmark file from processed content."""
-    bookmarks: Dict[str, Dict[str, Dict[str, List[Tuple[str, str]]]]] = {}
+    bookmarks: Dict[str, Dict[str, Dict[str, List[BookmarkLine]]]] = {}
 
     for line in content.split("\n"):
-        level1, level2, level3, bookmark_list = parse_bookmark_line(line, starred_only)
-        if not level1:  # Skip lines that don't match hierarchy pattern
+        level1, level2, level3, bookmark_line = parse_bookmark_line(line)
+        if (
+            not level1 or bookmark_line is None
+        ):  # Skip lines that don't match hierarchy pattern
             continue
 
         # Initialize nested structure
         bookmarks.setdefault(level1, {}).setdefault(level2, {}).setdefault(level3, [])
-        bookmarks[level1][level2][level3].extend(bookmark_list)
+        bookmarks[level1][level2][level3].append(bookmark_line)
 
     # Generate HTML
     html_content = (
@@ -334,7 +372,9 @@ def create_html_bookmarks(
         "<H1>Bookmarks</H1>\n"
         "<DL><p>\n"
         f"    <DT><H3>{CONFIG.folder_name}</H3>\n"
-        "    <DL><p>\n" + generate_bookmark_html(bookmarks) + "    </DL><p>\n"
+        "    <DL><p>\n"
+        + generate_bookmark_html(bookmarks, indent=2, starred_only=starred_only)
+        + "    </DL><p>\n"
         "</DL><p>\n"
     )
 
