@@ -141,7 +141,7 @@ def alternativeWikiIndexing():
         dlWikiChunk("Torrenting.md", "🌀", "torrent"),
         dlWikiChunk("image-tools.md", "📷", "img-tools"),
         dlWikiChunk("gaming-tools.md", "👾", "gaming-tools"),
-        dlWikiChunk("liux-macos.md", "🐧🍏", "linux"),
+        dlWikiChunk("linux-macos.md", "🐧🍏", "linux"),
         dlWikiChunk("developer-tools.md", "🖥️", "dev-tools"),
         dlWikiChunk("Non-English.md", "🌏", "non-eng"),
         dlWikiChunk("STORAGE.md", "🗄️", "storage"),
