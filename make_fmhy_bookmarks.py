@@ -273,6 +273,12 @@ def parse_bookmark_line(line: str) -> Tuple[str, str, str, BookmarkLine | None]:
     level1, level2, level3 = hierarchy_match.groups()
     matches = url_pattern.findall(line)
 
+    # Remove non-primary Discord invites, X, Telegram and .onion links
+    filters = {"Discord", "X", "Telegram", ".onion"}
+    for matched_link in matches.copy():
+        if matched_link[0] in filters:
+            matches.remove(matched_link)
+
     # Check if line contains starred content
     is_starred = "⭐" in line or "🌟" in line
 
