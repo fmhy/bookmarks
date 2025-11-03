@@ -8,7 +8,7 @@
 /fmhy/FMHY/wiki/Stream-Site-Grading^$boost=4,site=github.com
 /r/FREEMEDIAHECKYEAH/wiki/internet-tools/^$boost=4,site=www.reddit.com
 /r/FREEMEDIAHECKYEAH/wiki/adblock-vpn-privacy/^$boost=4,site=www.reddit.com
-$boost=4,site=www.cineby.gd
+/halloween^$boost=4,site=www.cineby.gd
 $boost=4,site=www.bitcine.app
 $boost=4,site=www.fmovies.gd
 $boost=4,site=pstream.mov
@@ -19,13 +19,13 @@ $boost=4,site=xprime.today
 $boost=4,site=veloratv.ru
 $boost=4,site=456movie.net
 $boost=4,site=345movie.net
+$boost=4,site=aether.mom
 $boost=4,site=watch.spencerdevs.xyz
 $boost=4,site=spenflix.ru
 $boost=4,site=flixer.sh
 $boost=4,site=flixy.watch
 $boost=4,site=hexa.watch
 $boost=4,site=watch.vidora.su
-$boost=4,site=aether.mom
 $boost=4,site=rivestream.org
 $boost=4,site=rivestream.net
 $boost=4,site=www.rivestream.app
@@ -41,6 +41,7 @@ $boost=4,site=www.rgshows.ru
 /guide.html^$boost=4,site=www.rgshows.ru
 $boost=4,site=cinegram.net
 $boost=4,site=filmcave.net
+$boost=4,site=cinema.bz
 $boost=4,site=popcornmovies.org
 $boost=4,site=smashystream.com
 $boost=4,site=flix.smashystream.xyz
@@ -52,7 +53,7 @@ $boost=4,site=moviehd.us
 $boost=4,site=www.primewire.mov
 $boost=4,site=www.primewire.tf
 /primewire^$boost=4,site=rentry.co
-$boost=4,site=streamdb.online
+$boost=4,site=streamdb.space
 $boost=4,site=projectfreetv.sx
 $boost=4,site=www.downloads-anymovies.co
 /cse?cx=006516753008110874046:cfdhwy9o57g^$boost=4,site=cse.google.com
@@ -60,11 +61,10 @@ $boost=4,site=www.downloads-anymovies.co
 /cse?cx=98916addbaef8b4b6^$boost=4,site=cse.google.com
 /cse?cx=0199ade0b25835f2e^$boost=4,site=cse.google.com
 $boost=4,site=www.beech.watch
-$boost=4,site=mocine.cam
+$boost=4,site=www.cinezo.net
 $boost=4,site=cinemaos.live
 $boost=4,site=cinemaos.tech
 $boost=4,site=cinemaos.me
-$boost=4,site=www.cinezo.net
 $boost=4,site=filmex.to
 $boost=4,site=fmovies4u.com
 $boost=4,site=www.primeshows.live
@@ -89,17 +89,20 @@ $boost=4,site=hydrahd.ru
 $boost=4,site=hydrahd.info
 $boost=4,site=netplayz.live
 $boost=4,site=1primeshow.online
-$boost=4,site=cinepeace.in
-$boost=4,site=tmovie.tv
-$boost=4,site=www.boredflix.com
 $boost=4,site=redflix.co
 $boost=4,site=redflix.club
+$boost=4,site=cinepeace.in
+$boost=4,site=tmovie.tv
+$boost=4,site=flixvo.live
+$boost=4,site=flixvo.fun
+$boost=4,site=www.boredflix.com
 $boost=4,site=cinemadeck.com
 $boost=4,site=cinemadeck.st
 /official-domains^$boost=4,site=cinemadeck.com
 $boost=4,site=alienflix.net
 $boost=4,site=hexawatch.cc
 $boost=4,site=cinebolt.net
+$boost=4,site=lunastream.fun
 $boost=4,site=way2movies.live
 $boost=4,site=bingeflix.tv
 $boost=4,site=www.wooflixtv.co
@@ -302,11 +305,11 @@ $boost=4,site=animeyy.com
 $boost=4,site=otakuu.se
 $boost=4,site=aniwave.at
 $boost=4,site=tanime.tv
+$boost=4,site=www.animerealms.org
 $boost=4,site=animenosub.to
 $boost=4,site=anime.nexus
-$boost=4,site=www.animerealms.org
+$boost=4,site=justanime.to
 $boost=4,site=anixl.to
-$boost=4,site=bingoanime.net
 $boost=4,site=animehub.ac
 $boost=4,site=aninow.tv
 /r/aninow/^$boost=4,site=www.reddit.com
@@ -331,7 +334,6 @@ $boost=4,site=crimsonfansubs.com
 /pwkuanXBJh^$boost=4,site=discord.gg
 $boost=4,site=animethemes.moe
 /AnimeThemes^$boost=4,site=github.com
-/Layendan/Layendanimator^$boost=4,site=github.com
 $boost=4,site=anymex.vercel.app
 /guides/ext/mangayomi^$boost=4,site=wotaku.wiki
 /RyanYuuki/AnymeX^$boost=4,site=github.com
@@ -454,6 +456,9 @@ $boost=4,site=travelfilmarchive.com
 $boost=4,site=www.defenceimagery.mod.uk
 $boost=4,site=www.dvidshub.net
 $boost=4,site=tv.garden
+$boost=4,site=playtorrioiptv.pages.dev
+$boost=4,site=tv-channels.pages.dev
+/DarknessShade/TV^$boost=4,site=github.com
 /Easy-Web-TV-M3u8/routes/countries.html^$boost=4,site=zhangboheng.github.io
 $boost=4,site=iptv-web.app
 $boost=4,site=ntvstream.cx
@@ -465,7 +470,6 @@ $boost=4,site=thedaddy.dad
 $boost=4,site=daddyny.com
 $boost=4,site=tvpass.org
 $boost=4,site=thetvapp.to
-$boost=4,site=tv-channels.pages.dev
 $boost=4,site=huhu.to
 $boost=4,site=vavoo.to
 $boost=4,site=kool.to
@@ -497,10 +501,11 @@ $boost=4,site=cytu.be
 $boost=4,site=sync.coconono.org
 $boost=4,site=baked.live
 /channel99/^$boost=4,site=www.pracdev.org
-$boost=4,site=exptv.org
+/exp.tv^$boost=4,site=linktr.ee
 $boost=4,site=ytch.tv
 $boost=4,site=freetvz.com
 $boost=4,site=tv.jest.one
+$boost=4,site=split-tv.co.il
 $boost=4,site=worldnews24.tv
 $boost=4,site=showroom-live.com
 /korea-central-tv-livestream^$boost=4,site=kcnawatch.us
@@ -525,7 +530,10 @@ $boost=4,site=fstv.online
 $boost=4,site=fstv.space
 $boost=4,site=gofstv.live
 $boost=4,site=bintv.fun
+$boost=4,site=gotostreamly.sbs
+$boost=4,site=soccerstreamlinks.site
 $boost=4,site=sportsbite.cc
+$boost=4,site=allbite.xyz
 $boost=4,site=streameast.ga
 $boost=4,site=streameast.tw
 $boost=4,site=streameast.ph
@@ -539,7 +547,6 @@ $boost=4,site=watchfooty.live
 $boost=4,site=www.watchfooty.cc
 $boost=4,site=www.watchfooty.vip
 $boost=4,site=watchfty.win
-$boost=4,site=gotostreamly.sbs
 $boost=4,site=streamex.cc
 $boost=4,site=crackstreams.li
 $boost=4,site=streameast.art
@@ -551,14 +558,16 @@ $boost=4,site=buffstreams.app
 $boost=4,site=crichd.at
 $boost=4,site=crichd.com.co
 /daily-event^$boost=4,site=www.goalietrend.com
+$boost=4,site=viprow.cv
+$boost=4,site=nflbite.digital
+$boost=4,site=nhlbite.cc
 $boost=4,site=www.fctv33.click
 $boost=4,site=may01gu.risenow3mtjt0k.sbs
 $boost=4,site=emmau680.driveraudiencej2zeu49.sbs
 $boost=4,site=mrgamingstreams.org
 $boost=4,site=www.mrgbackup.link
-$boost=4,site=sportontv.online
-$boost=4,site=nflbite.digital
-$boost=4,site=nhlbite.cc
+$boost=4,site=sportontv.biz
+/matches/^$boost=4,site=sportontv.biz
 $boost=4,site=en12.sportplus.live
 $boost=4,site=streamfree.to
 $boost=4,site=crackstreams.blog
@@ -566,6 +575,7 @@ $boost=4,site=www.viprow.nu
 /VIPSportsBox^$boost=4,site=rentry.co
 $boost=4,site=720pstream.nu
 $boost=4,site=app.buffstream.io
+$boost=4,site=bundesliga.league.do
 $boost=4,site=starlive.click
 $boost=4,site=tv.tflix.app
 $boost=4,site=nbamonster.com
@@ -693,9 +703,6 @@ $boost=4,site=mkvdrama.org
 /cse?cx=aab218d0aa53e3578^$boost=4,site=cse.google.com
 /category/movies/^$boost=4,site=tfpdl.se
 /category/movies/^$boost=4,site=tfpdl.to
-/download^$boost=4,site=cinemaos.live
-/download^$boost=4,site=cinemaos.tech
-/download^$boost=4,site=cinemaos.me
 $boost=4,site=www.9xflix.me
 /?type=KatmovieHD^$boost=4,site=katworld.net
 $boost=4,site=beech.watch
@@ -705,6 +712,7 @@ $boost=4,site=psa.wf
 $boost=4,site=ddlbase.com
 $boost=4,site=www.tvseries.in
 $boost=4,site=www.stagatv.com
+$boost=4,site=www.cineby.gd
 $boost=4,site=moviesnipipay.me
 $boost=4,site=hdrush.cc
 $boost=4,site=rlsxtvt.icu
@@ -1168,13 +1176,13 @@ $boost=4,site=agent.minimax.io
 /playground/chat^$boost=4,site=console.upstage.ai
 $boost=4,site=stepfun.ai
 /spaces/rednote-hilab/dots-demo^$boost=4,site=huggingface.co
+/chat^$boost=4,site=publicai.co
 $boost=4,site=chat.publicai.co
 $boost=4,site=www.reka.ai
 $boost=4,site=www.k2think.ai
 $boost=4,site=playground.allenai.org
 /cheahjs/free-llm-api-resources^$boost=4,site=github.com
 /?mode=direct^$boost=4,site=lmarena.ai
-/lm-sys/FastChat^$boost=4,site=github.com
 $boost=4,site=yupp.ai
 /chat/^$boost=4,site=huggingface.co
 $boost=4,site=ish.chat
@@ -1195,6 +1203,8 @@ $boost=4,site=freepass.ai
 /?mode=direct&chat-modality=search^$boost=4,site=lmarena.ai
 $boost=4,site=www.perplexity.ai
 $boost=4,site=www.cplx.app
+$boost=4,site=notebooklm.google
+/r/notebooklm/^$boost=4,site=www.reddit.com
 /aimode^$boost=4,site=google.com
 /search?udm=50^$boost=4,site=www.google.com
 /ItzCrazyKns/Perplexica^$boost=4,site=github.com
@@ -1207,8 +1217,6 @@ $boost=4,site=elicit.com
 /elicit^$boost=4,site=github.com
 $boost=4,site=privategpt.dev
 /zylon-ai/private-gpt^$boost=4,site=github.com
-$boost=4,site=notebooklm.google
-/r/notebooklm/^$boost=4,site=www.reddit.com
 $boost=4,site=www.onyx.app
 /onyx-dot-app/onyx^$boost=4,site=github.com
 $boost=4,site=www.docsgpt.cloud
@@ -1574,7 +1582,6 @@ $boost=4,site=suno.com
 /fx/tools/music-fx^$boost=4,site=labs.google
 $boost=4,site=tones.wolfram.com
 $boost=4,site=www.stableaudio.com
-$boost=4,site=www.udio.com
 /avg/^$boost=4,site=fredericbriolet.com
 $boost=4,site=www.fakemusicgenerator.com
 /spaces/facebook/MusicGen^$boost=4,site=huggingface.co
@@ -1715,6 +1722,8 @@ $boost=4,site=rexdl.com
 /offa/android-foss^$boost=4,site=github.com
 /foss-apps/^$boost=4,site=albertomosconi.github.io
 /Psyhackological/AAA^$boost=4,site=github.com
+$boost=4,site=fdroid.tabler.dev
+/moneytoo/awesome-fdroid^$boost=4,site=github.com
 /timschneeb/awesome-shizuku^$boost=4,site=github.com
 /FossifyOrg^$boost=4,site=github.com
 /Goodwy?tab=repositories^$boost=4,site=github.com
@@ -1722,8 +1731,6 @@ $boost=4,site=droidify.eu.org
 /Droid-ify/client^$boost=4,site=github.com
 $boost=4,site=f-droid.org
 /fdroid^$boost=4,site=gitlab.com
-$boost=4,site=fdroid.tabler.dev
-/moneytoo/awesome-fdroid^$boost=4,site=github.com
 /en/packages/org.fdroid.basic/^$boost=4,site=f-droid.org
 /t/known-repositories/^$boost=4,site=forum.f-droid.org
 /mvdan/fdroidcl^$boost=4,site=github.com
@@ -2051,6 +2058,7 @@ $boost=4,site=albastuz3d.net
 /badabing2005/PixelFlasher^$boost=4,site=github.com
 /android_comparison.htm^$boost=4,site=eylenburg.github.io
 /musabcel/android_rom_list^$boost=4,site=github.com
+/TrebleDroid/treble_experimentations/wiki/Generic-System-Image-(GSI^$boost=4,site=github.com
 $boost=4,site=grapheneos.org
 $boost=4,site=www.lineageos.org
 $boost=4,site=lens.google.com
@@ -2107,6 +2115,7 @@ $boost=4,site=www.unifiedremote.com
 /store/apps/details?id=com.yousx.thetoolsapp^$boost=4,site=play.google.com
 /store/apps/details?id=com.fooview.android.fooview^$boost=4,site=play.google.com
 /store/apps/details?id=com.lightcut.videoeditor^$boost=4,site=play.google.com
+/store/apps/details?id=com.losslessvideocutter^$boost=4,site=play.google.com
 /devhyper/open-video-editor^$boost=4,site=github.com
 /store/apps/details?id=com.vaux.vaux_editor^$boost=4,site=play.google.com
 /juanitobananas/auto-auto-rotate^$boost=4,site=gitlab.com
@@ -2237,7 +2246,7 @@ $boost=4,site=netshare.app
 /seazon/FeedMe^$boost=4,site=github.com
 /bubelov/news^$boost=4,site=github.com
 /ondrejfoltyn/nunti^$boost=4,site=gitlab.com
-/store/apps/details?id=com.and96.aggregator_news^$boost=4,site=play.google.com
+/store/apps/dev?id=5578181639208826441^$boost=4,site=play.google.com
 /jocmp/capyreader^$boost=4,site=github.com
 /Ashinch/ReadYou^$boost=4,site=github.com
 $boost=4,site=www.newsbang.com
@@ -2303,7 +2312,6 @@ $boost=4,site=pairdrop.net
 /store/apps/details?id=com.w2sv.filenavigator^$boost=4,site=play.google.com
 /w2sv/FileNavigator^$boost=4,site=github.com
 /Raival-e/Prism-File-Explorer^$boost=4,site=github.com
-/store/apps/details?id=com.lonelycatgames.Xplore^$boost=4,site=play.google.com
 /TheByteArray/Convertit^$boost=4,site=github.com
 /devgianlu/Aria2App^$boost=4,site=github.com
 /newhinton/Round-Sync^$boost=4,site=github.com
@@ -2340,7 +2348,6 @@ $boost=4,site=voiceinput.futo.org
 /packages/org.eu.mumulhl.ciyue/^$boost=4,site=f-droid.org
 /Xed-Editor/Xed-Editor^$boost=4,site=github.com
 /a/markor.html^$boost=4,site=fossdroid.com
-/YangDai2003/OpenNote-Compose^$boost=4,site=github.com
 /appml/neutrinote^$boost=4,site=github.com
 /store/apps/details?id=com.microsoft.office.onenote&hl=en-us^$boost=4,site=play.google.com
 $boost=4,site=quillpad.github.io
@@ -2462,8 +2469,6 @@ $boost=4,site=fuel.io
 /woheller69/omweather^$boost=4,site=github.com
 /forrestguice/SuntimesWidget^$boost=4,site=github.com
 /index.php/Emulators_on_Android^$boost=4,site=emulation.gametechwiki.com
-/TrebleDroid/treble_experimentations/wiki/Generic-System-Image-(GSI^$boost=4,site=github.com
-/GsiUpdate^$boost=4,site=t.me
 $boost=4,site=www.emuready.com
 /Producdevity/EmuReady^$boost=4,site=github.com
 $boost=4,site=termux.dev
@@ -2517,7 +2522,8 @@ $boost=4,site=www.transdroid.org
 /r/FREEMEDIAHECKYEAH/wiki/reading/^$boost=4,site=www.reddit.com
 $boost=4,site=librera.mobi
 $boost=4,site=www.moondownload.com
-/moontheme^$boost=4,site=rentry.co
+/Guides/moontheme/^$boost=4,site=claraiscute.neocities.org
+/Guides/moontheme^$boost=4,site=claraiscute.pages.dev
 /gedoor/legado/blob/master/English.md^$boost=4,site=github.com
 $boost=4,site=readera.org
 /store/apps/details?id=ak.alizandro.smartaudiobookplayer^$boost=4,site=play.google.com
@@ -2533,6 +2539,7 @@ $boost=4,site=elevenreader.io
 /store/apps/details?id=com.prestigio.ereader^$boost=4,site=play.google.com
 /JellyBookOrg/JellyBook^$boost=4,site=github.com
 /store/apps/details?id=com.readwise^$boost=4,site=play.google.com
+$boost=4,site=eboox.app
 $boost=4,site=www.savpdfviewer.com
 /Sav22999/sav-pdf-viewer-pro^$boost=4,site=github.com
 /mudlej/mj_pdf^$boost=4,site=github.com
@@ -2857,6 +2864,7 @@ $boost=4,site=jailbreaks.app
 /types-of-jailbreak/^$boost=4,site=ios.cfw.guide
 $boost=4,site=appledb.dev
 $boost=4,site=rejail.ru
+$boost=4,site=repo.cypwn.xyz
 /invite/jb^$boost=4,site=discord.com
 /r/jailbreak^$boost=4,site=reddit.com
 /r/LegacyJailbreak/^$boost=4,site=www.reddit.com
@@ -3120,7 +3128,6 @@ $boost=4,site=aidoku.app
 $boost=4,site=www.suwatte.app
 /suwatte^$boost=4,site=github.com
 $boost=4,site=prologue.audio
-$boost=4,site=eboox.app
 /app/readwise/id1476885528^$boost=4,site=apps.apple.com
 /app/cantook-by-aldiko/id1476410111^$boost=4,site=apps.apple.com
 /app/fbreader-epub-and-fb2-reader/id1067172178^$boost=4,site=apps.apple.com
@@ -3137,11 +3144,13 @@ $boost=4,site=tachimanga.app
 /wiki/Comparison_of_music_streaming_services^$boost=4,site=en.wikipedia.org
 /r/FREEMEDIAHECKYEAH/wiki/audio/^$boost=4,site=www.reddit.com
 /th-ch/youtube-music^$boost=4,site=github.com
-/kerichdev/themes-for-ytmdesktop-player/^$boost=4,site=github.com
 $boost=4,site=www.deezer.com
 $boost=4,site=moosync.app
 /Moosync/Moosync^$boost=4,site=github.com
 /mps-youtube/yewtube^$boost=4,site=github.com
+/pulse^$boost=4,site=473999.net
+$boost=4,site=www.beatsync.gg
+/freeman-jiang/beatsync^$boost=4,site=github.com
 /bsc/^$boost=4,site=alirezakj.com
 /AlirezaKJ/BetterSoundCloud^$boost=4,site=github.com
 $boost=4,site=nuclearplayer.com
@@ -3152,11 +3161,8 @@ $boost=4,site=muffon.netlify.app
 $boost=4,site=musicbucket.net
 /KRSHH/Sonosano^$boost=4,site=github.com
 $boost=4,site=sonosano.krshh.com
-$boost=4,site=www.beatsync.gg
-/freeman-jiang/beatsync^$boost=4,site=github.com
-/pulse^$boost=4,site=473999.net
 $boost=4,site=music.youtube.com
-/music/^$boost=4,site=nonoki.com
+/music/^$boost=4,site=zozoki.com
 $boost=4,site=themesong.app
 /Sv443/BetterYTM^$boost=4,site=github.com
 /apastel/ytmusic-deleter^$boost=4,site=github.com
@@ -3167,6 +3173,8 @@ $boost=4,site=spot-transfer.vercel.app
 /sigma67/spotify_to_ytmusic^$boost=4,site=github.com
 $boost=4,site=better-lyrics.boidu.dev
 /boidushya/better-lyrics^$boost=4,site=github.com
+$boost=4,site=dabmusic.xyz
+/invite/rmzH6ttgcC^$boost=4,site=discord.com
 $boost=4,site=reddit.musicplayer.io
 $boost=4,site=soundcloud.com
 $boost=4,site=artistgrid.cx
@@ -3175,10 +3183,10 @@ $boost=4,site=open.spotify.com
 /mantou132/Spotify-Lyrics^$boost=4,site=github.com
 /en/scripts/377439^$boost=4,site=greasyfork.org
 $boost=4,site=tidal.squid.wtf
-$boost=4,site=digger-ui.vercel.app
 $boost=4,site=monochrome.tf
 $boost=4,site=monochrome.prigoana.com
 /eduardprigoana/monochrome^$boost=4,site=github.com
+$boost=4,site=digger-ui.vercel.app
 $boost=4,site=tidal.qqdl.site
 $boost=4,site=music.binimum.org
 /eduardprigoana/hifi-instances/^$boost=4,site=github.com
@@ -3496,10 +3504,10 @@ $boost=4,site=spotifyplaylistarchive.com
 $boost=4,site=lucida.to
 $boost=4,site=doubledouble.top
 $boost=4,site=spotisaver.net
-$boost=4,site=ytiz.xyz
-/tizerk/ytiz^$boost=4,site=github.com
 $boost=4,site=amp3.cc
 $boost=4,site=ezconv.com
+$boost=4,site=ytiz.xyz
+/tizerk/ytiz^$boost=4,site=github.com
 $boost=4,site=cobalt.tools
 $boost=4,site=instances.cobalt.best
 /imputnet/cobalt^$boost=4,site=github.com
@@ -3526,7 +3534,6 @@ $boost=4,site=www.exactaudiocopy.de
 /vitiko98/qobuz-dl^$boost=4,site=github.com
 $boost=4,site=you-get.org
 /exislow/tidal-dl-ng^$boost=4,site=github.com
-/glomatico/gamdl^$boost=4,site=github.com
 /iheanyi/bandcamp-dl^$boost=4,site=github.com
 $boost=4,site=www.accuraterip.com
 /BeatSpotBot^$boost=4,site=t.me
@@ -4024,7 +4031,7 @@ $boost=4,site=tonocracy.com
 $boost=4,site=www.neuralampmodeler.com
 /index.html^$boost=4,site=guitarml.com
 /products/tonex/^$boost=4,site=www.ikmultimedia.com
-$boost=4,site=tonehunt.org
+$boost=4,site=tone3000.com
 $boost=4,site=presetshare.com
 /category/skins/?fwp_license=free^$boost=4,site=vstskins.com
 $boost=4,site=tenacityaudio.org
@@ -4239,7 +4246,6 @@ $boost=4,site=sastatus.com
 /cse?cx=006516753008110874046:reodoskmj7h^$boost=4,site=cse.google.com
 $boost=4,site=filepursuit.com
 $boost=4,site=www.4shared.com
-$boost=4,site=meawfy.com
 /cse?cx=90a35b59cee2a42e1^$boost=4,site=cse.google.com
 $boost=4,site=www.ddlspot.com
 $boost=4,site=mediafiretrend.com
@@ -4452,10 +4458,10 @@ $boost=4,site=hacksnation.com
 $boost=4,site=tut4it.com
 /coursebusters^$boost=4,site=t.me
 $boost=4,site=freecoursesite.com
+$boost=4,site=freecoursesites.com
 $boost=4,site=docspedia.world
 $boost=4,site=freeeducationweb.com
 $boost=4,site=onehack.us
-$boost=4,site=freecoursesites.com
 /category/videos^$boost=4,site=technet24.ir
 $boost=4,site=afratafreeh.com
 $boost=4,site=learningdl.net
@@ -5207,6 +5213,7 @@ $boost=4,site=rocketlaunch.org
 $boost=4,site=nssdc.gsfc.nasa.gov
 $boost=4,site=www.sen.com
 /@Sen^$boost=4,site=www.youtube.com
+$boost=4,site=issinrealtime.org
 $boost=4,site=iss-sim.spacex.com
 $boost=4,site=transit-finder.com
 /en^$boost=4,site=isstracker.pl
@@ -6209,6 +6216,7 @@ $boost=4,site=steamrip.com
 /r/SteamRip/^$boost=4,site=www.reddit.com
 $boost=4,site=gog-games.to
 $boost=4,site=union-crax.xyz
+$boost=4,site=status.union-crax.xyz
 $boost=4,site=ankergames.net
 /r/Anker_Games_/^$boost=4,site=www.reddit.com
 $boost=4,site=online-fix.me
@@ -6223,7 +6231,6 @@ $boost=4,site=playseek.app
 /cse?cx=006516753008110874046:pobnsujblyx^$boost=4,site=cse.google.com
 /cse?cx=20c2a3e5f702049aa^$boost=4,site=cse.google.com
 $boost=4,site=gload.to
-$boost=4,site=gamesdrive.net
 $boost=4,site=steamgg.net
 /r/OfficialSteamGG/^$boost=4,site=www.reddit.com
 /games^$boost=4,site=fluxyrepacks.xyz
@@ -7411,7 +7418,6 @@ $boost=4,site=onetimesecret.com
 $boost=4,site=stegcloak.surge.sh
 /index.cgi^$boost=4,site=www.spammimic.com
 /forums/^$boost=4,site=www.forensicfocus.com
-/aforensics/HiddenVM^$boost=4,site=github.com
 $boost=4,site=www.surveillancewatch.io
 $boost=4,site=deflock.me
 /FoggedLens/deflock^$boost=4,site=github.com
@@ -8322,7 +8328,7 @@ $boost=4,site=terminal.sexy
 $boost=4,site=terminalsplash.com
 /solarized^$boost=4,site=ethanschoonover.com
 $boost=4,site=windowsterminalthemes.dev
-$boost=4,site=moddingstuff.site
+/Wallsync/^$boost=4,site=roigoatzzz.github.io
 $boost=4,site=wallsync.pages.dev
 /leroiduflow/Wallsync^$boost=4,site=github.com
 $boost=4,site=wallhaven.cc
@@ -8881,7 +8887,7 @@ $boost=4,site=archive.vn
 $boost=4,site=archive.fo
 $boost=4,site=archive.md
 /project/magnolia1234/bpc_uploads^$boost=4,site=gitflic.ru
-$boost=4,site=freedium.cfd
+$boost=4,site=freedium-mirror.cfd
 $boost=4,site=readmedium.com
 /Xatta-Trone/medium-parser-extension^$boost=4,site=github.com
 $boost=4,site=wallabag.org
@@ -9227,6 +9233,7 @@ $boost=4,site=x.gd
 $boost=4,site=bom.so
 $boost=4,site=by.com.vn
 $boost=4,site=blyto.com
+$boost=4,site=www.1sh.pl
 $boost=4,site=home.s.id
 $boost=4,site=creator.linkify.cz
 $boost=4,site=jii.li
@@ -9300,7 +9307,6 @@ $boost=4,site=edumail.icu
 /edu-mail-generator^$boost=4,site=tempumail.com
 $boost=4,site=etempmail.com
 /en/^$boost=4,site=tempmail.edu.kg
-$boost=4,site=tempmailhub.org
 $boost=4,site=www.guerrillamail.com
 $boost=4,site=www.sharklasers.com
 /en-US/firefox/addon/bloody-vikings/^$boost=4,site=addons.mozilla.org
@@ -9414,6 +9420,8 @@ $boost=4,site=browsers.avoidthehack.com
 /Piracy-BG^$boost=4,site=rentry.org
 $boost=4,site=browserbench.org
 $boost=4,site=wpt.fyi
+/projects/bt/^$boost=4,site=www.aloneguid.uk
+/aloneguid/bt^$boost=4,site=github.com
 $boost=4,site=vsynctester.com
 $boost=4,site=geminiprotocol.net
 /gemini^$boost=4,site=yesterweb.org
@@ -9592,6 +9600,8 @@ $boost=4,site=transpose.video
 /detail/volume-master/jghecgabfgfdldnmbfkhmffcabddioke^$boost=4,site=chromewebstore.google.com
 $boost=4,site=blaze.today
 /hansifer/tab-copy^$boost=4,site=github.com
+/detail/linkclump-plus/ainlglbojoodfdbndbfofojhmjbmelmm^$boost=4,site=chromewebstore.google.com
+/from-es/linkclump-plus^$boost=4,site=github.com
 /detail/bookmarks-clean-up/oncbjlgldmiagjophlhobkogeladjijl^$boost=4,site=chromewebstore.google.com
 /detail/simple-mass-downloader/abdkkegmcbiomijcbdaodaflgehfffed^$boost=4,site=chromewebstore.google.com
 $boost=4,site=crxmouse.com
@@ -9729,6 +9739,7 @@ $boost=4,site=map.malfrats.industries
 /tools^$boost=4,site=www.osintcombine.com
 /toolkit^$boost=4,site=bellingcat.gitbook.io
 $boost=4,site=rr.reuser.biz
+$boost=4,site=pikaosint.pages.dev
 /passthesh3ll/The-Pika-s-OSINT-ToolBox^$boost=4,site=github.com
 /cipher387/osint_stuff_tool_collection^$boost=4,site=github.com
 /p/rx6Qj8/nixintel-s-osint-resource-list^$boost=4,site=start.me
@@ -11509,13 +11520,14 @@ $boost=4,site=quasar.surge.sh
 $boost=4,site=playlist.kwiatekmiki.pl
 $boost=4,site=playlist.kwiatekmiki.com
 $boost=4,site=9xbuddy.com
-$boost=4,site=9xbuddy.online
+$boost=4,site=9xbuddy.site
 $boost=4,site=9xbuddy.in
 $boost=4,site=www.downloadhelper.net
 $boost=4,site=fetchv.net
 $boost=4,site=mpmux.com
 /explore/repos^$boost=4,site=cdm-project.com
 $boost=4,site=www.videofk.com
+$boost=4,site=oneforalldownloader.com
 /soimort/you-get^$boost=4,site=github.com
 /AAndyProgram/SCrawler^$boost=4,site=github.com
 $boost=4,site=ssstik.io
@@ -11961,6 +11973,8 @@ $boost=4,site=www.howacarworks.com
 $boost=4,site=igcd.net
 $boost=4,site=platerecognizer.com
 $boost=4,site=gasprices.aaa.com
+$boost=4,site=lubelogger.com
+/hargata/lubelog^$boost=4,site=github.com
 /Myzel394/Alibi^$boost=4,site=github.com
 /store/apps/details?id=com.helge.droiddashcam^$boost=4,site=play.google.com
 $boost=4,site=www.atlasobscura.com
@@ -12228,6 +12242,7 @@ $boost=4,site=www.newsminimalist.com
 $boost=4,site=www.aldaily.com
 $boost=4,site=ground.news
 $boost=4,site=upstract.com
+$boost=4,site=100.news
 $boost=4,site=www.allsides.com
 $boost=4,site=spidr.today
 $boost=4,site=www.newsnow.co.uk
@@ -12238,6 +12253,7 @@ $boost=4,site=alltop.com
 $boost=4,site=gamersnexus.net
 $boost=4,site=news.ycombinator.com
 /news/all/^$boost=4,site=alternativeto.net
+$boost=4,site=deadstack.net
 $boost=4,site=techurls.com
 $boost=4,site=www.techmeme.com
 $boost=4,site=brutalist.report
@@ -12730,7 +12746,6 @@ $boost=4,site=www.hiverss.com
 $boost=4,site=www.thisiswhyimbroke.com
 $boost=4,site=darkpatternstipline.org
 /games/dark-patterns^$boost=4,site=games.productartistry.com
-$boost=4,site=redditfavorites.com
 $boost=4,site=kit.co
 $boost=4,site=www.looria.com
 $boost=4,site=producthunt.com
@@ -12783,6 +12798,7 @@ $boost=4,site=www.gsmarena.com
 $boost=4,site=prepaidcompare.net
 $boost=4,site=phonedb.net
 /en/^$boost=4,site=www.gsmchoice.com
+/en/ranking/rank1.htm^$boost=4,site=www.antutu.com
 /en/^$boost=4,site=www.kimovil.com
 $boost=4,site=www.cpubenchmark.net
 /reviews/gpu-hierarchy^$boost=4,site=www.tomshardware.com
@@ -13383,7 +13399,6 @@ $boost=4,site=8values.github.io
 $boost=4,site=www.hownormalami.eu
 $boost=4,site=www.detect-face-shape.com
 $boost=4,site=www.faceshapedetectors.org
-$boost=4,site=www.howolddoilook.io
 $boost=4,site=you.regettingold.com
 $boost=4,site=heyfromthefuture.com
 /mygrandmotherslingo/^$boost=4,site=www.sbs.com.au
@@ -13643,7 +13658,6 @@ $boost=4,site=translator.bookfere.com
 /Leseratte10/acsm-calibre-plugin^$boost=4,site=github.com
 /wiki/E-book_software^$boost=4,site=wiki.mobileread.com
 $boost=4,site=www.mobileread.com
-/books^$boost=4,site=play.google.com
 $boost=4,site=www.koodoreader.com
 /koodo-reader/koodo-reader^$boost=4,site=github.com
 /free-pdf-reader^$boost=4,site=www.sumatrapdfreader.org
@@ -13680,6 +13694,7 @@ $boost=4,site=dotepub.com
 /fsantini/KoboCloud^$boost=4,site=github.com
 /listing/chrome-reader-view.html^$boost=4,site=webextension.org
 /reader-view.html^$boost=4,site=mybrowseraddon.com
+/books^$boost=4,site=play.google.com
 /view^$boost=4,site=annas-archive.org
 $boost=4,site=www.flowoss.com
 $boost=4,site=www.fviewer.com
@@ -13982,7 +13997,7 @@ $boost=4,site=komga.org
 /gotson/komga^$boost=4,site=github.com
 /comictagger/comictagger^$boost=4,site=github.com
 /library/manga^$boost=4,site=theindex.moe
-/rawmangaz^$boost=4,site=rentry.co
+/Guides/rawmangaz/^$boost=4,site=claraiscute.neocities.org
 $boost=4,site=weebcentral.com
 $boost=4,site=mangadex.org
 $boost=4,site=mangadex-dl.mansuf.link
@@ -14020,6 +14035,7 @@ $boost=4,site=mangaberri.com
 $boost=4,site=www.webtoons.com
 $boost=4,site=toonily.com
 $boost=4,site=manhwaclan.com
+$boost=4,site=aquareader.net
 /xAsyVb52a9^$boost=4,site=discord.gg
 /groups^$boost=4,site=mangadex.org
 /guides/manga/madokami^$boost=4,site=wotaku.wiki
@@ -14391,6 +14407,7 @@ $boost=4,site=oku.club
 $boost=4,site=literal.club
 $boost=4,site=joinbookwyrm.com
 $boost=4,site=bookwyrm.social
+$boost=4,site=ranobedb.org
 $boost=4,site=hardcover.app
 $boost=4,site=www.librarything.com
 $boost=4,site=www.candlapp.com
@@ -14521,6 +14538,7 @@ $boost=4,site=bt4gprx.com
 $boost=4,site=piratesparadise.org
 $boost=4,site=snowfl.com
 $boost=4,site=www.torlock.com
+$boost=4,site=uindex.org
 /en^$boost=4,site=btsearch.19950817.xyz
 $boost=4,site=www.0mag.net
 $boost=4,site=16mag.net
@@ -14579,16 +14597,16 @@ $boost=4,site=webtor.io
 /Guides/private-trackers^$boost=4,site=claraiscute.neocities.org
 /Guides/private-trackers/^$boost=4,site=claraiscute.pages.dev
 /r/TrackersInfo/wiki/official_recruitments/^$boost=4,site=www.reddit.com
+/wiki/Private_trackers^$boost=4,site=igwiki.lyci.de
 /sheet/^$boost=4,site=inviteroute.github.io
-$boost=4,site=invite.icu
 /graph/^$boost=4,site=inviteroute.github.io
+$boost=4,site=invite.icu
 /links/warez-scene/^$boost=4,site=opentrackers.org
 $boost=4,site=trackerstatus.info
 /TrackerHub/^$boost=4,site=hdvinnie.github.io
 /r/trackers^$boost=4,site=reddit.com
 /r/OpenSignups/^$boost=4,site=www.reddit.com
 /r/OpenedSignups/^$boost=4,site=www.reddit.com
-/wiki/Private_trackers^$boost=4,site=igwiki.lyci.de
 /Private-Trackers-Spreadsheet/^$boost=4,site=hdvinnie.github.io
 /trackersignup^$boost=4,site=t.me
 /L4GSP1KE/Upload-Assistant^$boost=4,site=github.com
@@ -14658,11 +14676,10 @@ $boost=4,site=www.gimp.org
 /bootchk/resynthesizer^$boost=4,site=github.com
 /r/GIMP/^$boost=4,site=www.reddit.com
 /GNOME/gimp^$boost=4,site=gitlab.gnome.org
-$boost=4,site=www.pinta-project.com
-/PintaProject/Pinta^$boost=4,site=github.com
 /index.php^$boost=4,site=imagemagick.org
 /imagemagick/index.php^$boost=4,site=www.fmwconcepts.com
 /imagemagick/imagemagick^$boost=4,site=github.com
+$boost=4,site=www.affinity.studio
 $boost=4,site=lazpaint.github.io
 /bgrabitmap/lazpaint/^$boost=4,site=github.com
 $boost=4,site=photodemon.org
@@ -14778,7 +14795,8 @@ $boost=4,site=pbnify.com
 /Acly/krita-ai-diffusion/^$boost=4,site=github.com
 /KDE/krita^$boost=4,site=github.com
 /miniPaint/^$boost=4,site=viliusle.github.io
-$boost=4,site=www.autodraw.com
+$boost=4,site=www.pinta-project.com
+/PintaProject/Pinta^$boost=4,site=github.com
 /smoothdraw/^$boost=4,site=qrli.github.io
 $boost=4,site=inkscape.org
 /inkscape/inkscape^$boost=4,site=gitlab.com
@@ -14789,6 +14807,7 @@ $boost=4,site=sumopaint.com
 $boost=4,site=wigglypaint.net
 $boost=4,site=www.miltonpaint.com
 /serge-rgb/milton^$boost=4,site=github.com
+$boost=4,site=www.autodraw.com
 $boost=4,site=start.provector.app
 /diaoliu/provector^$boost=4,site=github.com
 $boost=4,site=graphite.rs
@@ -14885,7 +14904,6 @@ $boost=4,site=www.breakyourownnews.com
 $boost=4,site=animorphgenerator.com
 $boost=4,site=awesomecars.neocities.org
 $boost=4,site=gifmemes.io
-/gainz/^$boost=4,site=pilssken.neocities.org
 $boost=4,site=www.evernote.design
 $boost=4,site=archives.design
 /websites^$boost=4,site=www.awwwards.com
@@ -15103,7 +15121,6 @@ $boost=4,site=mockupsforfree.com
 /posts?tag=^$boost=4,site=kemono.cr
 /en/scripts/553616^$boost=4,site=greasyfork.org
 $boost=4,site=www.deviantart.com
-/skunky/SkunkyArt/src/branch/master/INSTANCES.md^$boost=4,site=git.macaw.me
 $boost=4,site=www.artstation.com
 /findix/ArtStationDownloader^$boost=4,site=github.com
 $boost=4,site=www.pixiv.net
@@ -15946,7 +15963,7 @@ $boost=4,site=steaminventoryhelper.com
 /BigBoiCJ/SteamAutoCracker^$boost=4,site=github.com
 /harryeffinpotter/Steam-Autocracker-GUI/^$boost=4,site=github.com
 /fernbacher/How-To-Crack^$boost=4,site=codeberg.org
-/acidicoala/Koalageddon/^$boost=4,site=github.com
+/KA4I/Koalageddon^$boost=4,site=github.com
 /forum/viewtopic.php?f=10&t=111520^$boost=4,site=cs.rin.ru
 /acidicoala/ScreamAPI^$boost=4,site=github.com
 $boost=4,site=steamdb.info
@@ -15957,7 +15974,6 @@ $boost=4,site=augmentedsteam.com
 /SteamScout/^$boost=4,site=www.togeproductions.com
 /en/scripts/523078^$boost=4,site=greasyfork.org
 /UWPHook/^$boost=4,site=briano.dev
-/sharedfiles/filedetails/?id=1746978201^$boost=4,site=steamcommunity.com
 /veteran29/steam-url-open-extension^$boost=4,site=github.com
 /en/scripts/18450-steam-bypass-age-confirmation-prompts^$boost=4,site=greasyfork.org
 /Solidet-com/steam-currency-converter^$boost=4,site=github.com
@@ -15965,6 +15981,7 @@ $boost=4,site=augmentedsteam.com
 /NethercraftMC5608/NetherWorkshopDownloader^$boost=4,site=github.com
 /steam^$boost=4,site=ggntw.com
 /BerdyAlexei/SCMD-Workshop-Downloader-2^$boost=4,site=github.com
+/dane-9/Streamline-Workshop-Downloader^$boost=4,site=github.com
 /shadoxxhd/steamworkshopdownloader^$boost=4,site=github.com
 /SteamAutoCracks/WallpaperEngineWorkshopDownloader^$boost=4,site=github.com
 $boost=4,site=steamworkshop.download
@@ -16265,7 +16282,7 @@ $boost=4,site=prismlauncher.org
 $boost=4,site=atlauncher.com
 $boost=4,site=www.technicpack.net
 $boost=4,site=bedrocklauncher.github.io
-/MCMrARM/mc-w10-version-launcher^$boost=4,site=github.com
+/7NXBJXX5^$boost=4,site=ibb.co
 /ZalithLauncher/ZalithLauncher^$boost=4,site=github.com
 /mojolauncher/mojolauncher^$boost=4,site=github.com
 /FCL-Team/FoldCraftLauncher^$boost=4,site=github.com
@@ -16606,7 +16623,6 @@ $boost=4,site=history.geometrydash.eu
 $boost=4,site=3dashdl.pages.dev
 /Challenge/^$boost=4,site=3dashdemonlist.github.io
 /ILL/^$boost=4,site=3dashdemonlist.github.io
-$boost=4,site=archive.roblonium.com
 /games^$boost=4,site=www.rolimons.com
 $boost=4,site=rotrends.com
 $boost=4,site=romonitorstats.com
@@ -17638,7 +17654,6 @@ $boost=4,site=openmtp.ganeshrvel.com
 /Xfennec/progress^$boost=4,site=github.com
 $boost=4,site=www.bruji.com
 $boost=4,site=osxfuse.github.io
-/jdownloader2^$boost=4,site=rentry.org
 /moktavizen/material-darker-jdownloader/^$boost=4,site=github.com
 $boost=4,site=macpsd.net
 $boost=4,site=eza.rocks
@@ -18187,7 +18202,6 @@ $boost=4,site=www.vsixhub.com
 $boost=4,site=jetbrains.com
 $boost=4,site=neovim.io
 $boost=4,site=zed.dev
-/api/releases/nightly/latest/zed_editor_installer_x86_64.exe^$boost=4,site=zed.dev
 /zed-industries/zed^$boost=4,site=github.com
 $boost=4,site=lite-xl.com
 $boost=4,site=pragtical.dev
@@ -18297,6 +18311,12 @@ $boost=4,site=app.code2flow.com
 $boost=4,site=flowchart.js.org
 /riquito/tuc^$boost=4,site=github.com
 $boost=4,site=masscode.io
+$boost=4,site=www.ray.so
+$boost=4,site=carbon.now.sh
+$boost=4,site=codeimage.dev
+$boost=4,site=showcode.app
+$boost=4,site=beauty.codes
+$boost=4,site=chalk.ist
 $boost=4,site=meld.app
 $boost=4,site=meldmerge.org
 $boost=4,site=winmerge.org
@@ -18543,12 +18563,14 @@ $boost=4,site=deformity.ai
 $boost=4,site=www.stylr.xyz
 $boost=4,site=flounder.online
 /webtools/^$boost=4,site=www.websiteplanet.com
+$boost=4,site=networkingtoolbox.net
 /tools/^$boost=4,site=www.browserling.com
 $boost=4,site=webcode.tools
 $boost=4,site=ui.shadcn.com
 $boost=4,site=shadcn-svelte.com
 /detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm^$boost=4,site=chromewebstore.google.com
 $boost=4,site=www.goatcounter.com
+/web-analytics/^$boost=4,site=www.cloudflare.com
 /rybbit-io/rybbit^$boost=4,site=github.com
 $boost=4,site=clarity.microsoft.com
 $boost=4,site=umami.is
@@ -19254,6 +19276,8 @@ $boost=4,site=ba.kirmalk.com
 $boost=4,site=witanime.cyou
 $boost=4,site=okanime.tv
 $boost=4,site=ristoanime.com
+$boost=4,site=witanime.red
+$boost=4,site=ww1.animeiat.tv
 $boost=4,site=anslayerweb.com
 $boost=4,site=animezid.net
 $boost=4,site=animerco.org
@@ -19275,12 +19299,14 @@ $boost=4,site=www.ebooksar.net
 $boost=4,site=www.alarabimag.com
 $boost=4,site=www.hindawi.org
 $boost=4,site=www.abjjad.com
+/GedoLibrary_bot^$boost=4,site=telegram.me
 $boost=4,site=3asq.org
 $boost=4,site=azoramoon.com
 $boost=4,site=ar.kenmanga.com
 $boost=4,site=www.hijala.com
 $boost=4,site=www.aldiwan.net
 $boost=4,site=www.almaany.com
+$boost=4,site=www.dohadictionary.org
 $boost=4,site=ar.mo3jam.com
 /avro-keyboard.html^$boost=4,site=www.omicronlab.com
 $boost=4,site=avro.im
@@ -19295,6 +19321,13 @@ $boost=4,site=www.amarbooks.org
 $boost=4,site=boimate.com
 $boost=4,site=www.ebanglalibrary.com
 $boost=4,site=www.worldmets.com
+$boost=4,site=bengaliebook.com
+$boost=4,site=boierthikana.com
+$boost=4,site=banglaclassicbooks.blogspot.com
+$boost=4,site=allbanglaboi.com
+$boost=4,site=granthagara.com
+$boost=4,site=bookspointer.com
+$boost=4,site=jyotirjagat.wordpress.com
 $boost=4,site=www.banglabook.org
 $boost=4,site=www.gobanglabooks.com
 $boost=4,site=sovietbooksinbengali.blogspot.com
@@ -19302,6 +19335,7 @@ $boost=4,site=nctb.portal.gov.bd
 $boost=4,site=mlsbd.co
 $boost=4,site=moviedokan.my
 $boost=4,site=jbmoviebd.shop
+$boost=4,site=emwbd.shop
 $boost=4,site=www.music.com.bd
 $boost=4,site=bhoot-fm.com
 $boost=4,site=fibwatch.art
@@ -19325,6 +19359,8 @@ $boost=4,site=www.bajins.com
 /jackhawks/rectg^$boost=4,site=github.com
 $boost=4,site=www.ixigua.com
 $boost=4,site=linux.do
+$boost=4,site=arch.icekylin.online
+$boost=4,site=archlinuxcn.org
 $boost=4,site=assbbs.com
 $boost=4,site=assrt.net
 $boost=4,site=srtku.com
@@ -19379,6 +19415,7 @@ $boost=4,site=www.chinafirewalltest.com
 /privacy-security-tools/blockedinchina/^$boost=4,site=www.comparitech.com
 /chinesefirewall/^$boost=4,site=viewdns.info
 /p/623576755^$boost=4,site=zhuanlan.zhihu.com
+$boost=4,site=chinese.todaiinews.com
 /AnimeNep^$boost=4,site=t.me
 /category/c-pop/^$boost=4,site=jpop.xyz
 $boost=4,site=www.icourse163.org
@@ -19426,6 +19463,7 @@ $boost=4,site=www.iyf.tv
 $boost=4,site=gimytw.cc
 $boost=4,site=kokotv.me
 $boost=4,site=nunuju.com
+$boost=4,site=dramaq.xyz
 $boost=4,site=duanjuhk.com
 $boost=4,site=www.duboku.tv
 $boost=4,site=ccdm.cc
@@ -19546,6 +19584,7 @@ $boost=4,site=www.csfd.cz
 $boost=4,site=xtrance.info
 /index.html^$boost=4,site=pdfknihy.maxzone.eu
 $boost=4,site=www.databazeknih.cz
+/index.html^$boost=4,site=eknihovna.maxzone.eu
 $boost=4,site=prirucka.ujc.cas.cz
 /uvod.php^$boost=4,site=slovnikcestiny.cz
 $boost=4,site=webarchiv.cz
@@ -19560,8 +19599,11 @@ $boost=4,site=areena.yle.fi
 $boost=4,site=www.viddla.fi
 $boost=4,site=www.tvkaista.org
 $boost=4,site=podcast24.fi
+$boost=4,site=helpotnopat.fi
 $boost=4,site=www.lonnrot.net
 $boost=4,site=histdoc.net
+/1od83o4^$boost=4,site=redd.it
+/r/FrancePirate/^$boost=4,site=reddit.com
 $boost=4,site=www.subsynchro.com
 $boost=4,site=www.sous-titres.eu
 $boost=4,site=subfactory.fr
@@ -19584,7 +19626,6 @@ $boost=4,site=muaddib-sci-fi.blogspot.com
 $boost=4,site=www.pirate-punk.net
 $boost=4,site=www.emurom.net
 $boost=4,site=www.abandonware-magazines.org
-$boost=4,site=patsouloldies.blogspot.com
 /index.php^$boost=4,site=www.abandonware-france.org
 $boost=4,site=www.abandonware-videos.org
 $boost=4,site=www.yggtorrent.top
@@ -19598,7 +19639,7 @@ $boost=4,site=darkiworld11.com
 /tirexo_officiel^$boost=4,site=t.me
 $boost=4,site=xalaflix.gg
 $boost=4,site=xalaflix.fun
-/r%C3%A9pertoire.html^$boost=4,site=xalaflix.fr
+$boost=4,site=xalaflix.zip
 $boost=4,site=frembed.lat
 /+gBSyUOO_3D1mZDZk^$boost=4,site=t.me
 $boost=4,site=coflix.cc
@@ -19614,6 +19655,10 @@ $boost=4,site=humungus-cinebisart.blogspot.com
 $boost=4,site=www.tf1.fr
 $boost=4,site=www.french-streaming.tv
 $boost=4,site=cinestream.info
+$boost=4,site=nightflix.world
+$boost=4,site=flemmix.mom
+$boost=4,site=ww1.wiflix-adresses.fun
+$boost=4,site=fstream.info
 $boost=4,site=www.cinematheque-bretagne.bzh
 $boost=4,site=ici.tou.tv
 $boost=4,site=www.telequebec.tv
@@ -19654,6 +19699,7 @@ $boost=4,site=toplist.raidrush.ws
 $boost=4,site=boerse.am
 $boost=4,site=www.animexx.de
 $boost=4,site=wiidatabase.de
+/l2xu/betterbahn^$boost=4,site=github.com
 $boost=4,site=app.f-online.at
 $boost=4,site=signdict.org
 /PCJones/usenet-guide^$boost=4,site=github.com
@@ -19711,6 +19757,7 @@ $boost=4,site=kanjiku.net
 $boost=4,site=hoerbuch.us
 $boost=4,site=www.projekt-gutenberg.org
 $boost=4,site=www.sagen.at
+$boost=4,site=www.deutschelyrik.de
 $boost=4,site=greek-movies.com
 $boost=4,site=xrysoi.pro
 $boost=4,site=tainiesonline.xyz
@@ -19733,6 +19780,7 @@ $boost=4,site=stokourbeti.online
 $boost=4,site=greeksport.beer
 $boost=4,site=sportontv.xyz
 $boost=4,site=foothubhd.online
+$boost=4,site=greekdocumentaries2.blogspot.com
 $boost=4,site=live24.gr
 $boost=4,site=www.e-radio.gr
 $boost=4,site=www.subs4series.com
@@ -19771,7 +19819,7 @@ $boost=4,site=bhashini.gov.in
 $boost=4,site=pcpricetracker.in
 $boost=4,site=www.jagranjosh.com
 $boost=4,site=indiansignlanguage.org
-$boost=4,site=mkvcinemas.moi
+$boost=4,site=mkvcinemas.kids
 $boost=4,site=hdhub4u.gd
 $boost=4,site=moviesmod.cafe
 /en/scripts/474747^$boost=4,site=greasyfork.org
@@ -19779,8 +19827,9 @@ $boost=4,site=toonworld4all.me
 $boost=4,site=atozcartoonist.me
 $boost=4,site=www.toonshub.xyz
 $boost=4,site=hindi-lossless.blogspot.com
-$boost=4,site=www.1tamilmv.vc
+$boost=4,site=www.1tamilmv.farm
 $boost=4,site=bollyflix.army
+$boost=4,site=downloadhub.boston
 $boost=4,site=mkvmoviespoint.cool
 $boost=4,site=mkvmad.com
 $boost=4,site=privatemoviez.art
@@ -19828,6 +19877,9 @@ $boost=4,site=www.movi.pk
 $boost=4,site=cloudy.pk
 $boost=4,site=hindipix.com
 $boost=4,site=www.mxplayer.in
+$boost=4,site=www.desi-serials.to
+$boost=4,site=watch.desitv.to
+/channel-13^$boost=4,site=crickmail.pages.dev
 /kananinirav/Indian-IPTV-App^$boost=4,site=github.com
 $boost=4,site=kukufm.com
 $boost=4,site=www.onlinefmradio.in
@@ -19860,6 +19912,7 @@ $boost=4,site=ebook.twointomedia.com
 $boost=4,site=otakudesu.cloud
 $boost=4,site=www.ngefilm21.pw
 $boost=4,site=tv4.baladfilm.asia
+$boost=4,site=tv9.idlixku.com
 $boost=4,site=klikxxi.art
 $boost=4,site=www.klikxxi.com
 $boost=4,site=www.mynimeku.com
@@ -19933,6 +19986,8 @@ $boost=4,site=www.jpopsingles.eu
 $boost=4,site=jpop.xyz
 $boost=4,site=perfectdark.benri-tool.net
 $boost=4,site=bangumi.moe
+$boost=4,site=viu.tv
+$boost=4,site=hoy.tv
 $boost=4,site=sudatchi.com
 $boost=4,site=abema.tv
 $boost=4,site=web.utako.moe
@@ -19940,7 +19995,6 @@ $boost=4,site=web.utako.moe
 $boost=4,site=simulradio.info
 $boost=4,site=www.kagakueizo.org
 $boost=4,site=twitcasting.tv
-/Guides/rawmangaz/^$boost=4,site=claraiscute.neocities.org
 /Guides/rawmangaz/^$boost=4,site=claraiscute.pages.dev
 $boost=4,site=raw.senmanga.com
 $boost=4,site=dlraw.to
@@ -20058,10 +20112,10 @@ $boost=4,site=electro-torrent.pl
 $boost=4,site=kreskowki24.top
 $boost=4,site=www.obejrzyj.to
 $boost=4,site=ogladajanime.pl
-$boost=4,site=telewizjada.cc
 $boost=4,site=virpe.cc
 $boost=4,site=zerion.cc
 $boost=4,site=zaluknij.cc
+$boost=4,site=wizja.cc
 $boost=4,site=filser.cc
 $boost=4,site=bajeczki24.pl
 $boost=4,site=ekino-tv.pl
@@ -20246,6 +20300,7 @@ $boost=4,site=www.titrari.ro
 /protocol_vpn^$boost=4,site=t.me
 $boost=4,site=forum.ru-board.com
 /en/^$boost=4,site=reestr.rublacklist.net
+$boost=4,site=subtitry.ru
 $boost=4,site=dxp.ru
 /u2ckbot^$boost=4,site=t.me
 $boost=4,site=mail.ru
@@ -20318,12 +20373,16 @@ $boost=4,site=hd.kinogoo.cc
 $boost=4,site=filmix.biz
 $boost=4,site=kinovibe.co
 $boost=4,site=filmozavr.com
+$boost=4,site=turkatv.com
+$boost=4,site=staroetv.su
 $boost=4,site=seasonvar.ru
 $boost=4,site=gidanime.tv
 $boost=4,site=animang.one
 $boost=4,site=shiza-project.com
 $boost=4,site=anifilm.net
 $boost=4,site=anilibria.top
+$boost=4,site=site.yummyani.me
+$boost=4,site=animego.me
 $boost=4,site=animebuff.ru
 $boost=4,site=animestars.org
 $boost=4,site=anidub.pro
@@ -20336,6 +20395,7 @@ $boost=4,site=cccp-film.ru
 $boost=4,site=sovietmoviesonline.com
 $boost=4,site=vsedoramy.net
 $boost=4,site=www.dokonlin.online
+$boost=4,site=liveam.tv
 $boost=4,site=mult-fan.tv
 $boost=4,site=animatsiya.net
 $boost=4,site=turkishtv.co
@@ -20346,6 +20406,10 @@ $boost=4,site=tvrf.online
 $boost=4,site=ip.viks.tv
 $boost=4,site=telik.top
 $boost=4,site=ip.ontivi.net
+$boost=4,site=smotret.tv
+$boost=4,site=federal.tv
+/feeds/live/^$boost=4,site=rutube.ru
+/tv/^$boost=4,site=televizor24tochka.ru
 $boost=4,site=glaz.tv
 $boost=4,site=live.domatv.net
 $boost=4,site=finttv.in
@@ -20365,6 +20429,7 @@ $boost=4,site=dontaz.vercel.app
 $boost=4,site=www.twirpx.com
 $boost=4,site=www.studmed.ru
 $boost=4,site=www.alleng.org
+$boost=4,site=go.11klasov.net
 $boost=4,site=rusneb.ru
 $boost=4,site=obuchalka.org
 $boost=4,site=flibusta.site
@@ -20377,6 +20442,7 @@ $boost=4,site=mirknig.su
 $boost=4,site=ru.sait-knigi.ru
 $boost=4,site=fantasy-worlds.org
 $boost=4,site=booktracker.org
+$boost=4,site=mp3-book.com
 /archive/^$boost=4,site=gameland.ru
 $boost=4,site=mangalib.me
 /mm^$boost=4,site=comx.life
@@ -20398,6 +20464,7 @@ $boost=4,site=fantlab.ru
 $boost=4,site=www.markiza.sk
 /televizia/archiv^$boost=4,site=www.rtvs.sk
 $boost=4,site=www.mojevideo.sk
+/zadarmo/^$boost=4,site=pdfknihy.sk
 /awesome-telegram-redcarpet/^$boost=4,site=listados.gitlab.io
 /listados/awesome-telegram^$boost=4,site=gitlab.com
 $boost=4,site=www.minijuegos.com
@@ -20484,11 +20551,13 @@ $boost=4,site=www.tubepelis.com
 $boost=4,site=www.poseidonhd2.co
 $boost=4,site=ww3.pelisplus.to
 $boost=4,site=peligratis.fun
+$boost=4,site=repelisplus.today
 $boost=4,site=la.movie
 $boost=4,site=hackstore2.com
 $boost=4,site=www.cineplus.lat
 $boost=4,site=www.rarovhs.com
 $boost=4,site=pelispedia.mov
+$boost=4,site=tele-libre.fans
 $boost=4,site=rtvcplay.co
 $boost=4,site=futbollibrehd.cl
 $boost=4,site=la12hd.com
@@ -20575,11 +20644,13 @@ $boost=4,site=daprob.com
 $boost=4,site=novelasligeras.net
 $boost=4,site=www.izicomics.com
 $boost=4,site=megacomicstv3.blogspot.com
+$boost=4,site=foro.novenadimension.com
 /tupropiaaventura_bot^$boost=4,site=t.me
 $boost=4,site=booksmedicos.org
 $boost=4,site=www.manualpdf.es
 $boost=4,site=scielo.conicyt.cl
 $boost=4,site=www.rincondelvago.com
+/portales/literatura/multimedia_videoteca_signada/^$boost=4,site=www.cervantesvirtual.com
 $boost=4,site=www.eniro.se
 $boost=4,site=teckensprakslexikon.su.se
 $boost=4,site=www.svtplay.se
@@ -20728,6 +20799,7 @@ $boost=4,site=vtudien.com
 /gehkl0^$boost=4,site=redd.it
 $boost=4,site=www.kool.to
 $boost=4,site=keyman.com
+$boost=4,site=albkanale.com
 /amharicbookss^$boost=4,site=t.me
 $boost=4,site=yoda.az
 $boost=4,site=www.euskal-encodings.eus
@@ -20750,6 +20822,7 @@ $boost=4,site=shafilm.vip
 $boost=4,site=www.kurdcinama.com
 $boost=4,site=kurdsubtitle.net
 $boost=4,site=www.redzidzirdilatviju.lv
+$boost=4,site=vaizdopamokos.lt
 $boost=4,site=paper.naya.com.np
 $boost=4,site=tv.nrk.no
 /en/digitizing-at-the-national-library/^$boost=4,site=www.nb.no
@@ -21435,13 +21508,13 @@ $boost=2,site=xprime.today
 $boost=2,site=veloratv.ru
 $boost=2,site=456movie.net
 $boost=2,site=345movie.net
+$boost=2,site=aether.mom
 $boost=2,site=watch.spencerdevs.xyz
 $boost=2,site=spenflix.ru
 $boost=2,site=flixer.sh
 $boost=2,site=flixy.watch
 $boost=2,site=hexa.watch
 $boost=2,site=watch.vidora.su
-$boost=2,site=aether.mom
 $boost=2,site=rivestream.org
 $boost=2,site=rivestream.net
 $boost=2,site=www.rivestream.app
@@ -21456,6 +21529,7 @@ $boost=2,site=www.1flex.ru
 $boost=2,site=www.rgshows.ru
 $boost=2,site=cinegram.net
 $boost=2,site=filmcave.net
+$boost=2,site=cinema.bz
 $boost=2,site=popcornmovies.org
 $boost=2,site=smashystream.com
 $boost=2,site=flix.smashystream.xyz
@@ -21465,16 +21539,15 @@ $boost=2,site=bflix.sh
 $boost=2,site=moviehd.us
 $boost=2,site=www.primewire.mov
 $boost=2,site=www.primewire.tf
-$boost=2,site=streamdb.online
+$boost=2,site=streamdb.space
 $boost=2,site=projectfreetv.sx
 $boost=2,site=www.downloads-anymovies.co
 $boost=2,site=cse.google.com
 $boost=2,site=www.beech.watch
-$boost=2,site=mocine.cam
+$boost=2,site=www.cinezo.net
 $boost=2,site=cinemaos.live
 $boost=2,site=cinemaos.tech
 $boost=2,site=cinemaos.me
-$boost=2,site=www.cinezo.net
 $boost=2,site=filmex.to
 $boost=2,site=fmovies4u.com
 $boost=2,site=www.primeshows.live
@@ -21498,16 +21571,19 @@ $boost=2,site=hydrahd.ru
 $boost=2,site=hydrahd.info
 $boost=2,site=netplayz.live
 $boost=2,site=1primeshow.online
-$boost=2,site=cinepeace.in
-$boost=2,site=tmovie.tv
-$boost=2,site=www.boredflix.com
 $boost=2,site=redflix.co
 $boost=2,site=redflix.club
+$boost=2,site=cinepeace.in
+$boost=2,site=tmovie.tv
+$boost=2,site=flixvo.live
+$boost=2,site=flixvo.fun
+$boost=2,site=www.boredflix.com
 $boost=2,site=cinemadeck.com
 $boost=2,site=cinemadeck.st
 $boost=2,site=alienflix.net
 $boost=2,site=hexawatch.cc
 $boost=2,site=cinebolt.net
+$boost=2,site=lunastream.fun
 $boost=2,site=way2movies.live
 $boost=2,site=bingeflix.tv
 $boost=2,site=www.wooflixtv.co
@@ -21672,11 +21748,11 @@ $boost=2,site=animeyy.com
 $boost=2,site=otakuu.se
 $boost=2,site=aniwave.at
 $boost=2,site=tanime.tv
+$boost=2,site=www.animerealms.org
 $boost=2,site=animenosub.to
 $boost=2,site=anime.nexus
-$boost=2,site=www.animerealms.org
+$boost=2,site=justanime.to
 $boost=2,site=anixl.to
-$boost=2,site=bingoanime.net
 $boost=2,site=animehub.ac
 $boost=2,site=aninow.tv
 $boost=2,site=anizone.to
@@ -21800,6 +21876,8 @@ $boost=2,site=images.defence.gov.au
 $boost=2,site=www.defenceimagery.mod.uk
 $boost=2,site=www.dvidshub.net
 $boost=2,site=tv.garden
+$boost=2,site=playtorrioiptv.pages.dev
+$boost=2,site=tv-channels.pages.dev
 $boost=2,site=zhangboheng.github.io
 $boost=2,site=iptv-web.app
 $boost=2,site=ntvstream.cx
@@ -21810,7 +21888,6 @@ $boost=2,site=thedaddy.dad
 $boost=2,site=daddyny.com
 $boost=2,site=tvpass.org
 $boost=2,site=thetvapp.to
-$boost=2,site=tv-channels.pages.dev
 $boost=2,site=huhu.to
 $boost=2,site=vavoo.to
 $boost=2,site=kool.to
@@ -21839,10 +21916,11 @@ $boost=2,site=vaughn.live
 $boost=2,site=sync.coconono.org
 $boost=2,site=baked.live
 $boost=2,site=www.pracdev.org
-$boost=2,site=exptv.org
+$boost=2,site=linktr.ee
 $boost=2,site=ytch.tv
 $boost=2,site=freetvz.com
 $boost=2,site=tv.jest.one
+$boost=2,site=split-tv.co.il
 $boost=2,site=worldnews24.tv
 $boost=2,site=showroom-live.com
 $boost=2,site=kcnawatch.us
@@ -21865,7 +21943,10 @@ $boost=2,site=fstv.online
 $boost=2,site=fstv.space
 $boost=2,site=gofstv.live
 $boost=2,site=bintv.fun
+$boost=2,site=gotostreamly.sbs
+$boost=2,site=soccerstreamlinks.site
 $boost=2,site=sportsbite.cc
+$boost=2,site=allbite.xyz
 $boost=2,site=streameast.ga
 $boost=2,site=streameast.tw
 $boost=2,site=streameast.ph
@@ -21879,7 +21960,6 @@ $boost=2,site=watchfooty.live
 $boost=2,site=www.watchfooty.cc
 $boost=2,site=www.watchfooty.vip
 $boost=2,site=watchfty.win
-$boost=2,site=gotostreamly.sbs
 $boost=2,site=streamex.cc
 $boost=2,site=crackstreams.li
 $boost=2,site=streameast.art
@@ -21891,20 +21971,22 @@ $boost=2,site=buffstreams.app
 $boost=2,site=crichd.at
 $boost=2,site=crichd.com.co
 $boost=2,site=www.goalietrend.com
+$boost=2,site=viprow.cv
+$boost=2,site=nflbite.digital
+$boost=2,site=nhlbite.cc
 $boost=2,site=www.fctv33.click
 $boost=2,site=may01gu.risenow3mtjt0k.sbs
 $boost=2,site=emmau680.driveraudiencej2zeu49.sbs
 $boost=2,site=mrgamingstreams.org
 $boost=2,site=www.mrgbackup.link
-$boost=2,site=sportontv.online
-$boost=2,site=nflbite.digital
-$boost=2,site=nhlbite.cc
+$boost=2,site=sportontv.biz
 $boost=2,site=en12.sportplus.live
 $boost=2,site=streamfree.to
 $boost=2,site=crackstreams.blog
 $boost=2,site=www.viprow.nu
 $boost=2,site=720pstream.nu
 $boost=2,site=app.buffstream.io
+$boost=2,site=bundesliga.league.do
 $boost=2,site=starlive.click
 $boost=2,site=tv.tflix.app
 $boost=2,site=nbamonster.com
@@ -21965,7 +22047,6 @@ $boost=2,site=nilaoda.github.io
 $boost=2,site=tizentube.6513006.xyz
 $boost=2,site=www.webosbrew.org
 $boost=2,site=wispydocs.pages.dev
-$boost=2,site=linktr.ee
 $boost=2,site=channelstore.roku.com
 $boost=2,site=fcast.org
 $boost=2,site=streamfireapp.tv
@@ -22313,6 +22394,7 @@ $boost=2,site=agent.minimax.io
 $boost=2,site=dashboard.cohere.com
 $boost=2,site=console.upstage.ai
 $boost=2,site=stepfun.ai
+$boost=2,site=publicai.co
 $boost=2,site=chat.publicai.co
 $boost=2,site=www.reka.ai
 $boost=2,site=www.k2think.ai
@@ -22332,6 +22414,7 @@ $boost=2,site=freepass.ai
 $boost=2,site=ai.wr.do
 $boost=2,site=www.perplexity.ai
 $boost=2,site=www.cplx.app
+$boost=2,site=notebooklm.google
 $boost=2,site=google.com
 $boost=2,site=www.google.com
 $boost=2,site=learning.google.com
@@ -22340,7 +22423,6 @@ $boost=2,site=www.bohrium.com
 $boost=2,site=ekb.scinito.ai
 $boost=2,site=elicit.com
 $boost=2,site=privategpt.dev
-$boost=2,site=notebooklm.google
 $boost=2,site=www.onyx.app
 $boost=2,site=www.docsgpt.cloud
 $boost=2,site=hyper.space
@@ -22519,7 +22601,6 @@ $boost=2,site=suno.com
 $boost=2,site=sunoaiwiki.com
 $boost=2,site=tones.wolfram.com
 $boost=2,site=www.stableaudio.com
-$boost=2,site=www.udio.com
 $boost=2,site=fredericbriolet.com
 $boost=2,site=www.fakemusicgenerator.com
 $boost=2,site=sonauto.ai
@@ -22593,10 +22674,10 @@ $boost=2,site=apk4free.net
 $boost=2,site=forum.release-apk.com
 $boost=2,site=rexdl.com
 $boost=2,site=albertomosconi.github.io
+$boost=2,site=fdroid.tabler.dev
 $boost=2,site=droidify.eu.org
 $boost=2,site=f-droid.org
 $boost=2,site=gitlab.com
-$boost=2,site=fdroid.tabler.dev
 $boost=2,site=forum.f-droid.org
 $boost=2,site=android.izzysoft.de
 $boost=2,site=apt.izzysoft.de
@@ -22835,6 +22916,7 @@ $boost=2,site=www.moondownload.com
 $boost=2,site=readera.org
 $boost=2,site=elevenreader.io
 $boost=2,site=readwise.io
+$boost=2,site=eboox.app
 $boost=2,site=www.savpdfviewer.com
 $boost=2,site=fable.co
 $boost=2,site=basmo.app
@@ -22949,6 +23031,7 @@ $boost=2,site=jailbreaks.app
 $boost=2,site=ios.cfw.guide
 $boost=2,site=appledb.dev
 $boost=2,site=rejail.ru
+$boost=2,site=repo.cypwn.xyz
 $boost=2,site=ellekit.space
 $boost=2,site=palera.in
 $boost=2,site=checkra.in
@@ -23029,11 +23112,12 @@ $boost=2,site=paperback.moe
 $boost=2,site=aidoku.app
 $boost=2,site=www.suwatte.app
 $boost=2,site=prologue.audio
-$boost=2,site=eboox.app
 $boost=2,site=tachimanga.app
 $boost=2,site=en.wikipedia.org
 $boost=2,site=www.deezer.com
 $boost=2,site=moosync.app
+$boost=2,site=473999.net
+$boost=2,site=www.beatsync.gg
 $boost=2,site=alirezakj.com
 $boost=2,site=nuclearplayer.com
 $boost=2,site=funkwhale.audio
@@ -23041,21 +23125,20 @@ $boost=2,site=www.mp3jam.org
 $boost=2,site=muffon.netlify.app
 $boost=2,site=musicbucket.net
 $boost=2,site=sonosano.krshh.com
-$boost=2,site=www.beatsync.gg
-$boost=2,site=473999.net
 $boost=2,site=music.youtube.com
-$boost=2,site=nonoki.com
+$boost=2,site=zozoki.com
 $boost=2,site=themesong.app
 $boost=2,site=spot-transfer.vercel.app
 $boost=2,site=better-lyrics.boidu.dev
+$boost=2,site=dabmusic.xyz
 $boost=2,site=reddit.musicplayer.io
 $boost=2,site=artistgrid.cx
 $boost=2,site=open.spotify.com
 $boost=2,site=senpaihunters.github.io
 $boost=2,site=tidal.squid.wtf
-$boost=2,site=digger-ui.vercel.app
 $boost=2,site=monochrome.tf
 $boost=2,site=monochrome.prigoana.com
+$boost=2,site=digger-ui.vercel.app
 $boost=2,site=tidal.qqdl.site
 $boost=2,site=music.binimum.org
 $boost=2,site=audiomack.com
@@ -23319,9 +23402,9 @@ $boost=2,site=spotifyplaylistarchive.com
 $boost=2,site=lucida.to
 $boost=2,site=doubledouble.top
 $boost=2,site=spotisaver.net
-$boost=2,site=ytiz.xyz
 $boost=2,site=amp3.cc
 $boost=2,site=ezconv.com
+$boost=2,site=ytiz.xyz
 $boost=2,site=cobalt.tools
 $boost=2,site=instances.cobalt.best
 $boost=2,site=nicotine-plus.org
@@ -23696,7 +23779,7 @@ $boost=2,site=tonocracy.com
 $boost=2,site=www.neuralampmodeler.com
 $boost=2,site=guitarml.com
 $boost=2,site=www.ikmultimedia.com
-$boost=2,site=tonehunt.org
+$boost=2,site=tone3000.com
 $boost=2,site=presetshare.com
 $boost=2,site=vstskins.com
 $boost=2,site=tenacityaudio.org
@@ -23867,7 +23950,6 @@ $boost=2,site=softarchive.download
 $boost=2,site=sastatus.com
 $boost=2,site=filepursuit.com
 $boost=2,site=www.4shared.com
-$boost=2,site=meawfy.com
 $boost=2,site=www.ddlspot.com
 $boost=2,site=mediafiretrend.com
 $boost=2,site=warezomen.com
@@ -24007,10 +24089,10 @@ $boost=2,site=tutflix.org
 $boost=2,site=hacksnation.com
 $boost=2,site=tut4it.com
 $boost=2,site=freecoursesite.com
+$boost=2,site=freecoursesites.com
 $boost=2,site=docspedia.world
 $boost=2,site=freeeducationweb.com
 $boost=2,site=onehack.us
-$boost=2,site=freecoursesites.com
 $boost=2,site=technet24.ir
 $boost=2,site=afratafreeh.com
 $boost=2,site=learningdl.net
@@ -24631,6 +24713,7 @@ $boost=2,site=nextrocket.space
 $boost=2,site=rocketlaunch.org
 $boost=2,site=nssdc.gsfc.nasa.gov
 $boost=2,site=www.sen.com
+$boost=2,site=issinrealtime.org
 $boost=2,site=iss-sim.spacex.com
 $boost=2,site=transit-finder.com
 $boost=2,site=isstracker.pl
@@ -25404,6 +25487,7 @@ $boost=2,site=csrinstaff.writeas.com
 $boost=2,site=steamrip.com
 $boost=2,site=gog-games.to
 $boost=2,site=union-crax.xyz
+$boost=2,site=status.union-crax.xyz
 $boost=2,site=ankergames.net
 $boost=2,site=online-fix.me
 $boost=2,site=gamebounty.world
@@ -25413,7 +25497,6 @@ $boost=2,site=forum.torrminatorr.com
 $boost=2,site=rezi.one
 $boost=2,site=playseek.app
 $boost=2,site=gload.to
-$boost=2,site=gamesdrive.net
 $boost=2,site=steamgg.net
 $boost=2,site=fluxyrepacks.xyz
 $boost=2,site=gomorgames.com
@@ -26787,7 +26870,7 @@ $boost=2,site=terminal.sexy
 $boost=2,site=terminalsplash.com
 $boost=2,site=ethanschoonover.com
 $boost=2,site=windowsterminalthemes.dev
-$boost=2,site=moddingstuff.site
+$boost=2,site=roigoatzzz.github.io
 $boost=2,site=wallsync.pages.dev
 $boost=2,site=wall.alphacoders.com
 $boost=2,site=we-img-search.ordinall.me
@@ -27153,7 +27236,7 @@ $boost=2,site=archive.ph
 $boost=2,site=archive.vn
 $boost=2,site=archive.fo
 $boost=2,site=gitflic.ru
-$boost=2,site=freedium.cfd
+$boost=2,site=freedium-mirror.cfd
 $boost=2,site=readmedium.com
 $boost=2,site=wallabag.org
 $boost=2,site=paywallbuster.com
@@ -27386,6 +27469,7 @@ $boost=2,site=x.gd
 $boost=2,site=bom.so
 $boost=2,site=by.com.vn
 $boost=2,site=blyto.com
+$boost=2,site=www.1sh.pl
 $boost=2,site=home.s.id
 $boost=2,site=creator.linkify.cz
 $boost=2,site=jii.li
@@ -27443,7 +27527,6 @@ $boost=2,site=edumail.icu
 $boost=2,site=tempumail.com
 $boost=2,site=etempmail.com
 $boost=2,site=tempmail.edu.kg
-$boost=2,site=tempmailhub.org
 $boost=2,site=www.guerrillamail.com
 $boost=2,site=www.sharklasers.com
 $boost=2,site=tmail.io
@@ -27532,6 +27615,7 @@ $boost=2,site=browsers.avoidthehack.com
 $boost=2,site=fmhy.net
 $boost=2,site=browserbench.org
 $boost=2,site=wpt.fyi
+$boost=2,site=www.aloneguid.uk
 $boost=2,site=vsynctester.com
 $boost=2,site=geminiprotocol.net
 $boost=2,site=yesterweb.org
@@ -27652,6 +27736,7 @@ $boost=2,site=ohshint.gitbook.io
 $boost=2,site=www.osintcombine.com
 $boost=2,site=bellingcat.gitbook.io
 $boost=2,site=rr.reuser.biz
+$boost=2,site=pikaosint.pages.dev
 $boost=2,site=www.uk-osint.net
 $boost=2,site=osintframework.com
 $boost=2,site=www.osintessentials.com
@@ -28739,13 +28824,14 @@ $boost=2,site=kodi.wiki
 $boost=2,site=playlist.kwiatekmiki.pl
 $boost=2,site=playlist.kwiatekmiki.com
 $boost=2,site=9xbuddy.com
-$boost=2,site=9xbuddy.online
+$boost=2,site=9xbuddy.site
 $boost=2,site=9xbuddy.in
 $boost=2,site=www.downloadhelper.net
 $boost=2,site=fetchv.net
 $boost=2,site=mpmux.com
 $boost=2,site=cdm-project.com
 $boost=2,site=www.videofk.com
+$boost=2,site=oneforalldownloader.com
 $boost=2,site=ssstik.io
 $boost=2,site=myfavett.com
 $boost=2,site=threadsdownloader.com
@@ -29040,6 +29126,7 @@ $boost=2,site=www.howacarworks.com
 $boost=2,site=igcd.net
 $boost=2,site=platerecognizer.com
 $boost=2,site=gasprices.aaa.com
+$boost=2,site=lubelogger.com
 $boost=2,site=www.atlasobscura.com
 $boost=2,site=app.atlasobscura.com
 $boost=2,site=www.wikivoyage.org
@@ -29275,6 +29362,7 @@ $boost=2,site=www.newsminimalist.com
 $boost=2,site=www.aldaily.com
 $boost=2,site=ground.news
 $boost=2,site=upstract.com
+$boost=2,site=100.news
 $boost=2,site=www.allsides.com
 $boost=2,site=spidr.today
 $boost=2,site=www.newsnow.co.uk
@@ -29284,6 +29372,7 @@ $boost=2,site=sumi.news
 $boost=2,site=alltop.com
 $boost=2,site=gamersnexus.net
 $boost=2,site=news.ycombinator.com
+$boost=2,site=deadstack.net
 $boost=2,site=techurls.com
 $boost=2,site=www.techmeme.com
 $boost=2,site=brutalist.report
@@ -29634,7 +29723,6 @@ $boost=2,site=monerica.com
 $boost=2,site=www.thisiswhyimbroke.com
 $boost=2,site=darkpatternstipline.org
 $boost=2,site=games.productartistry.com
-$boost=2,site=redditfavorites.com
 $boost=2,site=kit.co
 $boost=2,site=www.looria.com
 $boost=2,site=producthunt.com
@@ -29677,6 +29765,7 @@ $boost=2,site=www.gsmarena.com
 $boost=2,site=prepaidcompare.net
 $boost=2,site=phonedb.net
 $boost=2,site=www.gsmchoice.com
+$boost=2,site=www.antutu.com
 $boost=2,site=www.kimovil.com
 $boost=2,site=www.cpubenchmark.net
 $boost=2,site=www.notebookcheck.net
@@ -30185,7 +30274,6 @@ $boost=2,site=8values.github.io
 $boost=2,site=www.hownormalami.eu
 $boost=2,site=www.detect-face-shape.com
 $boost=2,site=www.faceshapedetectors.org
-$boost=2,site=www.howolddoilook.io
 $boost=2,site=you.regettingold.com
 $boost=2,site=heyfromthefuture.com
 $boost=2,site=www.sbs.com.au
@@ -30684,6 +30772,7 @@ $boost=2,site=mangaberri.com
 $boost=2,site=www.webtoons.com
 $boost=2,site=toonily.com
 $boost=2,site=manhwaclan.com
+$boost=2,site=aquareader.net
 $boost=2,site=medibang.com
 $boost=2,site=namicomi.com
 $boost=2,site=mp4directs.com
@@ -30990,6 +31079,7 @@ $boost=2,site=oku.club
 $boost=2,site=literal.club
 $boost=2,site=joinbookwyrm.com
 $boost=2,site=bookwyrm.social
+$boost=2,site=ranobedb.org
 $boost=2,site=hardcover.app
 $boost=2,site=www.librarything.com
 $boost=2,site=www.candlapp.com
@@ -31087,6 +31177,7 @@ $boost=2,site=bt4gprx.com
 $boost=2,site=piratesparadise.org
 $boost=2,site=snowfl.com
 $boost=2,site=www.torlock.com
+$boost=2,site=uindex.org
 $boost=2,site=btsearch.19950817.xyz
 $boost=2,site=www.0mag.net
 $boost=2,site=16mag.net
@@ -31158,9 +31249,9 @@ $boost=2,site=tailblend.vercel.app
 $boost=2,site=ruyili.ca
 $boost=2,site=picfont.com
 $boost=2,site=www.gimp.org
-$boost=2,site=www.pinta-project.com
 $boost=2,site=imagemagick.org
 $boost=2,site=www.fmwconcepts.com
+$boost=2,site=www.affinity.studio
 $boost=2,site=lazpaint.github.io
 $boost=2,site=photodemon.org
 $boost=2,site=www.getpaint.net
@@ -31237,7 +31328,7 @@ $boost=2,site=pbnify.com
 $boost=2,site=nathanielw.github.io
 $boost=2,site=krita.org
 $boost=2,site=viliusle.github.io
-$boost=2,site=www.autodraw.com
+$boost=2,site=www.pinta-project.com
 $boost=2,site=qrli.github.io
 $boost=2,site=inkscape.org
 $boost=2,site=firealpaca.com
@@ -31245,6 +31336,7 @@ $boost=2,site=pixieditor.net
 $boost=2,site=sumopaint.com
 $boost=2,site=wigglypaint.net
 $boost=2,site=www.miltonpaint.com
+$boost=2,site=www.autodraw.com
 $boost=2,site=start.provector.app
 $boost=2,site=graphite.rs
 $boost=2,site=www.vectorpea.com
@@ -31323,7 +31415,6 @@ $boost=2,site=www.breakyourownnews.com
 $boost=2,site=animorphgenerator.com
 $boost=2,site=awesomecars.neocities.org
 $boost=2,site=gifmemes.io
-$boost=2,site=pilssken.neocities.org
 $boost=2,site=www.evernote.design
 $boost=2,site=archives.design
 $boost=2,site=onepagelove.com
@@ -31485,7 +31576,6 @@ $boost=2,site=mockups-design.com
 $boost=2,site=zippypixels.com
 $boost=2,site=mockups.pixeltrue.com
 $boost=2,site=mockupsforfree.com
-$boost=2,site=git.macaw.me
 $boost=2,site=www.artstation.com
 $boost=2,site=www.pixiv.net
 $boost=2,site=pixiv.navirank.com
@@ -32487,7 +32577,6 @@ $boost=2,site=history.geometrydash.eu
 $boost=2,site=delugedrop.itch.io
 $boost=2,site=3dashdl.pages.dev
 $boost=2,site=3dashdemonlist.github.io
-$boost=2,site=archive.roblonium.com
 $boost=2,site=www.rolimons.com
 $boost=2,site=rotrends.com
 $boost=2,site=romonitorstats.com
@@ -33371,6 +33460,12 @@ $boost=2,site=dogbolt.org
 $boost=2,site=app.code2flow.com
 $boost=2,site=flowchart.js.org
 $boost=2,site=masscode.io
+$boost=2,site=www.ray.so
+$boost=2,site=carbon.now.sh
+$boost=2,site=codeimage.dev
+$boost=2,site=showcode.app
+$boost=2,site=beauty.codes
+$boost=2,site=chalk.ist
 $boost=2,site=meld.app
 $boost=2,site=meldmerge.org
 $boost=2,site=winmerge.org
@@ -33533,6 +33628,7 @@ $boost=2,site=deformity.ai
 $boost=2,site=www.stylr.xyz
 $boost=2,site=flounder.online
 $boost=2,site=www.websiteplanet.com
+$boost=2,site=networkingtoolbox.net
 $boost=2,site=www.browserling.com
 $boost=2,site=webcode.tools
 $boost=2,site=ui.shadcn.com
@@ -34092,6 +34188,8 @@ $boost=2,site=ba.kirmalk.com
 $boost=2,site=witanime.cyou
 $boost=2,site=okanime.tv
 $boost=2,site=ristoanime.com
+$boost=2,site=witanime.red
+$boost=2,site=ww1.animeiat.tv
 $boost=2,site=anslayerweb.com
 $boost=2,site=animezid.net
 $boost=2,site=animerco.org
@@ -34119,6 +34217,7 @@ $boost=2,site=ar.kenmanga.com
 $boost=2,site=www.hijala.com
 $boost=2,site=www.aldiwan.net
 $boost=2,site=www.almaany.com
+$boost=2,site=www.dohadictionary.org
 $boost=2,site=ar.mo3jam.com
 $boost=2,site=www.omicronlab.com
 $boost=2,site=avro.im
@@ -34132,6 +34231,13 @@ $boost=2,site=www.amarbooks.org
 $boost=2,site=boimate.com
 $boost=2,site=www.ebanglalibrary.com
 $boost=2,site=www.worldmets.com
+$boost=2,site=bengaliebook.com
+$boost=2,site=boierthikana.com
+$boost=2,site=banglaclassicbooks.blogspot.com
+$boost=2,site=allbanglaboi.com
+$boost=2,site=granthagara.com
+$boost=2,site=bookspointer.com
+$boost=2,site=jyotirjagat.wordpress.com
 $boost=2,site=www.banglabook.org
 $boost=2,site=www.gobanglabooks.com
 $boost=2,site=sovietbooksinbengali.blogspot.com
@@ -34139,6 +34245,7 @@ $boost=2,site=nctb.portal.gov.bd
 $boost=2,site=mlsbd.co
 $boost=2,site=moviedokan.my
 $boost=2,site=jbmoviebd.shop
+$boost=2,site=emwbd.shop
 $boost=2,site=www.music.com.bd
 $boost=2,site=bhoot-fm.com
 $boost=2,site=fibwatch.art
@@ -34160,6 +34267,8 @@ $boost=2,site=233heji.com
 $boost=2,site=www.bajins.com
 $boost=2,site=www.ixigua.com
 $boost=2,site=linux.do
+$boost=2,site=arch.icekylin.online
+$boost=2,site=archlinuxcn.org
 $boost=2,site=assbbs.com
 $boost=2,site=assrt.net
 $boost=2,site=srtku.com
@@ -34206,6 +34315,7 @@ $boost=2,site=www.dotcom-tools.com
 $boost=2,site=www.chinafirewalltest.com
 $boost=2,site=viewdns.info
 $boost=2,site=zhuanlan.zhihu.com
+$boost=2,site=chinese.todaiinews.com
 $boost=2,site=jpop.xyz
 $boost=2,site=www.icourse163.org
 $boost=2,site=www.iyd.wang
@@ -34243,6 +34353,7 @@ $boost=2,site=www.iyf.tv
 $boost=2,site=gimytw.cc
 $boost=2,site=kokotv.me
 $boost=2,site=nunuju.com
+$boost=2,site=dramaq.xyz
 $boost=2,site=duanjuhk.com
 $boost=2,site=www.duboku.tv
 $boost=2,site=ccdm.cc
@@ -34355,6 +34466,7 @@ $boost=2,site=www.csfd.cz
 $boost=2,site=xtrance.info
 $boost=2,site=pdfknihy.maxzone.eu
 $boost=2,site=www.databazeknih.cz
+$boost=2,site=eknihovna.maxzone.eu
 $boost=2,site=prirucka.ujc.cas.cz
 $boost=2,site=slovnikcestiny.cz
 $boost=2,site=webarchiv.cz
@@ -34369,6 +34481,7 @@ $boost=2,site=areena.yle.fi
 $boost=2,site=www.viddla.fi
 $boost=2,site=www.tvkaista.org
 $boost=2,site=podcast24.fi
+$boost=2,site=helpotnopat.fi
 $boost=2,site=www.lonnrot.net
 $boost=2,site=histdoc.net
 $boost=2,site=www.subsynchro.com
@@ -34392,7 +34505,6 @@ $boost=2,site=muaddib-sci-fi.blogspot.com
 $boost=2,site=www.pirate-punk.net
 $boost=2,site=www.emurom.net
 $boost=2,site=www.abandonware-magazines.org
-$boost=2,site=patsouloldies.blogspot.com
 $boost=2,site=www.abandonware-france.org
 $boost=2,site=www.abandonware-videos.org
 $boost=2,site=www.yggtorrent.top
@@ -34405,7 +34517,7 @@ $boost=2,site=movix.website
 $boost=2,site=darkiworld11.com
 $boost=2,site=xalaflix.gg
 $boost=2,site=xalaflix.fun
-$boost=2,site=xalaflix.fr
+$boost=2,site=xalaflix.zip
 $boost=2,site=frembed.lat
 $boost=2,site=coflix.cc
 $boost=2,site=www.filmoflix.is
@@ -34419,6 +34531,10 @@ $boost=2,site=humungus-cinebisart.blogspot.com
 $boost=2,site=www.tf1.fr
 $boost=2,site=www.french-streaming.tv
 $boost=2,site=cinestream.info
+$boost=2,site=nightflix.world
+$boost=2,site=flemmix.mom
+$boost=2,site=ww1.wiflix-adresses.fun
+$boost=2,site=fstream.info
 $boost=2,site=www.cinematheque-bretagne.bzh
 $boost=2,site=ici.tou.tv
 $boost=2,site=www.telequebec.tv
@@ -34512,6 +34628,7 @@ $boost=2,site=kanjiku.net
 $boost=2,site=hoerbuch.us
 $boost=2,site=www.projekt-gutenberg.org
 $boost=2,site=www.sagen.at
+$boost=2,site=www.deutschelyrik.de
 $boost=2,site=greek-movies.com
 $boost=2,site=xrysoi.pro
 $boost=2,site=tainiesonline.xyz
@@ -34534,6 +34651,7 @@ $boost=2,site=stokourbeti.online
 $boost=2,site=greeksport.beer
 $boost=2,site=sportontv.xyz
 $boost=2,site=foothubhd.online
+$boost=2,site=greekdocumentaries2.blogspot.com
 $boost=2,site=live24.gr
 $boost=2,site=www.e-radio.gr
 $boost=2,site=www.subs4series.com
@@ -34570,15 +34688,16 @@ $boost=2,site=bhashini.gov.in
 $boost=2,site=pcpricetracker.in
 $boost=2,site=www.jagranjosh.com
 $boost=2,site=indiansignlanguage.org
-$boost=2,site=mkvcinemas.moi
+$boost=2,site=mkvcinemas.kids
 $boost=2,site=hdhub4u.gd
 $boost=2,site=moviesmod.cafe
 $boost=2,site=toonworld4all.me
 $boost=2,site=atozcartoonist.me
 $boost=2,site=www.toonshub.xyz
 $boost=2,site=hindi-lossless.blogspot.com
-$boost=2,site=www.1tamilmv.vc
+$boost=2,site=www.1tamilmv.farm
 $boost=2,site=bollyflix.army
+$boost=2,site=downloadhub.boston
 $boost=2,site=mkvmoviespoint.cool
 $boost=2,site=mkvmad.com
 $boost=2,site=privatemoviez.art
@@ -34621,6 +34740,9 @@ $boost=2,site=www.movi.pk
 $boost=2,site=cloudy.pk
 $boost=2,site=hindipix.com
 $boost=2,site=www.mxplayer.in
+$boost=2,site=www.desi-serials.to
+$boost=2,site=watch.desitv.to
+$boost=2,site=crickmail.pages.dev
 $boost=2,site=kukufm.com
 $boost=2,site=www.onlinefmradio.in
 $boost=2,site=www.hungama.com
@@ -34647,6 +34769,7 @@ $boost=2,site=ebook.twointomedia.com
 $boost=2,site=otakudesu.cloud
 $boost=2,site=www.ngefilm21.pw
 $boost=2,site=tv4.baladfilm.asia
+$boost=2,site=tv9.idlixku.com
 $boost=2,site=klikxxi.art
 $boost=2,site=www.klikxxi.com
 $boost=2,site=www.mynimeku.com
@@ -34708,6 +34831,8 @@ $boost=2,site=sukidesuost.info
 $boost=2,site=www.jpopsingles.eu
 $boost=2,site=perfectdark.benri-tool.net
 $boost=2,site=bangumi.moe
+$boost=2,site=viu.tv
+$boost=2,site=hoy.tv
 $boost=2,site=sudatchi.com
 $boost=2,site=abema.tv
 $boost=2,site=web.utako.moe
@@ -34812,10 +34937,10 @@ $boost=2,site=electro-torrent.pl
 $boost=2,site=kreskowki24.top
 $boost=2,site=www.obejrzyj.to
 $boost=2,site=ogladajanime.pl
-$boost=2,site=telewizjada.cc
 $boost=2,site=virpe.cc
 $boost=2,site=zerion.cc
 $boost=2,site=zaluknij.cc
+$boost=2,site=wizja.cc
 $boost=2,site=filser.cc
 $boost=2,site=bajeczki24.pl
 $boost=2,site=ekino-tv.pl
@@ -34988,6 +35113,7 @@ $boost=2,site=www.subtitrari-noi.ro
 $boost=2,site=www.titrari.ro
 $boost=2,site=forum.ru-board.com
 $boost=2,site=reestr.rublacklist.net
+$boost=2,site=subtitry.ru
 $boost=2,site=dxp.ru
 $boost=2,site=mail.ru
 $boost=2,site=r0.ru
@@ -35048,12 +35174,16 @@ $boost=2,site=hd.kinogoo.cc
 $boost=2,site=filmix.biz
 $boost=2,site=kinovibe.co
 $boost=2,site=filmozavr.com
+$boost=2,site=turkatv.com
+$boost=2,site=staroetv.su
 $boost=2,site=seasonvar.ru
 $boost=2,site=gidanime.tv
 $boost=2,site=animang.one
 $boost=2,site=shiza-project.com
 $boost=2,site=anifilm.net
 $boost=2,site=anilibria.top
+$boost=2,site=site.yummyani.me
+$boost=2,site=animego.me
 $boost=2,site=animebuff.ru
 $boost=2,site=animestars.org
 $boost=2,site=anidub.pro
@@ -35066,6 +35196,7 @@ $boost=2,site=cccp-film.ru
 $boost=2,site=sovietmoviesonline.com
 $boost=2,site=vsedoramy.net
 $boost=2,site=www.dokonlin.online
+$boost=2,site=liveam.tv
 $boost=2,site=mult-fan.tv
 $boost=2,site=animatsiya.net
 $boost=2,site=turkishtv.co
@@ -35076,6 +35207,9 @@ $boost=2,site=tvrf.online
 $boost=2,site=ip.viks.tv
 $boost=2,site=telik.top
 $boost=2,site=ip.ontivi.net
+$boost=2,site=smotret.tv
+$boost=2,site=federal.tv
+$boost=2,site=televizor24tochka.ru
 $boost=2,site=glaz.tv
 $boost=2,site=live.domatv.net
 $boost=2,site=finttv.in
@@ -35092,6 +35226,7 @@ $boost=2,site=dontaz.vercel.app
 $boost=2,site=www.twirpx.com
 $boost=2,site=www.studmed.ru
 $boost=2,site=www.alleng.org
+$boost=2,site=go.11klasov.net
 $boost=2,site=rusneb.ru
 $boost=2,site=obuchalka.org
 $boost=2,site=flibusta.site
@@ -35104,6 +35239,7 @@ $boost=2,site=mirknig.su
 $boost=2,site=ru.sait-knigi.ru
 $boost=2,site=fantasy-worlds.org
 $boost=2,site=booktracker.org
+$boost=2,site=mp3-book.com
 $boost=2,site=gameland.ru
 $boost=2,site=mangalib.me
 $boost=2,site=comx.life
@@ -35123,6 +35259,7 @@ $boost=2,site=www.joj.sk
 $boost=2,site=www.markiza.sk
 $boost=2,site=www.rtvs.sk
 $boost=2,site=www.mojevideo.sk
+$boost=2,site=pdfknihy.sk
 $boost=2,site=listados.gitlab.io
 $boost=2,site=www.minijuegos.com
 $boost=2,site=emojitool.com
@@ -35201,11 +35338,13 @@ $boost=2,site=www.tubepelis.com
 $boost=2,site=www.poseidonhd2.co
 $boost=2,site=ww3.pelisplus.to
 $boost=2,site=peligratis.fun
+$boost=2,site=repelisplus.today
 $boost=2,site=la.movie
 $boost=2,site=hackstore2.com
 $boost=2,site=www.cineplus.lat
 $boost=2,site=www.rarovhs.com
 $boost=2,site=pelispedia.mov
+$boost=2,site=tele-libre.fans
 $boost=2,site=rtvcplay.co
 $boost=2,site=futbollibrehd.cl
 $boost=2,site=la12hd.com
@@ -35288,10 +35427,12 @@ $boost=2,site=daprob.com
 $boost=2,site=novelasligeras.net
 $boost=2,site=www.izicomics.com
 $boost=2,site=megacomicstv3.blogspot.com
+$boost=2,site=foro.novenadimension.com
 $boost=2,site=booksmedicos.org
 $boost=2,site=www.manualpdf.es
 $boost=2,site=scielo.conicyt.cl
 $boost=2,site=www.rincondelvago.com
+$boost=2,site=www.cervantesvirtual.com
 $boost=2,site=www.eniro.se
 $boost=2,site=teckensprakslexikon.su.se
 $boost=2,site=www.svtplay.se
@@ -35420,6 +35561,7 @@ $boost=2,site=vdict.com
 $boost=2,site=vtudien.com
 $boost=2,site=www.kool.to
 $boost=2,site=keyman.com
+$boost=2,site=albkanale.com
 $boost=2,site=yoda.az
 $boost=2,site=www.euskal-encodings.eus
 $boost=2,site=radioplayer.be
@@ -35439,6 +35581,7 @@ $boost=2,site=shafilm.vip
 $boost=2,site=www.kurdcinama.com
 $boost=2,site=kurdsubtitle.net
 $boost=2,site=www.redzidzirdilatviju.lv
+$boost=2,site=vaizdopamokos.lt
 $boost=2,site=paper.naya.com.np
 $boost=2,site=tv.nrk.no
 $boost=2,site=www.nb.no
@@ -35931,16 +36074,16 @@ $boost=2,site=www.real.discount
 $boost=2,site=www.onlinetutorials.org
 $boost=2,site=scrollcoupons.com
 $boost=2,site=udemyxpert.com
-$boost=5,site=www.cineby.gd
+/halloween^$boost=5,site=www.cineby.gd
 $boost=5,site=pstream.mov
 $boost=5,site=xprime.tv
 $boost=5,site=veloratv.ru
+$boost=5,site=aether.mom
 $boost=5,site=watch.spencerdevs.xyz
 $boost=5,site=flixer.sh
-$boost=5,site=aether.mom
 $boost=5,site=www.beech.watch
-$boost=5,site=cinemaos.live
 $boost=5,site=www.cinezo.net
+$boost=5,site=cinemaos.live
 $boost=5,site=yflix.to
 $boost=5,site=ee3.me
 $boost=5,site=qstream.pages.dev
@@ -35980,6 +36123,7 @@ $boost=5,site=dramacool.com.tr
 /film-and-videos/^$boost=5,site=www.loc.gov
 /@USNationalArchives^$boost=5,site=www.youtube.com
 $boost=5,site=tv.garden
+$boost=5,site=playtorrioiptv.pages.dev
 /Easy-Web-TV-M3u8/routes/countries.html^$boost=5,site=zhangboheng.github.io
 $boost=5,site=ntvstream.cx
 /livetv/^$boost=5,site=www.rgshows.ru
@@ -35993,6 +36137,7 @@ $boost=5,site=ppv.to
 $boost=5,site=sport7.pro
 $boost=5,site=fstv.online
 $boost=5,site=bintv.fun
+$boost=5,site=gotostreamly.sbs
 $boost=5,site=sportsbite.cc
 $boost=5,site=streameast.ga
 /enx/^$boost=5,site=livetv.sx
@@ -36016,6 +36161,7 @@ $boost=5,site=movieparadise.org
 $boost=5,site=rivestream.org
 $boost=5,site=www.1shows.ru
 $boost=5,site=cinepeace.in
+$boost=5,site=lunastream.fun
 $boost=5,site=vidbox.cc
 $boost=5,site=dramaday.me
 $boost=5,site=mkvdrama.org
@@ -36027,6 +36173,7 @@ $boost=5,site=hi10anime.com
 /cse?cx=006516753008110874046:osnah6w0yw8^$boost=5,site=cse.google.com
 $boost=5,site=hakuneko.download
 $boost=5,site=www.stremio.com
+$boost=5,site=playtorrio.pages.dev
 /Prowlarr/Prowlarr^$boost=5,site=github.com
 $boost=5,site=radarr.video
 $boost=5,site=sonarr.tv
@@ -36079,6 +36226,7 @@ $boost=5,site=www.kimi.com
 /?mode=direct^$boost=5,site=lmarena.ai
 /?mode=direct&chat-modality=search^$boost=5,site=lmarena.ai
 $boost=5,site=www.perplexity.ai
+$boost=5,site=notebooklm.google
 $boost=5,site=docs.sillytavern.app
 $boost=5,site=openwebui.com
 $boost=5,site=jan.ai
@@ -36294,6 +36442,7 @@ $boost=5,site=aidoku.app
 /th-ch/youtube-music^$boost=5,site=github.com
 $boost=5,site=music.youtube.com
 $boost=5,site=themesong.app
+$boost=5,site=dabmusic.xyz
 $boost=5,site=reddit.musicplayer.io
 $boost=5,site=soundcloud.com
 $boost=5,site=artistgrid.cx
@@ -36815,7 +36964,7 @@ $boost=5,site=keepass.info
 /pass^$boost=5,site=proton.me
 $boost=5,site=archive.is
 /project/magnolia1234/bpc_uploads^$boost=5,site=gitflic.ru
-$boost=5,site=freedium.cfd
+$boost=5,site=freedium-mirror.cfd
 $boost=5,site=wallabag.org
 $boost=5,site=linktr.ee
 $boost=5,site=linkstack.org
@@ -37176,13 +37325,13 @@ $boost=5,site=libgen.li
 $boost=5,site=www.gutenberg.org
 $boost=5,site=unglue.it
 $boost=5,site=translator.bookfere.com
-/books^$boost=5,site=play.google.com
 /pdf-reader/^$boost=5,site=www.foxit.com
 $boost=5,site=www.koodoreader.com
 /free-pdf-reader^$boost=5,site=www.sumatrapdfreader.org
 $boost=5,site=calibre-ebook.com
 /plateaukao/einkbro^$boost=5,site=github.com
 /listing/chrome-reader-view.html^$boost=5,site=webextension.org
+/books^$boost=5,site=play.google.com
 /ciromattia/kcc^$boost=5,site=github.com
 /special/index^$boost=5,site=theanarchistlibrary.org
 $boost=5,site=www.novelupdates.com
@@ -37265,7 +37414,6 @@ $boost=5,site=predb.net
 /t2m/^$boost=5,site=nutbread.github.io
 $boost=5,site=magnet2torrent.com
 $boost=5,site=www.gimp.org
-$boost=5,site=www.pinta-project.com
 /index.php^$boost=5,site=imagemagick.org
 $boost=5,site=pixlr.com
 $boost=5,site=lunapic.com
@@ -37281,7 +37429,7 @@ $boost=5,site=openmodeldb.info
 $boost=5,site=moshpro.app
 /en/^$boost=5,site=krita.org
 /miniPaint/^$boost=5,site=viliusle.github.io
-$boost=5,site=www.autodraw.com
+$boost=5,site=www.pinta-project.com
 /aseprite/aseprite^$boost=5,site=github.com
 $boost=5,site=libresprite.github.io
 $boost=5,site=www.piskelapp.com
@@ -37632,7 +37780,7 @@ $boost=5,site=s.to
 $boost=5,site=filmpalast.to
 $boost=5,site=moviedrive.hu
 /?type=uhdmovies^$boost=5,site=modlist.in
-$boost=5,site=mkvcinemas.moi
+$boost=5,site=mkvcinemas.kids
 $boost=5,site=hdhub4u.gd
 $boost=5,site=moviesmod.cafe
 /category/cartoon/^$boost=5,site=sdtoons.in
@@ -37640,7 +37788,7 @@ $boost=5,site=toonworld4all.me
 $boost=5,site=atozcartoonist.me
 $boost=5,site=www.toonshub.xyz
 $boost=5,site=hindi-lossless.blogspot.com
-$boost=5,site=www.1tamilmv.vc
+$boost=5,site=www.1tamilmv.farm
 $boost=5,site=www.cineby.app
 $boost=5,site=hydrahd.com
 $boost=5,site=toonstream.love
@@ -37729,12 +37877,12 @@ $boost=3,site=www.cineby.gd
 $boost=3,site=pstream.mov
 $boost=3,site=xprime.tv
 $boost=3,site=veloratv.ru
+$boost=3,site=aether.mom
 $boost=3,site=watch.spencerdevs.xyz
 $boost=3,site=flixer.sh
-$boost=3,site=aether.mom
 $boost=3,site=www.beech.watch
-$boost=3,site=cinemaos.live
 $boost=3,site=www.cinezo.net
+$boost=3,site=cinemaos.live
 $boost=3,site=yflix.to
 $boost=3,site=ee3.me
 $boost=3,site=qstream.pages.dev
@@ -37772,6 +37920,7 @@ $boost=3,site=dramacool.com.tr
 $boost=3,site=archive.org
 $boost=3,site=www.loc.gov
 $boost=3,site=tv.garden
+$boost=3,site=playtorrioiptv.pages.dev
 $boost=3,site=zhangboheng.github.io
 $boost=3,site=ntvstream.cx
 $boost=3,site=www.rgshows.ru
@@ -37784,6 +37933,7 @@ $boost=3,site=ppv.to
 $boost=3,site=sport7.pro
 $boost=3,site=fstv.online
 $boost=3,site=bintv.fun
+$boost=3,site=gotostreamly.sbs
 $boost=3,site=sportsbite.cc
 $boost=3,site=streameast.ga
 $boost=3,site=livetv.sx
@@ -37805,6 +37955,7 @@ $boost=3,site=movieparadise.org
 $boost=3,site=rivestream.org
 $boost=3,site=www.1shows.ru
 $boost=3,site=cinepeace.in
+$boost=3,site=lunastream.fun
 $boost=3,site=vidbox.cc
 $boost=3,site=dramaday.me
 $boost=3,site=mkvdrama.org
@@ -37814,6 +37965,7 @@ $boost=3,site=kayoanime.com
 $boost=3,site=hi10anime.com
 $boost=3,site=hakuneko.download
 $boost=3,site=www.stremio.com
+$boost=3,site=playtorrio.pages.dev
 $boost=3,site=radarr.video
 $boost=3,site=sonarr.tv
 $boost=3,site=bye.undi.rest
@@ -37861,6 +38013,7 @@ $boost=3,site=grok.com
 $boost=3,site=www.kimi.com
 $boost=3,site=lmarena.ai
 $boost=3,site=www.perplexity.ai
+$boost=3,site=notebooklm.google
 $boost=3,site=docs.sillytavern.app
 $boost=3,site=openwebui.com
 $boost=3,site=jan.ai
@@ -37982,6 +38135,7 @@ $boost=3,site=paperback.moe
 $boost=3,site=aidoku.app
 $boost=3,site=music.youtube.com
 $boost=3,site=themesong.app
+$boost=3,site=dabmusic.xyz
 $boost=3,site=reddit.musicplayer.io
 $boost=3,site=soundcloud.com
 $boost=3,site=artistgrid.cx
@@ -38403,7 +38557,7 @@ $boost=3,site=fast.com
 $boost=3,site=keepass.info
 $boost=3,site=archive.is
 $boost=3,site=gitflic.ru
-$boost=3,site=freedium.cfd
+$boost=3,site=freedium-mirror.cfd
 $boost=3,site=wallabag.org
 $boost=3,site=linktr.ee
 $boost=3,site=linkstack.org
@@ -38772,7 +38926,6 @@ $boost=3,site=predb.net
 $boost=3,site=nutbread.github.io
 $boost=3,site=magnet2torrent.com
 $boost=3,site=www.gimp.org
-$boost=3,site=www.pinta-project.com
 $boost=3,site=imagemagick.org
 $boost=3,site=pixlr.com
 $boost=3,site=lunapic.com
@@ -38787,7 +38940,7 @@ $boost=3,site=openmodeldb.info
 $boost=3,site=moshpro.app
 $boost=3,site=krita.org
 $boost=3,site=viliusle.github.io
-$boost=3,site=www.autodraw.com
+$boost=3,site=www.pinta-project.com
 $boost=3,site=libresprite.github.io
 $boost=3,site=www.piskelapp.com
 $boost=3,site=gif.ski
@@ -39058,7 +39211,7 @@ $boost=3,site=s.to
 $boost=3,site=filmpalast.to
 $boost=3,site=moviedrive.hu
 $boost=3,site=modlist.in
-$boost=3,site=mkvcinemas.moi
+$boost=3,site=mkvcinemas.kids
 $boost=3,site=hdhub4u.gd
 $boost=3,site=moviesmod.cafe
 $boost=3,site=sdtoons.in
@@ -39066,7 +39219,7 @@ $boost=3,site=toonworld4all.me
 $boost=3,site=atozcartoonist.me
 $boost=3,site=www.toonshub.xyz
 $boost=3,site=hindi-lossless.blogspot.com
-$boost=3,site=www.1tamilmv.vc
+$boost=3,site=www.1tamilmv.farm
 $boost=3,site=www.cineby.app
 $boost=3,site=hydrahd.com
 $boost=3,site=toonstream.love
