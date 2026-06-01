@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import asyncio
-import base64
 import logging
 import re
 from dataclasses import dataclass
@@ -22,12 +21,10 @@ class Config:
 
     site_base_url: str = "https://fmhy.net/"
     reddit_base_url: str = "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/"
-    base64_rentry_url: str = "https://rentry.co/FMHYBase64/raw"
     github_raw_base: str = (
         "https://raw.githubusercontent.com/fmhy/edit/refs/heads/main/docs/"
     )
     folder_name: str = "FMHY"
-    decode_base64: bool = True
 
 
 @dataclass
@@ -94,59 +91,6 @@ def add_hierarchy_prefix(
     return modified_lines
 
 
-# Base64 processing functions
-def fix_base64_padding(encoded_string: str) -> str:
-    """Fix base64 padding."""
-    missing_padding = len(encoded_string) % 4
-    if missing_padding:
-        encoded_string += "=" * (4 - missing_padding)
-    return encoded_string
-
-
-def decode_base64_content(input_string: str) -> str:
-    """Decode base64 content within backticks."""
-    if not CONFIG.decode_base64:
-        return input_string
-
-    def base64_decode(match):
-        encoded_data = match.group(0)[1:-1]  # Remove backticks
-        decoded_bytes = base64.b64decode(fix_base64_padding(encoded_data))
-        return decoded_bytes.decode()
-
-    pattern = r"`[^`]+`"
-    return re.sub(pattern, base64_decode, input_string)
-
-
-def process_base64_sections(base64_page: str) -> List[str]:
-    """Process base64 page sections."""
-    sections = base64_page.split("***")
-    formatted_sections = []
-
-    for section in sections:
-        # Clean up section formatting
-        clean_section = (
-            section.strip()
-            .replace("#### ", "")
-            .replace("\n\n", " - ")
-            .replace("\n", ", ")
-        )
-
-        # Remove empty lines
-        lines = [line for line in clean_section.split("\n") if line.strip()]
-        clean_section = "\n".join(lines)
-
-        # Decode base64 if enabled
-        clean_section = decode_base64_content(clean_section)
-
-        # Add base64 prefix
-        formatted_section = (
-            "[🔑Base64](https://rentry.co/FMHYBase64) ► " + clean_section
-        )
-        formatted_sections.append(formatted_section)
-
-    return formatted_sections
-
-
 async def download_wiki_content_async(
     session: aiohttp.ClientSession, filename: str
 ) -> Tuple[str, List[str]]:
@@ -157,37 +101,24 @@ async def download_wiki_content_async(
             content = f.read()
         logger.info("Loaded %s locally", filename)
 
-        if filename != "base64.md":
-            sub_url = filename.replace(".md", "").lower()
-            return filename, add_hierarchy_prefix(
-                content.split("\n"), filename, sub_url
-            )
-        else:
-            return filename, process_base64_sections(content)
+        sub_url = filename.replace(".md", "").lower()
+        return filename, add_hierarchy_prefix(content.split("\n"), filename, sub_url)
     except FileNotFoundError:
         pass
 
     # Download remotely if not found locally
     try:
-        if filename != "base64.md":
-            url = CONFIG.github_raw_base + filename
-        else:
-            url = CONFIG.base64_rentry_url
+        url = CONFIG.github_raw_base + filename
 
         async with session.get(url, timeout=30) as resp:
             resp.raise_for_status()
             content = await resp.text()
 
-            if filename == "base64.md":
-                content = content.replace("\r", "")
-                logger.info("Downloaded base64 page")
-                return filename, process_base64_sections(content)
-            else:
-                logger.info("Downloaded %s", filename)
-                sub_url = filename.replace(".md", "").lower()
-                return filename, add_hierarchy_prefix(
-                    content.split("\n"), filename, sub_url
-                )
+            logger.info("Downloaded %s", filename)
+            sub_url = filename.replace(".md", "").lower()
+            return filename, add_hierarchy_prefix(
+                content.split("\n"), filename, sub_url
+            )
 
     except Exception as e:
         logger.error("Failed to fetch %s (%s). Skipping.", filename, e)
@@ -241,7 +172,6 @@ WIKI_SECTIONS = [
     WikiSection("developer-tools.md", "🖥️", "developer-tools"),
     WikiSection("non-english.md", "🌏", "non-english"),
     WikiSection("storage.md", "🗄️", "storage"),
-    WikiSection("base64.md", "🔑", "base64"),
     WikiSection("unsafe.md", "🌶", "unsafe"),
 ]
 
