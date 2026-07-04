@@ -28,3 +28,22 @@ Web browsers have auto-complete and search functions that are based on bookmarke
 ### How to import them into the browser?
 
 ![](https://i.imgur.com/6BpWb1q.png)
+
+### How to automatically sync bookmarks to your local browser? (Windows)
+
+If you want to avoid manually deleting, importing, and organizing the `FMHY` folder on your bookmarks bar, you can use the automated sync tool:
+
+1. **Perform Initial Setup:** Right-click [setup.bat](utils/setup.bat) in the `utils/` directory and choose **Run as Administrator**. This script will configure your browser profile settings and automatically schedule the sync task in Windows.
+2. **Pull the latest changes** from the repository (e.g. `git pull`).
+3. **(Optional) Run manual sync** at any time by double-clicking [update_bookmarks.bat](utils/update_bookmarks.bat) in the `utils/` directory.
+
+The tool will:
+- Auto-detect your Brave, Chrome, or Edge profiles (by actual profile name and email).
+- Check if the browser is running and help you close it (or skip update safely if running in background).
+- Create a timestamped backup of your current bookmarks in both JSON and HTML format.
+- Replace or insert the `FMHY` folder directly at the very front of your browser's bookmarks bar in-place.
+
+#### How to Restore from Backups
+If you ever want to restore your bookmarks to a previous state, navigate to the `utils/backups/` directory:
+- **Perfect Restore (JSON)**: Close your browser, rename the `Bookmarks_Backup_YYYYMMDD_HHMMSS.json` file to `Bookmarks` (remove the `.json` extension and suffix), and copy/overwrite it into your browser's profile directory.
+- **Browser Import (HTML)**: Open your browser's Bookmark Manager (`Ctrl + Shift + O`), click the top-right menu, select **Import bookmarks**, and choose the `Bookmarks_Backup_YYYYMMDD_HHMMSS.html` file.

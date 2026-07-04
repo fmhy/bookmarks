@@ -1,0 +1,11 @@
+# Python virtual environment
+.venv/
+__pycache__/
+utils/__pycache__/
+
+# Local config containing personal browser profile path and email
+utils/config.json
+
+# Local browser bookmarks backups
+utils/backups/
+utils/last_run.txt
