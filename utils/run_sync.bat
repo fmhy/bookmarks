@@ -5,10 +5,7 @@ cd /d "%~dp0"
 for /f %%i in ('powershell -NoProfile -Command "Get-Date -Format 'yyyy-MM-dd'"') do set today=%%i
 
 if exist last_run.txt (
-    findstr /C:"%today%" last_run.txt >nul 2>&1
-    if %errorlevel% equ 0 (
-        exit
-    )
+    findstr /C:"%today%" last_run.txt >nul 2>&1 && exit /b 0
 )
 
 where uv >nul 2>&1
@@ -18,7 +15,7 @@ if %errorlevel% equ 0 (
     python update_browser_bookmarks.py --non-interactive
 )
 
-if %errorlevel% equ 0 (
+if not errorlevel 1 (
     echo %today%> last_run.txt
 )
-exit
+exit /b %errorlevel%
