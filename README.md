@@ -38,7 +38,7 @@ If you want to avoid manually deleting, importing, and organizing the `FMHY` fol
 3. **(Optional) Run manual sync** at any time by double-clicking [update_bookmarks.bat](utils/update_bookmarks.bat) in the `utils/` directory.
 
 The tool will:
-- Auto-detect your Brave, Chrome, or Edge profiles (by actual profile name and email).
+- Auto-detect your Chromium & Firefox browser profiles (Chrome, Edge, Brave, Vivaldi, Opera, Yandex, Thorium, Arc, Firefox, LibreWolf, Waterfox, Floorp, Zen Browser, Pale Moon, Tor Browser, etc.).
 - Check if the browser is running and help you close it (or skip update safely if running in background).
 - Create a timestamped backup of your current bookmarks in both JSON and HTML format.
 - Replace or insert the `FMHY` folder directly at the very front of your browser's bookmarks bar in-place.

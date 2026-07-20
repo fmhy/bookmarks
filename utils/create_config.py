@@ -5,60 +5,175 @@ import os
 import sys
 import json
 
+import configparser
+
 # Define standard search paths for browser profiles on Windows
 def scan_browser_profiles():
-    local_app_data = os.environ.get("LOCALAPPDATA")
-    if not local_app_data:
-        return []
-        
-    browsers = {
-        "Brave": os.path.join(local_app_data, "BraveSoftware", "Brave-Browser", "User Data"),
-        "Chrome": os.path.join(local_app_data, "Google", "Chrome", "User Data"),
-        "Edge": os.path.join(local_app_data, "Microsoft", "Edge", "User Data")
+    local_app_data = os.environ.get("LOCALAPPDATA", "")
+    app_data = os.environ.get("APPDATA", "")
+    profiles = []
+    
+    # 1. Chromium Family Browsers
+    chromium_browsers = {
+        "Brave": [
+            os.path.join(local_app_data, "BraveSoftware", "Brave-Browser", "User Data"),
+            os.path.join(local_app_data, "BraveSoftware", "Brave-Browser-Beta", "User Data"),
+            os.path.join(local_app_data, "BraveSoftware", "Brave-Browser-Nightly", "User Data")
+        ],
+        "Chrome": [
+            os.path.join(local_app_data, "Google", "Chrome", "User Data"),
+            os.path.join(local_app_data, "Google", "Chrome Beta", "User Data"),
+            os.path.join(local_app_data, "Google", "Chrome Dev", "User Data"),
+            os.path.join(local_app_data, "Google", "Chrome SxS", "User Data")
+        ],
+        "Edge": [
+            os.path.join(local_app_data, "Microsoft", "Edge", "User Data"),
+            os.path.join(local_app_data, "Microsoft", "Edge Beta", "User Data"),
+            os.path.join(local_app_data, "Microsoft", "Edge Dev", "User Data"),
+            os.path.join(local_app_data, "Microsoft", "Edge SxS", "User Data")
+        ],
+        "Vivaldi": [
+            os.path.join(local_app_data, "Vivaldi", "User Data"),
+            os.path.join(local_app_data, "Vivaldi Snapshot", "User Data")
+        ],
+        "Opera": [
+            os.path.join(app_data, "Opera Software", "Opera Stable"),
+            os.path.join(app_data, "Opera Software", "Opera GX Stable"),
+            os.path.join(app_data, "Opera Software", "Opera Crypto Stable")
+        ],
+        "Yandex": [
+            os.path.join(local_app_data, "Yandex", "YandexBrowser", "User Data")
+        ],
+        "Chromium": [
+            os.path.join(local_app_data, "Chromium", "User Data"),
+            os.path.join(local_app_data, "Thorium", "User Data"),
+            os.path.join(local_app_data, "Arc", "User Data"),
+            os.path.join(local_app_data, "CentBrowser", "User Data"),
+            os.path.join(local_app_data, "Slimjet", "User Data"),
+            os.path.join(local_app_data, "Cromite", "User Data"),
+            os.path.join(local_app_data, "Ungoogled Chromium", "User Data")
+        ]
     }
     
-    profiles = []
-    for browser_name, user_data_path in browsers.items():
-        if os.path.exists(user_data_path):
-            # Scan for profiles containing a Bookmarks and Preferences file
-            for item in os.listdir(user_data_path):
-                profile_path = os.path.join(user_data_path, item)
-                if os.path.isdir(profile_path):
-                    bookmarks_file = os.path.join(profile_path, "Bookmarks")
-                    preferences_file = os.path.join(profile_path, "Preferences")
-                    if os.path.exists(bookmarks_file):
-                        # Extract profile name and email if Preferences exists
-                        friendly_name = None
-                        email = None
-                        if os.path.exists(preferences_file):
-                            try:
-                                with open(preferences_file, 'r', encoding='utf-8') as f:
-                                    pref_data = json.load(f)
-                                
-                                # 1. Get profile name
-                                friendly_name = pref_data.get('profile', {}).get('name')
-                                
-                                # 2. Get email from account_info
-                                accounts = pref_data.get('account_info', [])
-                                if accounts and isinstance(accounts, list):
-                                    email = accounts[0].get('email')
-                                    
-                                # Fallback email locations
-                                if not email:
-                                    email = pref_data.get('google', {}).get('services', {}).get('username')
-                                if not email:
-                                    email = pref_data.get('signin', {}).get('connection', {}).get('username')
-                            except Exception:
-                                pass
-                                
-                        profiles.append({
-                            "browser": browser_name,
-                            "profile_dir": item,
-                            "profile_name": friendly_name or item,
-                            "email": email,
-                            "path": bookmarks_file,
-                            "dir": profile_path
-                        })
+    for browser_name, paths in chromium_browsers.items():
+        for user_data_path in paths:
+            if not os.path.exists(user_data_path):
+                continue
+            direct_bookmarks = os.path.join(user_data_path, "Bookmarks")
+            if os.path.isfile(direct_bookmarks):
+                profiles.append({
+                    "browser": browser_name,
+                    "type": "chromium",
+                    "profile_dir": "Default",
+                    "profile_name": browser_name,
+                    "email": None,
+                    "path": direct_bookmarks,
+                    "dir": user_data_path
+                })
+            else:
+                try:
+                    for item in os.listdir(user_data_path):
+                        profile_path = os.path.join(user_data_path, item)
+                        if os.path.isdir(profile_path):
+                            bookmarks_file = os.path.join(profile_path, "Bookmarks")
+                            preferences_file = os.path.join(profile_path, "Preferences")
+                            if os.path.isfile(bookmarks_file):
+                                friendly_name = None
+                                email = None
+                                if os.path.isfile(preferences_file):
+                                    try:
+                                        with open(preferences_file, 'r', encoding='utf-8') as f:
+                                            pref_data = json.load(f)
+                                        friendly_name = pref_data.get('profile', {}).get('name')
+                                        accounts = pref_data.get('account_info', [])
+                                        if accounts and isinstance(accounts, list):
+                                            email = accounts[0].get('email')
+                                        if not email:
+                                            email = pref_data.get('google', {}).get('services', {}).get('username')
+                                        if not email:
+                                            email = pref_data.get('signin', {}).get('connection', {}).get('username')
+                                    except Exception:
+                                        pass
+                                profiles.append({
+                                    "browser": browser_name,
+                                    "type": "chromium",
+                                    "profile_dir": item,
+                                    "profile_name": friendly_name or item,
+                                    "email": email,
+                                    "path": bookmarks_file,
+                                    "dir": profile_path
+                                })
+                except Exception:
+                    pass
+
+    # 2. Firefox Family Browsers
+    firefox_browsers = {
+        "Firefox": os.path.join(app_data, "Mozilla", "Firefox"),
+        "LibreWolf": os.path.join(app_data, "LibreWolf"),
+        "Waterfox": os.path.join(app_data, "Waterfox"),
+        "Floorp": os.path.join(app_data, "Floorp"),
+        "Zen Browser": os.path.join(app_data, "zen"),
+        "Pale Moon": os.path.join(app_data, "Moonchild Productions", "Pale Moon"),
+        "SeaMonkey": os.path.join(app_data, "Mozilla", "SeaMonkey"),
+        "Tor Browser": os.path.join(app_data, "TorBrowser-Data", "Browser")
+    }
+
+    for browser_name, base_path in firefox_browsers.items():
+        if not os.path.exists(base_path):
+            continue
+        profile_names = {}
+        ini_path = os.path.join(base_path, "profiles.ini")
+        if os.path.isfile(ini_path):
+            try:
+                cp = configparser.ConfigParser()
+                cp.read(ini_path, encoding='utf-8')
+                for section in cp.sections():
+                    if section.startswith("Profile"):
+                        name = cp.get(section, "Name", fallback=None)
+                        path_val = cp.get(section, "Path", fallback=None)
+                        if path_val:
+                            norm_path = os.path.normpath(path_val)
+                            folder_name = os.path.basename(norm_path)
+                            profile_names[folder_name] = name or folder_name
+            except Exception:
+                pass
+
+        candidate_dirs = []
+        profiles_dir = os.path.join(base_path, "Profiles")
+        if os.path.isdir(profiles_dir):
+            for d in os.listdir(profiles_dir):
+                candidate_dirs.append(os.path.join(profiles_dir, d))
+        for d in os.listdir(base_path):
+            full = os.path.join(base_path, d)
+            if os.path.isdir(full) and full not in candidate_dirs:
+                candidate_dirs.append(full)
+
+        for p_dir in candidate_dirs:
+            if "backgroundupdate" in p_dir.lower():
+                continue
+            places_db = os.path.join(p_dir, "places.sqlite")
+            if os.path.isfile(places_db):
+                folder_name = os.path.basename(p_dir)
+                friendly_name = profile_names.get(folder_name, folder_name)
+                email = None
+                signed_in_file = os.path.join(p_dir, "signedInUser.json")
+                if os.path.isfile(signed_in_file):
+                    try:
+                        with open(signed_in_file, 'r', encoding='utf-8') as f:
+                            s_data = json.load(f)
+                        email = s_data.get("accountData", {}).get("email")
+                    except Exception:
+                        pass
+                profiles.append({
+                    "browser": browser_name,
+                    "type": "firefox",
+                    "profile_dir": folder_name,
+                    "profile_name": friendly_name,
+                    "email": email,
+                    "path": places_db,
+                    "dir": p_dir
+                })
+
     return profiles
 
 def main():
@@ -149,6 +264,7 @@ def main():
     for p in selected_profiles:
         profiles_config.append({
             "browser": p["browser"],
+            "type": p.get("type", "chromium"),
             "profile_dir": p["profile_dir"],
             "profile_name": p["profile_name"],
             "email": p["email"],
