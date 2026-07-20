@@ -8,4 +8,5 @@ utils/config.json
 
 # Local browser bookmarks backups
 utils/backups/
+!utils/backups/README.md
 utils/last_run.txt
