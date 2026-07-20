@@ -2,7 +2,7 @@ This repository is programmed to automatically generate browser bookmarks and Br
 
 ## Goggle
 
-Use https://search.brave.com/goggles?goggles_id=https%3A%2F%2Fraw.githubusercontent.com%2Ffmhy%2Fbookmarks%2Frefs%2Fheads%2Fmain%2Ffmhy.goggle
+[Goggle](https://search.brave.com/goggles?goggles_id=https%3A%2F%2Fraw.githubusercontent.com%2Ffmhy%2Fbookmarks%2Frefs%2Fheads%2Fmain%2Ffmhy.goggle)
 
 The goggles are automatically updated weekly through Github Actions with the new changes from FMHY.
 
