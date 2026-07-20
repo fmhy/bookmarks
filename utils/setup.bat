@@ -83,7 +83,7 @@ echo [INFO] Creating scheduled task to trigger every %interval% day(s).
 echo [INFO] (Uses '-StartWhenAvailable' so it runs automatically anytime your PC is on).
 echo [INFO] Target script: %ROOT_DIR%\utils\run_sync.bat
 echo.
-powershell -Command "$action = New-ScheduledTaskAction -Execute '%ROOT_DIR%\utils\run_sync.bat' -WorkingDirectory '%ROOT_DIR%\utils'; $triggers = @(New-ScheduledTaskTrigger -Daily -DaysInterval %interval% -At '09:00'); $settings = New-ScheduledTaskSettingsSet -Compatibility Win8 -StartWhenAvailable; $task = New-ScheduledTask -Action $action -Trigger $triggers -Settings $settings; $task.Settings.Hidden = $true; Register-ScheduledTask -TaskName 'FMHY_Bookmarks_Sync' -InputObject $task -Force"
+powershell -Command "$action = New-ScheduledTaskAction -Execute '%ROOT_DIR%\utils\run_sync.bat' -WorkingDirectory '%ROOT_DIR%\utils'; $triggers = @(New-ScheduledTaskTrigger -Daily -DaysInterval %interval% -At '09:00'); $settings = New-ScheduledTaskSettingsSet -Compatibility Win8 -StartWhenAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries; $task = New-ScheduledTask -Action $action -Trigger $triggers -Settings $settings; $task.Settings.Hidden = $true; Register-ScheduledTask -TaskName 'FMHY_Bookmarks_Sync' -InputObject $task -Force"
 goto REGISTRATION_RESULT
 
 :REGISTRATION_RESULT
