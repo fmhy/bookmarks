@@ -859,15 +859,6 @@ def main():
                     json.dump(bookmarks_data, f, indent=4, ensure_ascii=False)
                 print(f"[SUCCESS] {browser_name}'s bookmarks synced successfully!")
                 any_success = True
-                
-                # Relaunch the browser (only in interactive mode!)
-                if not non_interactive:
-                    exe_path = find_browser_executable(browser_name)
-                    if exe_path:
-                        print(f"Launching {browser_name} with profile '{profile_dir_name}'...")
-                        subprocess.Popen([exe_path, f"--profile-directory={profile_dir_name}"])
-                    else:
-                        print(f"Please launch your browser manually to see changes.")
             except Exception as e:
                 print(f"[ERROR] Failed to write updated bookmarks file: {e}")
                 print("Restoring backup...")
