@@ -31,20 +31,6 @@ Web browsers have auto-complete and search functions that are based on bookmarke
 
 ### How to automatically sync bookmarks to your local browser? (Windows)
 
-If you want to avoid manually deleting, importing, and organizing the `FMHY` folder on your bookmarks bar, you can use the automated sync tool:
+Automate bookmark updates directly in Chrome, Edge, Firefox, Brave, and other supported browsers without manual importing.
 
-1. **Perform Initial Setup:** Right-click [setup.bat](utils/setup.bat) in the `utils/` directory and choose **Run as Administrator**. This script will configure your browser profile settings and automatically schedule the sync task in Windows.
-2. **Pull the latest changes** from the repository (e.g. `git pull`).
-3. **(Optional) Run manual sync** at any time by double-clicking [update_bookmarks.bat](utils/update_bookmarks.bat) in the `utils/` directory.
-
-The tool will:
-- Auto-detect your Chromium & Firefox browser profiles (Chrome, Edge, Brave, Vivaldi, Opera, Yandex, Thorium, Arc, Firefox, LibreWolf, Waterfox, Floorp, Zen Browser, Pale Moon, Tor Browser, etc.).
-- Check if the browser is running and help you close it (or skip update safely if running in background).
-- Create a timestamped backup organized into day folders (`utils/backups/<Browser>/<Profile>/<YYYY-MM-DD>/`) with automatic retention cleanup (max 10 day-folders by default, configurable in `config.json`).
-- Replace or insert the `FMHY` folder directly at the very front of your browser's bookmarks bar in-place.
-
-#### How to Restore from Backups
-If you ever want to restore your bookmarks to a previous state, navigate to the `utils/backups/` directory:
-- **Chromium Restore (JSON)**: Close your browser, open the date folder (e.g. `2026-07-20`), copy the `Bookmarks_Backup_HHMMSS.json` file, rename it to `Bookmarks`, and overwrite it into your browser's profile directory.
-- **Firefox Restore (SQLite)**: Close Firefox, open the date folder, copy `places_Backup_HHMMSS.sqlite`, rename it to `places.sqlite`, and overwrite it into your Firefox profile directory.
-- **Browser Import (HTML)**: Open your browser's Bookmark Manager (`Ctrl + Shift + O`), select **Import bookmarks**, and choose the `Bookmarks_Backup_HHMMSS.html` file.
+For complete setup instructions, supported browsers, day-folder backups, and restore guides, see the [Utilities Guide](utils/README.md) and [Backups Guide](utils/backups/README.md).
