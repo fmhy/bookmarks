@@ -41,6 +41,14 @@ BROWSER_EXECUTABLES = {
     "Tor Browser": ["firefox.exe", "tor.exe"]
 }
 
+def clean_profile_name(raw_name):
+    if not raw_name:
+        return "Default"
+    lower = raw_name.lower()
+    if lower in ("default-release", "default-nightly", "default", "default profile") or "default-release" in lower or lower.endswith(".default"):
+        return "Default"
+    return raw_name
+
 # Define search paths for Chromium and Firefox browser profiles on Windows
 def find_browser_profiles():
     local_app_data = os.environ.get("LOCALAPPDATA", "")
@@ -90,6 +98,8 @@ def find_browser_profiles():
     }
     
     for browser_name, paths in chromium_browsers.items():
+        if not find_browser_executable(browser_name):
+            continue
         for user_data_path in paths:
             if not os.path.exists(user_data_path):
                 continue
@@ -132,7 +142,7 @@ def find_browser_profiles():
                                     "browser": browser_name,
                                     "type": "chromium",
                                     "profile_dir": item,
-                                    "profile_name": friendly_name or item,
+                                    "profile_name": clean_profile_name(friendly_name or item),
                                     "email": email,
                                     "path": bookmarks_file,
                                     "dir": profile_path
@@ -154,6 +164,8 @@ def find_browser_profiles():
 
     for browser_name, base_path in firefox_browsers.items():
         if not os.path.exists(base_path):
+            continue
+        if not find_browser_executable(browser_name):
             continue
         profile_names = {}
         ini_path = os.path.join(base_path, "profiles.ini")
@@ -188,7 +200,8 @@ def find_browser_profiles():
             places_db = os.path.join(p_dir, "places.sqlite")
             if os.path.isfile(places_db):
                 folder_name = os.path.basename(p_dir)
-                friendly_name = profile_names.get(folder_name, folder_name)
+                raw_name = profile_names.get(folder_name, folder_name)
+                friendly_name = clean_profile_name(raw_name)
                 email = None
                 signed_in_file = os.path.join(p_dir, "signedInUser.json")
                 if os.path.isfile(signed_in_file):

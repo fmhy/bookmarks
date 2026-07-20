@@ -5,7 +5,106 @@ import os
 import sys
 import json
 
-import configparser
+import shutil
+
+def find_browser_executable(browser_name):
+    """Locate the executable path for the specified browser on Windows."""
+    local_app_data = os.environ.get("LOCALAPPDATA", "")
+    program_files = os.environ.get("ProgramFiles", "C:\\Program Files")
+    program_files_x86 = os.environ.get("ProgramFiles(x86)", "C:\\Program Files (x86)")
+    
+    exe_map = {
+        "Brave": ["brave.exe"],
+        "Chrome": ["chrome.exe"],
+        "Edge": ["msedge.exe"],
+        "Vivaldi": ["vivaldi.exe"],
+        "Opera": ["opera.exe", "launcher.exe"],
+        "Yandex": ["browser.exe", "yandex.exe"],
+        "Chromium": ["chrome.exe", "chromium.exe", "thorium.exe", "slimjet.exe", "arc.exe"],
+        "Firefox": ["firefox.exe"],
+        "LibreWolf": ["librewolf.exe"],
+        "Waterfox": ["waterfox.exe"],
+        "Floorp": ["floorp.exe"],
+        "Zen Browser": ["zen.exe"],
+        "Pale Moon": ["palemoon.exe"],
+        "SeaMonkey": ["seamonkey.exe"],
+        "Tor Browser": ["firefox.exe", "tor.exe"]
+    }
+    
+    search_paths = []
+    if browser_name == "Brave":
+        search_paths = [
+            os.path.join(program_files, "BraveSoftware", "Brave-Browser", "Application", "brave.exe"),
+            os.path.join(program_files_x86, "BraveSoftware", "Brave-Browser", "Application", "brave.exe"),
+            os.path.join(local_app_data, "BraveSoftware", "Brave-Browser", "Application", "brave.exe")
+        ]
+    elif browser_name == "Chrome":
+        search_paths = [
+            os.path.join(program_files, "Google", "Chrome", "Application", "chrome.exe"),
+            os.path.join(program_files_x86, "Google", "Chrome", "Application", "chrome.exe"),
+            os.path.join(local_app_data, "Google", "Chrome", "Application", "chrome.exe")
+        ]
+    elif browser_name == "Edge":
+        search_paths = [
+            os.path.join(program_files_x86, "Microsoft", "Edge", "Application", "msedge.exe"),
+            os.path.join(program_files, "Microsoft", "Edge", "Application", "msedge.exe")
+        ]
+    elif browser_name == "Firefox":
+        search_paths = [
+            os.path.join(program_files, "Mozilla Firefox", "firefox.exe"),
+            os.path.join(program_files_x86, "Mozilla Firefox", "firefox.exe"),
+            os.path.join(local_app_data, "Mozilla Firefox", "firefox.exe")
+        ]
+    elif browser_name == "Zen Browser":
+        search_paths = [
+            os.path.join(program_files, "Zen Browser", "zen.exe"),
+            os.path.join(local_app_data, "zen", "zen.exe"),
+            os.path.join(local_app_data, "Programs", "zen", "zen.exe")
+        ]
+    elif browser_name == "LibreWolf":
+        search_paths = [
+            os.path.join(program_files, "LibreWolf", "librewolf.exe"),
+            os.path.join(local_app_data, "LibreWolf", "librewolf.exe")
+        ]
+    elif browser_name == "Waterfox":
+        search_paths = [
+            os.path.join(program_files, "Waterfox", "waterfox.exe"),
+            os.path.join(local_app_data, "Waterfox", "waterfox.exe")
+        ]
+    elif browser_name == "Floorp":
+        search_paths = [
+            os.path.join(program_files, "Floorp", "floorp.exe"),
+            os.path.join(local_app_data, "Floorp", "floorp.exe")
+        ]
+    elif browser_name == "Vivaldi":
+        search_paths = [
+            os.path.join(program_files, "Vivaldi", "Application", "vivaldi.exe"),
+            os.path.join(local_app_data, "Vivaldi", "Application", "vivaldi.exe")
+        ]
+    elif browser_name == "Opera":
+        search_paths = [
+            os.path.join(local_app_data, "Programs", "Opera", "launcher.exe"),
+            os.path.join(local_app_data, "Programs", "Opera GX", "launcher.exe")
+        ]
+        
+    for path in search_paths:
+        if os.path.isfile(path):
+            return path
+            
+    for exe in exe_map.get(browser_name, []):
+        which_path = shutil.which(exe)
+        if which_path and os.path.isfile(which_path):
+            return which_path
+            
+    return None
+
+def clean_profile_name(raw_name):
+    if not raw_name:
+        return "Default"
+    lower = raw_name.lower()
+    if lower in ("default-release", "default-nightly", "default", "default profile") or "default-release" in lower or lower.endswith(".default"):
+        return "Default"
+    return raw_name
 
 # Define standard search paths for browser profiles on Windows
 def scan_browser_profiles():
@@ -56,6 +155,8 @@ def scan_browser_profiles():
     }
     
     for browser_name, paths in chromium_browsers.items():
+        if not find_browser_executable(browser_name):
+            continue
         for user_data_path in paths:
             if not os.path.exists(user_data_path):
                 continue
@@ -98,7 +199,7 @@ def scan_browser_profiles():
                                     "browser": browser_name,
                                     "type": "chromium",
                                     "profile_dir": item,
-                                    "profile_name": friendly_name or item,
+                                    "profile_name": clean_profile_name(friendly_name or item),
                                     "email": email,
                                     "path": bookmarks_file,
                                     "dir": profile_path
@@ -120,6 +221,8 @@ def scan_browser_profiles():
 
     for browser_name, base_path in firefox_browsers.items():
         if not os.path.exists(base_path):
+            continue
+        if not find_browser_executable(browser_name):
             continue
         profile_names = {}
         ini_path = os.path.join(base_path, "profiles.ini")
@@ -154,7 +257,8 @@ def scan_browser_profiles():
             places_db = os.path.join(p_dir, "places.sqlite")
             if os.path.isfile(places_db):
                 folder_name = os.path.basename(p_dir)
-                friendly_name = profile_names.get(folder_name, folder_name)
+                raw_name = profile_names.get(folder_name, folder_name)
+                friendly_name = clean_profile_name(raw_name)
                 email = None
                 signed_in_file = os.path.join(p_dir, "signedInUser.json")
                 if os.path.isfile(signed_in_file):
@@ -184,7 +288,7 @@ def main():
     profiles = scan_browser_profiles()
     if not profiles:
         print("[ERROR] No browser profiles found automatically on your system.")
-        print("Please ensure Google Chrome, Brave, or Microsoft Edge is installed.")
+        print("Please ensure Google Chrome, Brave, Edge, or Firefox is installed.")
         sys.exit(1)
         
     print("Available Browser Profiles:")
@@ -193,7 +297,7 @@ def main():
         details = []
         if p['email']:
             details.append(p['email'])
-        if p['profile_dir'] != display_name:
+        elif p['profile_dir'] != display_name and not p['profile_dir'].lower().endswith('.' + display_name.lower()):
             details.append(p['profile_dir'])
             
         details_str = f" ({', '.join(details)})" if details else ""
