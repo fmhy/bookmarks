@@ -7,7 +7,7 @@ This folder contains automated tools to configure, sync, and manage FMHY browser
 1. **Initial Setup Wizard**:
    - Right-click [setup.bat](setup.bat) and select **Run as Administrator**.
    - Select your target browser profile(s) from the interactive list.
-   - Configure sync options and schedule automatic updates via Windows Task Scheduler.
+   - Enter your desired sync interval in days (e.g. `5`). Windows Task Scheduler will automatically run the sync task anytime your PC is turned on on the scheduled day.
 
 2. **Manual Sync**:
    - Double-click [update_bookmarks.bat](update_bookmarks.bat) at any time to pull and sync the latest FMHY bookmarks on demand.

@@ -78,36 +78,12 @@ if %interval% lss 1 set interval=3
 :: Get parent directory of script (repo root)
 for %%i in ("%~dp0..") do set "ROOT_DIR=%%~fi"
 
-if "%interval%"=="1" goto REGISTER_LOGON
-goto REGISTER_DAILY
-
-:REGISTER_LOGON
 echo.
-echo [INFO] Creating scheduled task to trigger at Logon of any user.
+echo [INFO] Creating scheduled task to trigger every %interval% day(s).
+echo [INFO] (Uses '-StartWhenAvailable' so it runs automatically anytime your PC is on).
 echo [INFO] Target script: %ROOT_DIR%\utils\run_sync.bat
 echo.
-powershell -Command "$action = New-ScheduledTaskAction -Execute '%ROOT_DIR%\utils\run_sync.bat' -WorkingDirectory '%ROOT_DIR%\utils'; $triggers = @(New-ScheduledTaskTrigger -AtLogOn); $settings = New-ScheduledTaskSettingsSet -Compatibility Win8; $task = New-ScheduledTask -Action $action -Trigger $triggers -Settings $settings; $task.Settings.Hidden = $true; Register-ScheduledTask -TaskName 'FMHY_Bookmarks_Sync' -InputObject $task -Force"
-goto REGISTRATION_RESULT
-
-:REGISTER_DAILY
-set /p hour="Enter the daily sync start hour (0-23) [default: 10]: "
-if "%hour%"=="" set hour=10
-
-:: Validate that input is numeric
-echo %hour%| findstr /r "^[0-9][0-9]*$" >nul
-if %errorlevel% neq 0 set hour=10
-if %hour% lss 0 set hour=10
-if %hour% gtr 23 set hour=10
-
-:: Format hour with leading zero if needed
-set "formatted_hour=0%hour%"
-set "formatted_hour=%formatted_hour:~-2%:00"
-
-echo.
-echo [INFO] Creating scheduled task to trigger every %interval% day(s) at %formatted_hour%.
-echo [INFO] Target script: %ROOT_DIR%\utils\run_sync.bat
-echo.
-powershell -Command "$action = New-ScheduledTaskAction -Execute '%ROOT_DIR%\utils\run_sync.bat' -WorkingDirectory '%ROOT_DIR%\utils'; $triggers = @(New-ScheduledTaskTrigger -Daily -DaysInterval %interval% -At '%formatted_hour%'); $settings = New-ScheduledTaskSettingsSet -Compatibility Win8 -StartWhenAvailable; $task = New-ScheduledTask -Action $action -Trigger $triggers -Settings $settings; $task.Settings.Hidden = $true; Register-ScheduledTask -TaskName 'FMHY_Bookmarks_Sync' -InputObject $task -Force"
+powershell -Command "$action = New-ScheduledTaskAction -Execute '%ROOT_DIR%\utils\run_sync.bat' -WorkingDirectory '%ROOT_DIR%\utils'; $triggers = @(New-ScheduledTaskTrigger -Daily -DaysInterval %interval% -At '09:00'); $settings = New-ScheduledTaskSettingsSet -Compatibility Win8 -StartWhenAvailable; $task = New-ScheduledTask -Action $action -Trigger $triggers -Settings $settings; $task.Settings.Hidden = $true; Register-ScheduledTask -TaskName 'FMHY_Bookmarks_Sync' -InputObject $task -Force"
 goto REGISTRATION_RESULT
 
 :REGISTRATION_RESULT
