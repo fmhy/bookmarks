@@ -535,59 +535,25 @@ def rev_host(url):
         pass
     return ''
 
-def remove_firefox_bookmark_tree(cursor, bookmark_id):
-    cursor.execute("SELECT id, type, fk FROM moz_bookmarks WHERE parent = ?", (bookmark_id,))
-    children = cursor.fetchall()
-    for child_id, child_type, fk in children:
-        remove_firefox_bookmark_tree(cursor, child_id)
-        
-    cursor.execute("SELECT fk FROM moz_bookmarks WHERE id = ?", (bookmark_id,))
-    row = cursor.fetchone()
-    if row and row[0]:
-        fk = row[0]
-        cursor.execute("UPDATE moz_places SET foreign_count = MAX(0, foreign_count - 1) WHERE id = ?", (fk,))
-        
-    cursor.execute("DELETE FROM moz_bookmarks WHERE id = ?", (bookmark_id,))
-
-def insert_firefox_bookmark_node(cursor, node, parent_id, position):
-    now_usec = int(time.time() * 1000000)
-    guid = generate_firefox_guid()
-    node_type = node.get("type", "folder")
-    title = node.get("name", "Bookmark")
+def remove_firefox_bookmark_tree(cursor, root_bookmark_id):
+    """Deletes a Firefox bookmark subtree recursively using a single SQLite CTE query."""
+    cursor.execute("""
+        WITH RECURSIVE SubTree(id, fk) AS (
+            SELECT id, fk FROM moz_bookmarks WHERE id = ?
+            UNION ALL
+            SELECT b.id, b.fk FROM moz_bookmarks b JOIN SubTree s ON b.parent = s.id
+        )
+        SELECT id, fk FROM SubTree
+    """, (root_bookmark_id,))
+    rows = cursor.fetchall()
     
-    if node_type == "folder":
-        cursor.execute(
-            "INSERT INTO moz_bookmarks (type, fk, parent, position, title, dateAdded, lastModified, guid) VALUES (2, NULL, ?, ?, ?, ?, ?, ?)",
-            (parent_id, position, title, now_usec, now_usec, guid)
-        )
-        folder_id = cursor.lastrowid
-        children = node.get("children", [])
-        for idx, child in enumerate(children):
-            insert_firefox_bookmark_node(cursor, child, folder_id, idx)
-        return folder_id
-    elif node_type == "url":
-        url = node.get("url", "")
-        if not url:
-            return None
-        cursor.execute("SELECT id FROM moz_places WHERE url = ?", (url,))
-        place_row = cursor.fetchone()
-        if place_row:
-            place_id = place_row[0]
-            cursor.execute("UPDATE moz_places SET foreign_count = foreign_count + 1 WHERE id = ?", (place_id,))
-        else:
-            place_guid = generate_firefox_guid()
-            r_host = rev_host(url)
-            cursor.execute(
-                "INSERT INTO moz_places (url, title, rev_host, hidden, typed, frecency, guid, foreign_count) VALUES (?, ?, ?, 0, 0, 100, ?, 1)",
-                (url, title, r_host, place_guid)
-            )
-            place_id = cursor.lastrowid
-            
-        cursor.execute(
-            "INSERT INTO moz_bookmarks (type, fk, parent, position, title, dateAdded, lastModified, guid) VALUES (1, ?, ?, ?, ?, ?, ?, ?)",
-            (place_id, parent_id, position, title, now_usec, now_usec, guid)
-        )
-        return cursor.lastrowid
+    ids_to_delete = [(r[0],) for r in rows]
+    fks_to_decrement = [(r[1],) for r in rows if r[1] is not None]
+    
+    if fks_to_decrement:
+        cursor.executemany("UPDATE moz_places SET foreign_count = MAX(0, foreign_count - 1) WHERE id = ?", fks_to_decrement)
+    if ids_to_delete:
+        cursor.executemany("DELETE FROM moz_bookmarks WHERE id = ?", ids_to_delete)
 
 def read_firefox_bookmarks_as_dict(db_path):
     conn = sqlite3.connect(db_path)
@@ -620,7 +586,7 @@ def read_firefox_bookmarks_as_dict(db_path):
     }
 
 def update_firefox_places_sqlite(db_path, new_root_folder):
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect(db_path, timeout=10.0)
     c = conn.cursor()
     c.execute("SELECT id FROM moz_bookmarks WHERE guid = 'toolbar_____' OR (parent = 1 AND title = 'toolbar')")
     row = c.fetchone()
@@ -632,7 +598,56 @@ def update_firefox_places_sqlite(db_path, new_root_folder):
         remove_firefox_bookmark_tree(c, row[0])
 
     c.execute("UPDATE moz_bookmarks SET position = position + 1 WHERE parent = ?", (toolbar_id,))
-    insert_firefox_bookmark_node(c, new_root_folder, toolbar_id, 0)
+
+    # Cache all existing URLs to eliminate 10,000+ sequential SQL queries
+    c.execute("SELECT url, id FROM moz_places")
+    places_cache = dict(c.fetchall())
+    now_usec = int(time.time() * 1000000)
+    places_to_update = []
+
+    def insert_node(node, parent_id, position):
+        guid = generate_firefox_guid()
+        node_type = node.get("type", "folder")
+        title = node.get("name", "Bookmark")
+        
+        if node_type == "folder":
+            c.execute(
+                "INSERT INTO moz_bookmarks (type, fk, parent, position, title, dateAdded, lastModified, guid) VALUES (2, NULL, ?, ?, ?, ?, ?, ?)",
+                (parent_id, position, title, now_usec, now_usec, guid)
+            )
+            folder_id = c.lastrowid
+            children = node.get("children", [])
+            for idx, child in enumerate(children):
+                insert_node(child, folder_id, idx)
+            return folder_id
+        elif node_type == "url":
+            url = node.get("url", "")
+            if not url:
+                return None
+            place_id = places_cache.get(url)
+            if place_id:
+                places_to_update.append((place_id,))
+            else:
+                place_guid = generate_firefox_guid()
+                r_host = rev_host(url)
+                c.execute(
+                    "INSERT INTO moz_places (url, title, rev_host, hidden, typed, frecency, guid, foreign_count) VALUES (?, ?, ?, 0, 0, 100, ?, 1)",
+                    (url, title, r_host, place_guid)
+                )
+                place_id = c.lastrowid
+                places_cache[url] = place_id
+                
+            c.execute(
+                "INSERT INTO moz_bookmarks (type, fk, parent, position, title, dateAdded, lastModified, guid) VALUES (1, ?, ?, ?, ?, ?, ?, ?)",
+                (place_id, parent_id, position, title, now_usec, now_usec, guid)
+            )
+            return c.lastrowid
+
+    insert_node(new_root_folder, toolbar_id, 0)
+    
+    if places_to_update:
+        c.executemany("UPDATE moz_places SET foreign_count = foreign_count + 1 WHERE id = ?", places_to_update)
+        
     conn.commit()
     conn.close()
 
