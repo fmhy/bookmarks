@@ -438,6 +438,10 @@ def parse_bookmarks_html(file_path):
             if len(current_folder_stack) > 1:
                 current_folder_stack.pop()
 
+    # Unwrap single top-level "FMHY" subfolder if HTML already wrapped it
+    if len(root_folder["children"]) == 1 and root_folder["children"][0].get("type") == "folder" and root_folder["children"][0].get("name") == "FMHY":
+        root_folder = root_folder["children"][0]
+
     return root_folder
 
 def remove_all_folders_named(parent_node, target_name):
