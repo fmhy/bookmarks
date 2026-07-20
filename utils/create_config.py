@@ -363,6 +363,15 @@ def main():
     rebuild_choice = input("\nShould the script always download latest sources from GitHub and rebuild bookmarks before syncing? (y/n) [default: y]: ").strip().lower()
     rebuild = False if rebuild_choice == 'n' else True
     
+    # 4. Max backup days selection
+    max_days_input = input("\nEnter maximum number of daily backup folders to keep (1-365) [default: 10]: ").strip()
+    try:
+        max_backup_days = int(max_days_input) if max_days_input else 10
+        if max_backup_days <= 0:
+            max_backup_days = 10
+    except ValueError:
+        max_backup_days = 10
+
     # Generate config dictionary
     profiles_config = []
     for p in selected_profiles:
@@ -379,7 +388,8 @@ def main():
         "profiles": profiles_config,
         "source_type": source_type,
         "source_file": source_file,
-        "rebuild_first": rebuild
+        "rebuild_first": rebuild,
+        "max_backup_days": max_backup_days
     }
     
     # Ensure utils directory exists (it should, but just in case)

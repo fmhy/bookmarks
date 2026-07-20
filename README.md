@@ -40,10 +40,11 @@ If you want to avoid manually deleting, importing, and organizing the `FMHY` fol
 The tool will:
 - Auto-detect your Chromium & Firefox browser profiles (Chrome, Edge, Brave, Vivaldi, Opera, Yandex, Thorium, Arc, Firefox, LibreWolf, Waterfox, Floorp, Zen Browser, Pale Moon, Tor Browser, etc.).
 - Check if the browser is running and help you close it (or skip update safely if running in background).
-- Create a timestamped backup of your current bookmarks in both JSON and HTML format.
+- Create a timestamped backup organized into day folders (`utils/backups/<Browser>/<Profile>/<YYYY-MM-DD>/`) with automatic retention cleanup (max 10 day-folders by default, configurable in `config.json`).
 - Replace or insert the `FMHY` folder directly at the very front of your browser's bookmarks bar in-place.
 
 #### How to Restore from Backups
 If you ever want to restore your bookmarks to a previous state, navigate to the `utils/backups/` directory:
-- **Perfect Restore (JSON)**: Close your browser, rename the `Bookmarks_Backup_YYYYMMDD_HHMMSS.json` file to `Bookmarks` (remove the `.json` extension and suffix), and copy/overwrite it into your browser's profile directory.
-- **Browser Import (HTML)**: Open your browser's Bookmark Manager (`Ctrl + Shift + O`), click the top-right menu, select **Import bookmarks**, and choose the `Bookmarks_Backup_YYYYMMDD_HHMMSS.html` file.
+- **Chromium Restore (JSON)**: Close your browser, open the date folder (e.g. `2026-07-20`), copy the `Bookmarks_Backup_HHMMSS.json` file, rename it to `Bookmarks`, and overwrite it into your browser's profile directory.
+- **Firefox Restore (SQLite)**: Close Firefox, open the date folder, copy `places_Backup_HHMMSS.sqlite`, rename it to `places.sqlite`, and overwrite it into your Firefox profile directory.
+- **Browser Import (HTML)**: Open your browser's Bookmark Manager (`Ctrl + Shift + O`), select **Import bookmarks**, and choose the `Bookmarks_Backup_HHMMSS.html` file.

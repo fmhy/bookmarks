@@ -651,6 +651,45 @@ def update_firefox_places_sqlite(db_path, new_root_folder):
     conn.commit()
     conn.close()
 
+def migrate_and_cleanup_backups(profile_backup_dir, max_backup_days=10):
+    """Organizes backups into YYYY-MM-DD day folders and purges old folders exceeding max_backup_days."""
+    if not os.path.exists(profile_backup_dir):
+        return
+        
+    # Migrate loose backup files from old flat layout into YYYY-MM-DD day folders
+    for item in os.listdir(profile_backup_dir):
+        item_path = os.path.join(profile_backup_dir, item)
+        if os.path.isfile(item_path):
+            match = re.search(r'(\d{4})(\d{2})(\d{2})_\d{6}', item)
+            if match:
+                y, m, d = match.groups()
+                day_folder_name = f"{y}-{m}-{d}"
+                day_folder_path = os.path.join(profile_backup_dir, day_folder_name)
+                os.makedirs(day_folder_path, exist_ok=True)
+                new_item_name = item.replace(f"_{y}{m}{d}_", "_")
+                new_path = os.path.join(day_folder_path, new_item_name)
+                try:
+                    shutil.move(item_path, new_path)
+                except Exception:
+                    pass
+
+    # Cleanup old day folders exceeding max_backup_days
+    date_folders = []
+    for item in os.listdir(profile_backup_dir):
+        item_path = os.path.join(profile_backup_dir, item)
+        if os.path.isdir(item_path) and re.match(r'^\d{4}-\d{2}-\d{2}$', item):
+            date_folders.append((item, item_path))
+            
+    date_folders.sort(key=lambda x: x[0])
+    
+    while len(date_folders) > max_backup_days:
+        oldest_name, oldest_path = date_folders.pop(0)
+        try:
+            shutil.rmtree(oldest_path)
+            print(f"[INFO] Removed old backup folder '{oldest_name}' (exceeding {max_backup_days}-day retention limit)")
+        except Exception as e:
+            print(f"[WARNING] Could not remove old backup folder {oldest_name}: {e}")
+
 def main():
     non_interactive = "--non-interactive" in sys.argv
     
@@ -668,9 +707,9 @@ def main():
         except Exception as e:
             print(f"[WARNING] Could not parse config.json: {e}")
             
-    # Rebuild bookmarks if configured or missing
     rebuild_first = config.get("rebuild_first", True) if config else True
     source_file = config.get("source_file", "fmhy_in_bookmarks.html") if config else "fmhy_in_bookmarks.html"
+    max_backup_days = config.get("max_backup_days", 10) if config else 10
     source_path = os.path.join(ROOT_DIR, source_file)
     
     if rebuild_first or not os.path.exists(source_path):
@@ -743,16 +782,19 @@ def main():
         
         safe_profile_dir = re.sub(r'[^a-zA-Z0-9_]', '_', profile_dir_name)
         profile_backup_dir = os.path.join(BACKUPS_DIR, browser_name, safe_profile_dir)
-        os.makedirs(profile_backup_dir, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        date_str = datetime.now().strftime("%Y-%m-%d")
+        time_str = datetime.now().strftime("%H%M%S")
+        profile_day_backup_dir = os.path.join(profile_backup_dir, date_str)
+        os.makedirs(profile_day_backup_dir, exist_ok=True)
         
         if profile_type == "firefox":
             # Firefox update via SQLite places.sqlite
-            backup_sqlite = os.path.join(profile_backup_dir, f"places_Backup_{timestamp}.sqlite")
+            backup_sqlite = os.path.join(profile_day_backup_dir, f"places_Backup_{time_str}.sqlite")
             try:
                 rel_sqlite_path = os.path.relpath(backup_sqlite, SCRIPT_DIR)
             except ValueError:
-                rel_sqlite_path = f"backups/{browser_name}/{safe_profile_dir}/places_Backup_{timestamp}.sqlite"
+                rel_sqlite_path = f"backups/{browser_name}/{safe_profile_dir}/{date_str}/places_Backup_{time_str}.sqlite"
                 
             print(f"Creating SQLite backup to: {rel_sqlite_path}")
             shutil.copy2(bookmarks_file_path, backup_sqlite)
@@ -760,7 +802,7 @@ def main():
             # Export HTML backup
             try:
                 existing_firefox_data = read_firefox_bookmarks_as_dict(bookmarks_file_path)
-                html_backup_file = os.path.join(profile_backup_dir, f"Bookmarks_Backup_{timestamp}.html")
+                html_backup_file = os.path.join(profile_day_backup_dir, f"Bookmarks_Backup_{time_str}.html")
                 save_backup_html(existing_firefox_data, html_backup_file)
             except Exception as e:
                 print(f"[WARNING] Could not export HTML backup for Firefox: {e}")
@@ -785,17 +827,17 @@ def main():
                 print(f"[ERROR] Failed to read browser Bookmarks file: {e}")
                 continue
                 
-            backup_bookmarks = os.path.join(profile_backup_dir, f"Bookmarks_Backup_{timestamp}.json")
+            backup_bookmarks = os.path.join(profile_day_backup_dir, f"Bookmarks_Backup_{time_str}.json")
             try:
                 rel_json_path = os.path.relpath(backup_bookmarks, SCRIPT_DIR)
             except ValueError:
-                rel_json_path = f"backups/{browser_name}/{safe_profile_dir}/Bookmarks_Backup_{timestamp}.json"
+                rel_json_path = f"backups/{browser_name}/{safe_profile_dir}/{date_str}/Bookmarks_Backup_{time_str}.json"
                 
             print(f"Creating JSON backup to: {rel_json_path}")
             shutil.copy2(bookmarks_file_path, backup_bookmarks)
             
             # Create HTML Backup of original browser bookmarks
-            html_backup_file = os.path.join(profile_backup_dir, f"Bookmarks_Backup_{timestamp}.html")
+            html_backup_file = os.path.join(profile_day_backup_dir, f"Bookmarks_Backup_{time_str}.html")
             save_backup_html(bookmarks_data, html_backup_file)
             
             bookmarks_bak_file = os.path.join(profile_dir, "Bookmarks.bak")
@@ -882,6 +924,9 @@ def main():
                 print(f"[ERROR] Failed to write updated bookmarks file: {e}")
                 print("Restoring backup...")
                 shutil.copy2(backup_bookmarks, bookmarks_file_path)
+                
+        # Migrate old flat backups and enforce retention limit (max 10 day-folders by default)
+        migrate_and_cleanup_backups(profile_backup_dir, max_backup_days)
 
 if __name__ == "__main__":
     main()
